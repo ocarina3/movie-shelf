@@ -1,4 +1,4 @@
-package ClassesBase;
+package model;
 
 public class Rating {
     private int id;

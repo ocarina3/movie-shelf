@@ -1,4 +1,4 @@
-package ClassesBase;
+package model;
 
 import java.util.Objects;
 
