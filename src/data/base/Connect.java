@@ -1,18 +1,18 @@
-package BancoDeDados;
+package data.base;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Conectar {
-    private Connection conexao;
+public class Connect {
 
-    public boolean conectar(){
-        try
-        {
-            String url = "jdbc:sqlite:BancoDeDados/BancoSQLite";
+    private Connection connection;
 
-            this.conexao = DriverManager.getConnection(url);
+    public boolean connect(){
+        try{
+            String url = "jdbc:sqlite:data.base/BancoSQLite";
+
+            this.connection = DriverManager.getConnection(url);
         }catch(SQLException e) {
 
             System.out.println(e.getMessage());
@@ -22,13 +22,11 @@ public class Conectar {
         return true;
     }
 
-    public boolean desconectar()
-    {
-        try
-        {
-            if(this.conexao.isClosed() == false)
+    public boolean disconnect(){
+        try{
+            if(!this.connection.isClosed())
             {
-                this.conexao.close();
+                this.connection.close();
             }
         }catch(SQLException e) {
 
@@ -37,6 +35,5 @@ public class Conectar {
         }
         System.out.println("desconectou");
         return true;
-
     }
 }

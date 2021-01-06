@@ -1,4 +1,4 @@
 package ClassesBase;
 
-public enum Genero {
+public enum Genre {
 }
