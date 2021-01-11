@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Movie {
@@ -12,6 +13,7 @@ public class Movie {
     private Genre movieGenre;
     private String synopsis;
     private int minimumAge;
+    private ArrayList<Rating> ratings;
     //_______________________________________________________________________________________________________________
 
     //CONSTRUCTOR
@@ -23,6 +25,7 @@ public class Movie {
         this.movieGenre = movieGenre;
         this.synopsis = synopsis;
         this.minimumAge = minimumAge;
+        ratings = new ArrayList<>();
     }
     //_______________________________________________________________________________________________________________
 

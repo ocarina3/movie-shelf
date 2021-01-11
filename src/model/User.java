@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class User {
@@ -11,6 +12,7 @@ public class User {
     private String email;
     private String password;
     private LocalDate birthDate;
+    private ArrayList<Movie> favoriteMovies;
     //_______________________________________________________________________________________________________________
 
     //CONSTRUCTOR
@@ -20,6 +22,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.birthDate = birthDate;
+        favoriteMovies = new ArrayList<>();
     }
     //_______________________________________________________________________________________________________________
 
