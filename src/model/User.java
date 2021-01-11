@@ -1,25 +1,25 @@
-package ClassesBase;
+package model;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Usuario {
+public class User {
 
     //ATRIBUTOS
     private int id;
-    private String nome;
+    private String name;
     private String email;
-    private String senha;
-    private LocalDate dataNacimento;
+    private String password;
+    private LocalDate birthDate;
     //_______________________________________________________________________________________________________________
 
     //CONSTRUCTOR
-    public Usuario(int id, String nome, String email, String senha, LocalDate dataNacimento) {
+    public User(int id, String name, String email, String password, LocalDate birthDate) {
         this.id = id;
-        this.nome = nome;
+        this.name = name;
         this.email = email;
-        this.senha = senha;
-        this.dataNacimento = dataNacimento;
+        this.password = password;
+        this.birthDate = birthDate;
     }
     //_______________________________________________________________________________________________________________
 
@@ -33,12 +33,12 @@ public class Usuario {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -49,20 +49,20 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getSenha() {
-        return senha;
+    public String getPassword() {
+        return password;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public LocalDate getDataNacimento() {
-        return dataNacimento;
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
-    public void setDataNacimento(LocalDate dataNacimento) {
-        this.dataNacimento = dataNacimento;
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
     //_______________________________________________________________________________________________________________
 
@@ -70,11 +70,11 @@ public class Usuario {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Usuario)) return false;
-        Usuario usuario = (Usuario) o;
-        return Objects.equals(id, usuario.id) && Objects.equals(nome, usuario.nome) &&
-                Objects.equals(email, usuario.email) && Objects.equals(senha, usuario.senha) &&
-                Objects.equals(dataNacimento, usuario.dataNacimento);
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id) && Objects.equals(name, user.name) &&
+                Objects.equals(email, user.email) && Objects.equals(password, user.password) &&
+                Objects.equals(birthDate, user.birthDate);
     }
     //_______________________________________________________________________________________________________________
 }
