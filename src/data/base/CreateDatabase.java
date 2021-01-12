@@ -18,8 +18,33 @@ public class CreateDatabase {
                 "name varchar," +
                 "email varchar," +
                 "password varchar," +
-                "birthDate date" +
+                "birthDate date," +
+                "admin bool" +
                 ");";
+        boolean connected = false;
+
+        try {
+            connected = c.connect();
+            Statement statement = c.createStatement();
+            statement.execute(query);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            if (connected) c.disconnect();
+        }
+    }
+
+    public void createTableMovie() {
+        String query = "CREATE TABLE IF NOT EXISTS movie(" +
+                "id integer primary key," +
+                "name varchar," +
+                "score float," +
+                "movieDirector varchar," +
+                "movieGenre varchar," +
+                "synopsis varchar ," +
+                "minimumAge integer" +
+                ");";
+
         boolean connected = false;
 
         try {

@@ -17,7 +17,7 @@ public class Connect {
     // MÉTODO PARA CONEXÃO DO BANCO
     public boolean connect(){
         try {
-            String url = "jdbc:sqlite:data.base/alphadatabase";
+            String url = "jdbc:sqlite:data.base/alphadatabase.db";
 
             this.connection = DriverManager.getConnection(url);
         } catch(SQLException e) {
