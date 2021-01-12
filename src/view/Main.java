@@ -19,10 +19,13 @@ public class Main extends Application {
 
         // Testing database connection
         Connect connect = new Connect();
+        connect.connect();
+        connect.disconnect();
 
         // Instancia responsável por criar a base de dadados
         CreateDatabase createDatabase = new CreateDatabase(connect);
         createDatabase.createTableUser();
+        createDatabase.createTableMovie();
 
     }
 
