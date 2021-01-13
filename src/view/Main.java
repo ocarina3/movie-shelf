@@ -26,6 +26,7 @@ public class Main extends Application {
         CreateDatabase createDatabase = new CreateDatabase(connect);
         createDatabase.createTableUser();
         createDatabase.createTableMovie();
+        createDatabase.createTableRating();
 
     }
 

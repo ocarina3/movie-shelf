@@ -58,4 +58,25 @@ public class CreateDatabase {
         }
     }
 
+    public void createTableRating() {
+        String query = "CREATE TABLE IF NOT EXISTS rating(" +
+                "id integer primary key," +
+                "rating float," +
+                "id_user integer," +
+                "id_movie integer" +
+                ");";
+
+        boolean connected = false;
+
+        try {
+            connected = c.connect();
+            Statement statement = c.createStatement();
+            statement.execute(query);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            if (connected) c.disconnect();
+        }
+    }
+
 }
