@@ -38,4 +38,26 @@ public class GenerateQuery {
 
         c.disconnect();
     }
+
+    public static String[] select(String[] fields) throws SQLException {
+
+        String fieldsString = "";
+
+        for ( String field: fields ) {
+            fieldsString += String.format(",%");
+        }
+
+        String fieldsStringFiltered = fieldsString.substring(1);
+
+        createQuery("SELECT " + fieldsStringFiltered + " FROM users");
+        endQuery();
+
+        String[] response = new String[fields.length];
+
+        for ( int x = 0; x < fields.length; x++ ) {
+            response[x] = resultSet.getString(x + 1);
+        }
+
+        return response;
+    }
 }
