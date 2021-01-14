@@ -3,7 +3,7 @@ package data.base;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class RemoveDatabase {
+public class DeleteDatabase {
 
     private final Connect c = new Connect();
 
@@ -44,4 +44,6 @@ public class RemoveDatabase {
     public void deleteUserById(String value){
         deleteUser("id", value);
     }
+
+
 }
