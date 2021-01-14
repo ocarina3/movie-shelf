@@ -108,7 +108,7 @@ public class CreateDatabase {
             p.setString(4, user.getPassword());
             p.setDate(5,null);
             p.setBoolean(6,admin);
-            int teste = p.executeUpdate();
+            p.executeUpdate();
         }catch (SQLException e)
         {
             try {
@@ -117,16 +117,16 @@ public class CreateDatabase {
                 p.setString(4, user.getPassword());
                 p.setDate(5,null);
                 p.setBoolean(6,admin);
-                int teste = p.executeUpdate();
+                p.executeUpdate();
+
                 r.deleteUserByEmail("NULL");
 
                 System.out.println("email invalido");
             }catch (SQLException ex){
-
-                System.out.println("ERRo misterioso");
+                System.out.println(ex.getMessage());
             }
 
-            System.out.println("Deu Erro");
+            System.out.println(e.getMessage());
 
         }
         finally {

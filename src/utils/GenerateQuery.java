@@ -10,54 +10,68 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GenerateQuery {
-    private static PreparedStatement p;
-    private static ResultSet resultSet;
 
     private static Connect c = new Connect();
+    private static PreparedStatement pstmt;
 
-    private static void createQuery(String query) {
-        String sql = query;
+    private static ResultSet createQuery(String query) throws SQLException {
+        try {
+            String sql = query;
 
-        c.connect();
+            System.out.println(sql);
 
-        p = c.createPreparedStatement(sql);
-        resultSet = null;
+            c.connect();
+
+            pstmt = c.createPreparedStatement(sql);
+
+            ResultSet result = pstmt.executeQuery();
+
+            return result;
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
+            return null;
+        }
     }
 
     private static void endQuery() {
-        if(p != null)
-        {
-            try{
-                p.close();
-                resultSet = p.getResultSet();
-            }catch (SQLException ex){
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,ex);
-                System.out.println("ERROOOO");
+        if(pstmt != null) {
+            try {
+                pstmt.close();
+                c.disconnect();
+            } catch (SQLException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(ex.getMessage());
+                c.disconnect();
             }
         }
-
-        c.disconnect();
     }
 
     public static String[] select(String[] fields) throws SQLException {
+        try {
+            String fieldsString = "";
 
-        String fieldsString = "";
+            for ( String field: fields ) {
+                fieldsString += String.format(",%s", field);
+            }
 
-        for ( String field: fields ) {
-            fieldsString += String.format(",%");
+            String fieldsStringFiltered = fieldsString.substring(1);
+
+            ResultSet responseQuery = createQuery("SELECT " + fieldsStringFiltered + " FROM user");
+
+            String[] response = new String[fields.length];
+
+            int indexToInsert = 0;
+            for ( String field : fields ) {
+                if( responseQuery != null )
+                    response[indexToInsert++] = responseQuery.getString(field);
+            }
+
+            return response;
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
+            return new String[0];
+        } finally {
+            endQuery();
         }
-
-        String fieldsStringFiltered = fieldsString.substring(1);
-
-        createQuery("SELECT " + fieldsStringFiltered + " FROM users");
-        endQuery();
-
-        String[] response = new String[fields.length];
-
-        for ( int x = 0; x < fields.length; x++ ) {
-            response[x] = resultSet.getString(x + 1);
-        }
-
-        return response;
     }
 }

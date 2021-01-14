@@ -43,7 +43,7 @@ public class Connect {
     public Statement createStatement() {
         try {
             return this.connection.createStatement();
-        } catch(SQLException e) {
+        } catch(SQLException | NullPointerException e) {
             System.out.println(e.getMessage());
             return null;
         }
