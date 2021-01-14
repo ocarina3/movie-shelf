@@ -1,9 +1,6 @@
 package data.base;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Connect {
 
@@ -46,6 +43,16 @@ public class Connect {
     public Statement createStatement() {
         try {
             return this.connection.createStatement();
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    public PreparedStatement createPreparedStatement(String sql)
+    {
+        try {
+            return this.connection.prepareStatement(sql);
         } catch(SQLException e) {
             System.out.println(e.getMessage());
             return null;
