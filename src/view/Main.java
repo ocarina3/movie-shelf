@@ -36,6 +36,8 @@ public class Main extends Application {
         createDatabase.createTableMovie();
         createDatabase.createTableRating();
 
+
+
         DeleteDatabase deleteDatabase = new DeleteDatabase();
 
         // Teste
@@ -43,8 +45,8 @@ public class Main extends Application {
 
         createDatabase.createClient(user1);
 
-        String[] fields = { "name", "password" };
-        System.out.println(Arrays.toString(GenerateQuery.select(fields)));
+        String[] fields = { "name", "password", "id" };
+        System.out.println(Arrays.toString(GenerateQuery.select(fields, "user", null)));
 
         deleteDatabase.deleteUserByEmail("exemplo@exemplo.com.br");
 

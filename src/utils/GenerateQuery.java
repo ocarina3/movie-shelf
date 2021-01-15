@@ -18,15 +18,11 @@ public class GenerateQuery {
         try {
             String sql = query;
 
-            System.out.println(sql);
-
             c.connect();
 
             pstmt = c.createPreparedStatement(sql);
 
-            ResultSet result = pstmt.executeQuery();
-
-            return result;
+            return pstmt.executeQuery();
         } catch (SQLException err) {
             System.out.println(err.getMessage());
             return null;
@@ -46,7 +42,7 @@ public class GenerateQuery {
         }
     }
 
-    public static String[] select(String[] fields) throws SQLException {
+    public static String[] select(String[] fields, String table, String where) throws SQLException {
         try {
             String fieldsString = "";
 
@@ -56,7 +52,7 @@ public class GenerateQuery {
 
             String fieldsStringFiltered = fieldsString.substring(1);
 
-            ResultSet responseQuery = createQuery("SELECT " + fieldsStringFiltered + " FROM user");
+            ResultSet responseQuery = createQuery("SELECT " + fieldsStringFiltered + " FROM " + table + String.format(" %s", where != null ? where : ""));
 
             String[] response = new String[fields.length];
 
@@ -72,6 +68,15 @@ public class GenerateQuery {
             return new String[0];
         } finally {
             endQuery();
+        }
+    }
+
+    public static void query(String query) throws SQLException {
+        try {
+            createQuery(query);
+            endQuery();
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
         }
     }
 }

@@ -2,6 +2,7 @@ package data.base;
 
 import model.entity.Movie;
 import model.entity.User;
+import utils.GenerateQuery;
 import view.Main;
 
 
@@ -96,7 +97,6 @@ public class CreateDatabase {
         DeleteDatabase r = new DeleteDatabase();
 
         String sql = "INSERT INTO user(id,name,email,password,birthDate,admin) VALUES(?,?,?,?,?,?);";
-
         c.connect();
 
         PreparedStatement p = c.createPreparedStatement(sql);
@@ -192,6 +192,4 @@ public class CreateDatabase {
             c.disconnect();
         }
     }
-
-
 }
