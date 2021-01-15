@@ -1,17 +1,14 @@
-package model.entity;
+package model;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class Movie {
 
-    private final DecimalFormat f = new DecimalFormat("#.#");
-
     //ATRIBUTOS
     private int id;
     private String name;
-    private Double score;
+    private float score;
     private String movieDirector;
     private Genre movieGenre;
     private String synopsis;
@@ -20,12 +17,10 @@ public class Movie {
     //_______________________________________________________________________________________________________________
 
     //CONSTRUCTOR
-    public Movie(int id, String name, Double score, String movieDirector, Genre movieGenre, String synopsis, int minimumAge) {
-        DecimalFormat decimalFormat = new DecimalFormat("#.#");
-
+    public Movie(int id, String name, float score, String movieDirector, Genre movieGenre, String synopsis, int minimumAge) {
         this.id = id;
         this.name = name;
-        this.score = Double.valueOf((f.format(score)).replace(",","."));
+        this.score = score;
         this.movieDirector = movieDirector;
         this.movieGenre = movieGenre;
         this.synopsis = synopsis;
@@ -51,12 +46,12 @@ public class Movie {
         this.name = name;
     }
 
-    public Double getScore() {
-        return Double.valueOf((f.format(score)).replace(",","."));
+    public float getScore() {
+        return score;
     }
 
-    public void setScore(Double score) {
-        this.score = Double.valueOf((f.format(score)).replace(",","."));
+    public void setScore(float score) {
+        this.score = score;
     }
 
     public String getMovieDirector() {
@@ -98,7 +93,7 @@ public class Movie {
         if (this == o) return true;
         if (!(o instanceof Movie)) return false;
         Movie movie = (Movie) o;
-        return id == movie.id && Double.compare(movie.score, score) == 0 && minimumAge == movie.minimumAge &&
+        return id == movie.id && Float.compare(movie.score, score) == 0 && minimumAge == movie.minimumAge &&
                 Objects.equals(name, movie.name) && Objects.equals(movieDirector, movie.movieDirector) &&
                 movieGenre == movie.movieGenre && Objects.equals(synopsis, movie.synopsis);
     }

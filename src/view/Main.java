@@ -1,7 +1,6 @@
 package view;
 
 import data.base.Connect;
-import data.base.CreateDatabase;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,12 +20,6 @@ public class Main extends Application {
         Connect connect = new Connect();
         connect.connect();
         connect.disconnect();
-
-        // Instancia responsável por criar a base de dadados
-        CreateDatabase createDatabase = new CreateDatabase(connect);
-        createDatabase.createTableUser();
-        createDatabase.createTableMovie();
-        createDatabase.createTableRating();
 
     }
 
