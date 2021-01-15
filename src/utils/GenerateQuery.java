@@ -6,6 +6,7 @@ import view.Main;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,7 +15,7 @@ public class GenerateQuery {
     private static Connect c = new Connect();
     private static PreparedStatement pstmt;
 
-    private static ResultSet createQuery(String query) throws SQLException {
+    private static ResultSet createQueryWithResponse(String query) throws SQLException {
         try {
             String sql = query;
 
@@ -25,6 +26,7 @@ public class GenerateQuery {
             return pstmt.executeQuery();
         } catch (SQLException err) {
             System.out.println(err.getMessage());
+            System.out.println("entrou aqui");
             return null;
         }
     }
@@ -42,7 +44,7 @@ public class GenerateQuery {
         }
     }
 
-    public static String[] select(String[] fields, String table, String where) throws SQLException {
+    public static ArrayList<ArrayList<String>> select(String[] fields, String table, String where) {
         try {
             String fieldsString = "";
 
@@ -52,31 +54,38 @@ public class GenerateQuery {
 
             String fieldsStringFiltered = fieldsString.substring(1);
 
-            ResultSet responseQuery = createQuery("SELECT " + fieldsStringFiltered + " FROM " + table + String.format(" %s", where != null ? where : ""));
+            ResultSet responseQuery = createQueryWithResponse("SELECT " + fieldsStringFiltered + " FROM " + table + String.format(" %s", where != null ? where : ""));
 
-            String[] response = new String[fields.length];
+            ArrayList<ArrayList<String>> response = new ArrayList<>();
 
-            int indexToInsert = 0;
-            for ( String field : fields ) {
-                if( responseQuery != null )
-                    response[indexToInsert++] = responseQuery.getString(field);
+            // Build the ArrayList with response data
+            assert responseQuery != null;
+            while ( responseQuery.next() ) {
+                response.add(new ArrayList<>());
+
+                for ( String field : fields ) {
+                    response.get(responseQuery.getRow() - 1).add(responseQuery.getString(field));
+                }
             }
+
 
             return response;
         } catch (SQLException err) {
             System.out.println(err.getMessage());
-            return new String[0];
+            return new ArrayList<>();
         } finally {
             endQuery();
         }
     }
 
-    public static void query(String query) throws SQLException {
+    public static ResultSet selectWithRelationships(String query) {
         try {
-            createQuery(query);
+            ResultSet result = createQueryWithResponse(query);
             endQuery();
+            return result;
         } catch (SQLException err) {
             System.out.println(err.getMessage());
+            return null;
         }
     }
 }

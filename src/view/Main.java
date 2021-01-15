@@ -42,13 +42,16 @@ public class Main extends Application {
 
         // Teste
         User user1 = new User(12, "Noronha", "exemplo@exemplo.com.br", "123456", null);
+        User user2 = new User(15, "Pessoa", "exemplo2@exemplo.com.br", "123456", null);
 
         createDatabase.createClient(user1);
+        createDatabase.createClient(user2);
 
         String[] fields = { "name", "password", "id" };
-        System.out.println(Arrays.toString(GenerateQuery.select(fields, "user", null)));
+        System.out.println(GenerateQuery.select(fields, "user", null));
 
         deleteDatabase.deleteUserByEmail("exemplo@exemplo.com.br");
+        deleteDatabase.deleteUserByEmail("exemplo2@exemplo.com.br");
 
     }
 
