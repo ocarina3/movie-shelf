@@ -16,6 +16,11 @@ public class User {
     //_______________________________________________________________________________________________________________
 
     //CONSTRUCTOR
+
+
+    public User() {
+    }
+
     public User(int id, String name, String email, String password, LocalDate birthDate) {
         this.id = id;
         this.name = name;
@@ -80,4 +85,18 @@ public class User {
                 Objects.equals(birthDate, user.birthDate);
     }
     //_______________________________________________________________________________________________________________
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", birthDate=" + birthDate +
+                ", favoriteMovies=" + favoriteMovies +
+                '}';
+    }
+
 }
