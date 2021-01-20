@@ -20,6 +20,9 @@ public class Movie {
     //_______________________________________________________________________________________________________________
 
     //CONSTRUCTOR
+    public Movie() {
+    }
+
     public Movie(int id, String name, Double score, String movieDirector, Genre movieGenre, String synopsis, int minimumAge) {
         DecimalFormat decimalFormat = new DecimalFormat("#.#");
 
@@ -102,5 +105,19 @@ public class Movie {
                 Objects.equals(name, movie.name) && Objects.equals(movieDirector, movie.movieDirector) &&
                 movieGenre == movie.movieGenre && Objects.equals(synopsis, movie.synopsis);
     }
-    //_______________________________________________________________________________________________________________
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", score=" + score +
+                ", movieDirector='" + movieDirector + '\'' +
+                ", movieGenre=" + movieGenre +
+                ", synopsis='" + synopsis + '\'' +
+                ", minimumAge=" + minimumAge +
+                ", ratings=" + ratings +
+                '}';
+    }
+
 }
