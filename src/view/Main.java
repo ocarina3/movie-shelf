@@ -3,6 +3,7 @@ package view;
 import data.base.Connect;
 import data.base.CreateDatabase;
 import data.base.DeleteDatabase;
+import data.base.ReadDatabase;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -46,12 +47,11 @@ public class Main extends Application {
 
         createDatabase.createClient(user1);
         createDatabase.createClient(user2);
+        ReadDatabase readDatabase = new ReadDatabase();
+       User user3 = readDatabase.readUsersById("1");
+       System.out.println(user3);
 
-        String[] fields = { "name", "password", "id" };
-        System.out.println(GenerateQuery.select(fields, "user", null));
 
-        deleteDatabase.deleteUserByEmail("exemplo@exemplo.com.br");
-        deleteDatabase.deleteUserByEmail("exemplo2@exemplo.com.br");
 
     }
 

@@ -6,6 +6,7 @@ import utils.GenerateQuery;
 import view.Main;
 
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -20,7 +21,7 @@ public class CreateDatabase {
     // Criação da tabela passando a query, cria a tabela apenas se ela não existe
     public void createTableUser() {
         String query = "CREATE TABLE IF NOT EXISTS user(" +
-                "id integer primary key," +
+                "id integer primary key AUTOINCREMENT," +
                 "name varchar," +
                 "email varchar UNIQUE ON CONFLICT ABORT," +
                 "password varchar," +
@@ -42,7 +43,7 @@ public class CreateDatabase {
 
     public void createTableMovie() {
         String query = "CREATE TABLE IF NOT EXISTS movie(" +
-                "id integer primary key," +
+                "id integer primary key AUTOINCREMENT," +
                 "name varchar," +
                 "score DOUBLE," +
                 "movieDirector varchar," +
@@ -67,7 +68,7 @@ public class CreateDatabase {
 
     public void createTableRating() {
         String query = "CREATE TABLE IF NOT EXISTS rating(" +
-                "id integer primary key," +
+                "id integer primary key AUTOINCREMENT," +
                 "rating float," +
                 "id_user integer," +
                 "id_movie integer" +
@@ -88,68 +89,7 @@ public class CreateDatabase {
 
 
 
-    //Criação de Usuario passando suas informações e o tipo de usuario
-    private void createUser(User user, boolean admin)
-    {
 
-        if(user == null) return;
-
-        DeleteDatabase r = new DeleteDatabase();
-
-        String sql = "INSERT INTO user(id,name,email,password,birthDate,admin) VALUES(?,?,?,?,?,?);";
-        c.connect();
-
-        PreparedStatement p = c.createPreparedStatement(sql);
-
-        try
-        {
-            p.setString(2,user.getName());
-            p.setString(3, user.getEmail());
-            p.setString(4, user.getPassword());
-            p.setDate(5,null);
-            p.setBoolean(6,admin);
-            p.executeUpdate();
-        }catch (SQLException e)
-        {
-            try {
-                p.setString(2, user.getName());
-                p.setString(3,"NULL");
-                p.setString(4, user.getPassword());
-                p.setDate(5,null);
-                p.setBoolean(6,admin);
-                p.executeUpdate();
-
-                r.deleteUserByEmail("NULL");
-
-                System.out.println("email invalido");
-            }catch (SQLException ex){
-                System.out.println(ex.getMessage());
-            }
-
-            System.out.println(e.getMessage());
-
-        }
-        finally {
-            if(p != null)
-            {
-                try{
-                    p.close();
-                }catch (SQLException ex){
-                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,ex);
-                    System.out.println("ERROOOO");
-                }
-            }
-            c.disconnect();
-        }
-    }
-
-    public void createClient(User user) {
-        createUser(user,false);
-    }
-
-    public void createAdmin(User user) {
-        createUser(user,true);
-    }
 
 
     //Criação de Usuario passando suas informações e o tipo de usuario
