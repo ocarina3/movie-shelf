@@ -1,7 +1,6 @@
 package model.repository;
 
 import data.base.Connect;
-import data.base.DeleteDatabase;
 import model.entity.User;
 import view.Main;
 
