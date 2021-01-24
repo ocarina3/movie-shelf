@@ -17,7 +17,7 @@ public class RepositoryRating {
 
     private Connect c = new Connect();
 
-    public void createRating(Rating rating, User raterUser, Movie ratedMovie) {
+    public void createRating(Rating rating) {
 
         if(rating == null) return;
 
@@ -30,9 +30,10 @@ public class RepositoryRating {
 
         try {
             p.setFloat(2,rating.getRating());
-            p.setInt(3,raterUser.getId());
-            p.setInt(4,ratedMovie.getId());
-            int teste = p.executeUpdate();
+            p.setInt(3,rating.getUserId());
+            p.setInt(4,rating.getMovieId());
+            int didCreateRating = p.executeUpdate();
+            System.out.println(didCreateRating);
 
         }catch (SQLException e) {
             System.out.println(e.getMessage());
