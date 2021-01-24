@@ -1,6 +1,5 @@
 package model;
 
-import data.base.ReadDatabase;
 import model.entity.User;
 import model.repository.RepositoryUser;
 

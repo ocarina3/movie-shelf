@@ -2,8 +2,6 @@ package view;
 
 import data.base.Connect;
 import data.base.CreateDatabase;
-import data.base.DeleteDatabase;
-import data.base.ReadDatabase;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -36,22 +34,6 @@ public class Main extends Application {
         createDatabase.createTableUser();
         createDatabase.createTableMovie();
         createDatabase.createTableRating();
-
-
-
-        DeleteDatabase deleteDatabase = new DeleteDatabase();
-
-        // Teste
-        User user1 = new User(12, "Noronha", "exemplo@exemplo.com.br", "123456", null);
-        User user2 = new User(15, "Pessoa", "exemplo2@exemplo.com.br", "123456", null);
-
-        createDatabase.createClient(user1);
-        createDatabase.createClient(user2);
-        ReadDatabase readDatabase = new ReadDatabase();
-       User user3 = readDatabase.readUsersById("1");
-       System.out.println(user3);
-
-
 
     }
 
