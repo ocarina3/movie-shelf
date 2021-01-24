@@ -102,6 +102,46 @@ public class RepositoryRating {
         return readRatings("ratings", value);
     }
 
+    public String readRaterUserName(String rating_id) {
+
+
+        String sql = "SELECT u.name AS name FROM rating AS r WHERE `r.id` = ?;" +
+                "JOIN user AS u on u.id = r.id_user ";
+
+        ResultSet result = null;
+
+        c.connect();
+        PreparedStatement p = null;
+
+        String userName = null;
+
+        try {
+
+            p = c.createPreparedStatement(sql);
+            p.setString(1,rating_id);
+            result = p.executeQuery();
+
+            while (result.next()) {
+                userName = result.getString("name");
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        } finally {
+            if (p != null) {
+                try{
+                    p.close();
+                    c.disconnect();
+                }catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+
+        return userName;
+    }
+
     private void deleteRating(String attribute,String value) {
         String sql = "DELETE FROM rating WHERE " + attribute + " = ?";
 
