@@ -3,6 +3,8 @@ package model;
 import model.entity.User;
 import model.repository.RepositoryUser;
 
+import java.util.ArrayList;
+
 public class ModelUser {
 
     private RepositoryUser repositoryUser;
@@ -19,6 +21,9 @@ public class ModelUser {
         repositoryUser = new RepositoryUser();
     }
 
+    //_______________________________________________________________________________________________________________
+    //CREATE
+    
     public void createClient(User user) {
         if(repositoryUser.readUsersByEmail(user.getEmail()) != null){
             repositoryUser.createClient(user);
@@ -30,4 +35,34 @@ public class ModelUser {
             repositoryUser.createAdmin(user);
         }
     }
+    
+    //_______________________________________________________________________________________________________________
+    //READ
+    
+    public User readUsersById(int value){
+        return repositoryUser.readUsersById(String.format("%d",value));
+    }
+
+    public User readUsersByEmail(String value) {
+        return repositoryUser.readUsersByEmail(value);
+    }
+
+    public ArrayList<User> readUsersByName(String value) {
+        return repositoryUser.readUsersByName(value);
+    }
+
+    //_______________________________________________________________________________________________________________
+    //UPDATE
+    
+    //_______________________________________________________________________________________________________________
+    //DELETE
+
+    public void deleteUserByEmail(String value){
+        repositoryUser.deleteUserByEmail(value);
+    }
+
+    public void deleteUserById(int value){
+        repositoryUser.deleteUserById(String.format("%d",value));
+    }
+    
 }
