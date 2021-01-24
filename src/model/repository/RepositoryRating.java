@@ -35,7 +35,7 @@ public class RepositoryRating {
             int teste = p.executeUpdate();
 
         }catch (SQLException e) {
-            System.out.println("Deu Erro");
+            System.out.println(e.getMessage());
         }
         finally {
             if(p != null) {
@@ -102,10 +102,12 @@ public class RepositoryRating {
         return readRatings("ratings", value);
     }
 
-    public String readRaterUserName(String rating_id) {
+    public String readRaterUserName(int rating_id) {
 
-        String sql = "SELECT u.name AS name FROM rating AS r WHERE `r.id` = ?;" +
-                "JOIN user AS u on u.id = r.id_user ";
+
+        String sql = "SELECT u.name AS name FROM rating r" +
+                " INNER JOIN user u ON u.id = r.id_user" +
+                " WHERE r.id = ?;";
 
         ResultSet result = null;
 
@@ -117,7 +119,7 @@ public class RepositoryRating {
         try {
 
             p = c.createPreparedStatement(sql);
-            p.setString(1,rating_id);
+            p.setInt(1,rating_id);
             result = p.executeQuery();
 
             while (result.next()) {
@@ -141,10 +143,11 @@ public class RepositoryRating {
         return userName;
     }
 
-    public String readRatedMovieName(String rating_id) {
+    public String readRatedMovieName(int rating_id) {
 
-        String sql = "SELECT m.name AS name FROM rating AS r WHERE `r.id` = ?;" +
-                "JOIN movie AS m on m.id = r.id_movie ";
+        String sql = "SELECT m.name AS name FROM rating r" +
+                " INNER JOIN movie m ON m.id = r.id_movie" +
+                " WHERE r.id = ?;";
 
         ResultSet result = null;
 
@@ -156,7 +159,7 @@ public class RepositoryRating {
         try {
 
             p = c.createPreparedStatement(sql);
-            p.setString(1,rating_id);
+            p.setString(1,Integer.toString(rating_id));
             result = p.executeQuery();
 
             while (result.next()) {
@@ -181,7 +184,7 @@ public class RepositoryRating {
     }
 
     private void updateRatingValue(String attribute, String attributeMatch, float newRating) {
-        String sql = "UPDATE rating SET rating = ? WHERE "+ attribute +" = ?";
+        String sql = "UPDATE rating SET rating = ? WHERE "+ attribute +" = ?;";
 
         c.connect();
         PreparedStatement p = null;
@@ -210,10 +213,10 @@ public class RepositoryRating {
         }
     }
 
-    public void updateRatingValueById(String rating_id, float newRating) { updateRatingValue("id", rating_id, newRating); }
+    public void updateRatingValueById(int rating_id, float newRating) { updateRatingValue("id", Integer.toString(rating_id), newRating); }
 
     private void deleteRating(String attribute,String value) {
-        String sql = "DELETE FROM rating WHERE " + attribute + " = ?";
+        String sql = "DELETE FROM rating WHERE " + attribute + " = ?;";
 
         c.connect();
         PreparedStatement p = null;
