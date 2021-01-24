@@ -3,6 +3,8 @@ package model;
 import model.entity.Movie;
 import model.repository.RepositoryMovie;
 
+import java.util.ArrayList;
+
 public class ModelMovie {
 
     private RepositoryMovie repositoryMovie;
@@ -23,6 +25,28 @@ public class ModelMovie {
     public void createMovie(Movie movie) {
         if(repositoryMovie.readMoviesByName(movie.getName()) != null) {
             repositoryMovie.createMovie(movie);
+        }
+    }
+
+    public Movie readMoviesById(String value) {
+        if(repositoryMovie.readMoviesById(value) != null) {
+            return repositoryMovie.readMoviesById(value);
+        } else {
+            return null;
+        }
+    }
+
+    public ArrayList<Movie> readMoviesByName(String value) {
+        if(repositoryMovie.readMoviesByName(value) != null) {
+            return repositoryMovie.readMoviesByName(value);
+        } else {
+            return null;
+        }
+    }
+
+    public void deleteMovieByName(Movie movie) {
+        if(repositoryMovie.readMoviesByName(movie.getName()) != null) {
+            repositoryMovie.deleteMovieByName(movie.getName());
         }
     }
 
