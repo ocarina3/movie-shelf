@@ -57,8 +57,10 @@ public class CreateDatabase {
         String query = "CREATE TABLE IF NOT EXISTS rating(" +
                 "id integer primary key AUTOINCREMENT," +
                 "rating float," +
-                "id_user integer," +
-                "id_movie integer" +
+                "id_user integer not null," +
+                "id_movie integer not null," +
+                "foreign key (id_user) references (user.id)," +
+                "foreign key (id_movie) references (movie.id)" +
                 ");";
 
         boolean connected = false;
