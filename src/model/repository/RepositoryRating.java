@@ -104,7 +104,6 @@ public class RepositoryRating {
 
     public String readRaterUserName(String rating_id) {
 
-
         String sql = "SELECT u.name AS name FROM rating AS r WHERE `r.id` = ?;" +
                 "JOIN user AS u on u.id = r.id_user ";
 
@@ -140,6 +139,45 @@ public class RepositoryRating {
         }
 
         return userName;
+    }
+
+    public String readRatedMovieName(String rating_id) {
+
+        String sql = "SELECT m.name AS name FROM rating AS r WHERE `r.id` = ?;" +
+                "JOIN movie AS m on m.id = r.id_movie ";
+
+        ResultSet result = null;
+
+        c.connect();
+        PreparedStatement p = null;
+
+        String movieName = null;
+
+        try {
+
+            p = c.createPreparedStatement(sql);
+            p.setString(1,rating_id);
+            result = p.executeQuery();
+
+            while (result.next()) {
+                movieName = result.getString("name");
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        } finally {
+            if (p != null) {
+                try{
+                    p.close();
+                    c.disconnect();
+                }catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+
+        return movieName;
     }
 
     private void deleteRating(String attribute,String value) {
