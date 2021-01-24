@@ -59,8 +59,8 @@ public class CreateDatabase {
                 "rating float," +
                 "id_user integer not null," +
                 "id_movie integer not null," +
-                "foreign key (id_user) references (user.id)," +
-                "foreign key (id_movie) references (movie.id)" +
+                "foreign key (id_user) references user(id)," +
+                "foreign key (id_movie) references movie(id)" +
                 ");";
 
         boolean connected = false;
