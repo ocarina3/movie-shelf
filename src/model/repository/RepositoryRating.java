@@ -180,6 +180,38 @@ public class RepositoryRating {
         return movieName;
     }
 
+    private void updateRatingValue(String attribute, String attributeMatch, float newRating) {
+        String sql = "UPDATE rating SET rating = ? WHERE "+ attribute +" = ?";
+
+        c.connect();
+        PreparedStatement p = null;
+        try{
+
+            p = c.createPreparedStatement(sql);
+            p.setFloat(1,newRating);
+            p.setString(2,attribute);
+            int didUpdateRating = p.executeUpdate();
+            System.out.println(didUpdateRating);
+
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+
+            e.printStackTrace();
+        }finally {
+            if (p != null) {
+                try{
+                    p.close();
+                    c.disconnect();
+                }catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                    ex.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void updateRatingValueById(String rating_id, float newRating) { updateRatingValue("id", rating_id, newRating); }
+
     private void deleteRating(String attribute,String value) {
         String sql = "DELETE FROM rating WHERE " + attribute + " = ?";
 
