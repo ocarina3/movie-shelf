@@ -58,10 +58,12 @@ public class ModelUser {
     //DELETE
 
     public void deleteUserByEmail(String value){
+        if(repositoryUser.readUsersByEmail(value) != null)
         repositoryUser.deleteUserByEmail(value);
     }
 
     public void deleteUserById(int value){
+        if (repositoryUser.readUsersById(String.format("%d",value)) != null)
         repositoryUser.deleteUserById(String.format("%d",value));
     }
     

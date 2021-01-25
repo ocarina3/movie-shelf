@@ -120,6 +120,35 @@ public class RepositoryUser { //Criação de Usuario passando suas informações
     //_______________________________________________________________________________________________________________
     //UPDATE
 
+    private void updateUser(User user) {
+        String sql = "UPDATE user SET name = ?, email = ?,  WHERE id = ?;";
+
+        c.connect();
+        PreparedStatement p = null;
+        try{
+
+            p = c.createPreparedStatement(sql);
+            
+            p.setString(1,value);
+            p.setString(2,attributeChanged);
+            p.setString(3,update);
+
+            int i = p.executeUpdate();
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+
+        }finally {
+            if (p != null) {
+                try{
+                    p.close();
+                    c.disconnect();
+                }catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        }
+    }
+
     //_______________________________________________________________________________________________________________
     //DELETE
 
