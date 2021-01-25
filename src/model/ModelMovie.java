@@ -36,6 +36,12 @@ public class ModelMovie {
         return repositoryMovie.readMoviesByName(value);
     }
 
+    public void updateMovie(Movie movie) {
+        if(repositoryMovie.readMoviesById(String.format("%d", movie.getId())) != null) {
+            repositoryMovie.updateMovie(movie);
+        }
+    }
+
     public void deleteMovieByName(Movie movie) {
         if(repositoryMovie.readMoviesByName(movie.getName()) != null) {
             repositoryMovie.deleteMovieByName(movie.getName());

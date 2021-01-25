@@ -101,6 +101,39 @@ public class RepositoryMovie {
         return readMovies("name", value);
     }
 
+    public void updateMovie(Movie movie) {
+        String sql = "UPDATE movie SET name = ?, movieDirector = ?, movieGenre = ?, synopsis = ?, minimumAge = ?" +
+                "WHERE id = ?";
+
+        c.connect();
+
+        PreparedStatement p = null;
+
+        try {
+            p = c.createPreparedStatement(sql);
+            p.setString(1, movie.getName());
+            p.setString(2, movie.getMovieDirector());
+            p.setString(3, null);
+            p.setString(4, movie.getSynopsis());
+            p.setInt(5, movie.getMinimumAge());
+            p.setInt(6, movie.getId());
+            p.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }finally {
+            if (p != null) {
+                try{
+                    p.close();
+                    c.disconnect();
+                }catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                    ex.printStackTrace();
+                }
+            }
+        }
+    }
+
     private void deleteMovie(String attribute,String value) {
         String sql = "DELETE FROM movie WHERE " + attribute + " = ?";
 
