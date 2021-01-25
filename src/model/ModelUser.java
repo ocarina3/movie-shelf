@@ -25,13 +25,13 @@ public class ModelUser {
     //CREATE
     
     public void createClient(User user) {
-        if(repositoryUser.readUsersByEmail(user.getEmail()) != null){
+        if(repositoryUser.readUsersByEmail(user.getEmail()) == null){
             repositoryUser.createClient(user);
         }
     }
 
     public void createAdmin(User user) {
-        if(repositoryUser.readUsersByEmail(user.getEmail()) != null){
+        if(repositoryUser.readUsersByEmail(user.getEmail()) == null){
             repositoryUser.createAdmin(user);
         }
     }
@@ -53,6 +53,10 @@ public class ModelUser {
 
     //_______________________________________________________________________________________________________________
     //UPDATE
+    public void updateUser(User user) {
+        if(repositoryUser.readUsersByEmail(user.getEmail()) != null)
+            repositoryUser.updateUser(user);
+    }
     
     //_______________________________________________________________________________________________________________
     //DELETE
