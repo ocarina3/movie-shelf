@@ -100,7 +100,7 @@ public class Movie {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", movieDirector='" + movieDirector + '\'' +
-                ", movieGenre=" + movieGenre +
+                ", movieGenre=" + movieGenre.getDescription() +
                 ", synopsis='" + synopsis + '\'' +
                 ", minimumAge=" + minimumAge +
                 '}';
