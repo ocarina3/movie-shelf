@@ -1,9 +1,7 @@
 package model.repository;
 
 import data.base.Connect;
-import model.entity.Movie;
 import model.entity.Rating;
-import model.entity.User;
 import view.Main;
 
 import java.sql.PreparedStatement;
@@ -95,16 +93,15 @@ public class RepositoryRating {
         return ratings;
     }
 
-    public Rating readRatingById(String value){
-        return readRatings("id", value).get(0);
+    public Rating readRatingById(int rating_id){
+        return readRatings("id", Integer.toString(rating_id)).get(0);
     }
 
     public ArrayList<Rating> readRatingsByValue(String value) {
-        return readRatings("ratings", value);
+        return readRatings("rating", value);
     }
 
     public String readRaterUserName(int rating_id) {
-
 
         String sql = "SELECT u.name AS name FROM rating r" +
                 " INNER JOIN user u ON u.id = r.id_user" +
@@ -184,6 +181,48 @@ public class RepositoryRating {
         return movieName;
     }
 
+    public ArrayList<String> readAlreadyRatedEmails(int movie_id) {
+
+        String sql = "SELECT m.email AS email FROM rating r" +
+                " INNER JOIN movie m ON m.id = r.id_movie" +
+                " WHERE m.id = ?;";
+
+        ResultSet result = null;
+
+        c.connect();
+        PreparedStatement p = null;
+
+        ArrayList<String> ratedEmails = new ArrayList<>();
+
+        try {
+
+            p = c.createPreparedStatement(sql);
+            p.setString(1,Integer.toString(movie_id));
+            result = p.executeQuery();
+
+            while (result.next()) {
+                String ratedEmail = result.getString("email");
+
+                ratedEmails.add(ratedEmail);
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        } finally {
+            if (p != null) {
+                try{
+                    p.close();
+                    c.disconnect();
+                }catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+
+        return ratedEmails;
+    }
+
     private void updateRatingValue(String attribute, String attributeMatch, float newRating) {
         String sql = "UPDATE rating SET rating = ? WHERE "+ attribute +" = ?;";
 
@@ -245,7 +284,7 @@ public class RepositoryRating {
         }
     }
 
-    public void deleteRatingById(String value) {
-        deleteRating("id",value);
+    public void deleteRatingById(int rating_id) {
+        deleteRating("id", Integer.toString(rating_id));
     }
 }
