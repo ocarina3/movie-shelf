@@ -27,7 +27,7 @@ public class ModelUser {
     public void createClient(User user) {
         if(repositoryUser.readUsersByEmail(user.getEmail()) == null){
             repositoryUser.createClient(user);
-        }
+        }else{System.out.println("Email já cadastrado");}
     }
 
     public void createAdmin(User user) {
@@ -54,8 +54,9 @@ public class ModelUser {
     //_______________________________________________________________________________________________________________
     //UPDATE
     public void updateUser(User user) {
-        if(repositoryUser.readUsersByEmail(user.getEmail()) != null)
+        if(repositoryUser.readUsersById(String.format("%d",user.getId())) != null){
             repositoryUser.updateUser(user);
+        }
     }
     
     //_______________________________________________________________________________________________________________

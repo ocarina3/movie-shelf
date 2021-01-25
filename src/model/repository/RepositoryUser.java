@@ -7,6 +7,7 @@ import view.Main;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +27,7 @@ public class RepositoryUser { //Criação de Usuario passando suas informações
         c.connect();
 
         PreparedStatement p = c.createPreparedStatement(sql);
+        System.out.println(user.getBirthDate());
 
         try
         {
@@ -46,7 +48,7 @@ public class RepositoryUser { //Criação de Usuario passando suas informações
                     p.close();
                 }catch (SQLException ex){
                     Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,ex);
-                    System.out.println("ERROOOO");
+                    System.out.println("ERRO");
                 }
             }
             c.disconnect();
@@ -71,7 +73,7 @@ public class RepositoryUser { //Criação de Usuario passando suas informações
 
         c.connect();
         PreparedStatement p = null;
-        ArrayList<User> users = new ArrayList<>();
+        ArrayList<User> users = new ArrayList<>(1);
 
         try {
 
@@ -85,7 +87,8 @@ public class RepositoryUser { //Criação de Usuario passando suas informações
                 user.setName(result.getString("name"));
                 user.setEmail(result.getString("email"));
                 user.setPassword(result.getString("password"));
-                user.setBirthDate(result.getDate(1).toLocalDate());
+                String birthDate = result.getString("birthDate");
+                user.setBirthDate(LocalDate.parse(birthDate));
                 users.add(user);
             }
 
@@ -106,22 +109,28 @@ public class RepositoryUser { //Criação de Usuario passando suas informações
     }
 
     public User readUsersById(String value){
-        return readUsers("id", value).get(0);
+        if(readUsers("id", value).size() != 0){
+            return readUsers("id", value).get(0);}
+        return null;
     }
 
     public User readUsersByEmail(String value) {
-        return readUsers("email", value).get(0);
+        if(readUsers("email", value).size() != 0){
+        return readUsers("email", value).get(0);}
+        return null;
     }
 
     public ArrayList<User> readUsersByName(String value) {
-        return readUsers("name", value);
+        if(readUsers("name", value).size() != 0){
+            return readUsers("name", value);}
+        return null;
     }
 
     //_______________________________________________________________________________________________________________
     //UPDATE
 
     public void updateUser(User user) {
-        String sql = "UPDATE user SET name = ?, email = ?, password = ?, birthDate = ?,  WHERE id = ?;";
+        String sql = "UPDATE user SET name = ?, email = ?, password = ?, birthDate = ?  WHERE id = ?;";
 
         c.connect();
         PreparedStatement p = null;

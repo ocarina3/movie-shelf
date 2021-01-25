@@ -12,9 +12,9 @@ public class CreateDatabase {
         String query = "CREATE TABLE IF NOT EXISTS user(" +
                 "id integer primary key AUTOINCREMENT," +
                 "name varchar," +
-                "email varchar UNIQUE ON CONFLICT ABORT," +
+                "email varchar," +
                 "password varchar," +
-                "birthDate date," +
+                "birthDate varchar," +
                 "admin bool" +
                 ");";
         boolean connected = false;
