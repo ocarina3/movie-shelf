@@ -29,19 +29,11 @@ public class ModelMovie {
     }
 
     public Movie readMoviesById(String value) {
-        if(repositoryMovie.readMoviesById(value) != null) {
-            return repositoryMovie.readMoviesById(value);
-        } else {
-            return null;
-        }
+        return repositoryMovie.readMoviesById(value);
     }
 
     public ArrayList<Movie> readMoviesByName(String value) {
-        if(repositoryMovie.readMoviesByName(value) != null) {
-            return repositoryMovie.readMoviesByName(value);
-        } else {
-            return null;
-        }
+        return repositoryMovie.readMoviesByName(value);
     }
 
     public void deleteMovieByName(Movie movie) {
