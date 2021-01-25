@@ -1,6 +1,7 @@
 package model.repository;
 
 import data.base.Connect;
+import model.entity.Genre;
 import model.entity.Movie;
 import view.Main;
 
@@ -30,7 +31,7 @@ public class RepositoryMovie {
         try {
             p.setString(2,movie.getName());
             p.setString(3,movie.getMovieDirector());
-            p.setString(4,movie.getMovieGenre().getDescription());
+            p.setString(4,movie.getMovieGenre().toString());
             p.setString(5, movie.getSynopsis());
             p.setInt(6,movie.getMinimumAge());
             int teste = p.executeUpdate();
@@ -71,7 +72,7 @@ public class RepositoryMovie {
                 movie.setId(result.getInt("id"));
                 movie.setName(result.getString("name"));
                 movie.setMovieDirector(result.getString("movieDirector"));
-                // movie.setMovieGenre(Genre.valueOf(result.getString("movieGenre")));
+                movie.setMovieGenre(Genre.valueOf(result.getString("movieGenre")));
                 movie.setSynopsis(result.getString("synopsis"));
                 movie.setMinimumAge(result.getInt("minimumAge"));
                 movies.add(movie);
@@ -113,7 +114,7 @@ public class RepositoryMovie {
             p = c.createPreparedStatement(sql);
             p.setString(1, movie.getName());
             p.setString(2, movie.getMovieDirector());
-            p.setString(3, null);
+            p.setString(3, movie.getMovieGenre().toString());
             p.setString(4, movie.getSynopsis());
             p.setInt(5, movie.getMinimumAge());
             p.setInt(6, movie.getId());
