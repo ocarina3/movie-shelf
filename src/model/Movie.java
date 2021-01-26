@@ -1,31 +1,35 @@
-package model;
+package model.entity;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class Movie {
 
+    private final DecimalFormat f = new DecimalFormat("#.#");
+
     //ATRIBUTOS
     private int id;
     private String name;
-    private float score;
     private String movieDirector;
     private Genre movieGenre;
     private String synopsis;
     private int minimumAge;
-    private ArrayList<Rating> ratings;
     //_______________________________________________________________________________________________________________
 
     //CONSTRUCTOR
-    public Movie(int id, String name, float score, String movieDirector, Genre movieGenre, String synopsis, int minimumAge) {
+    public Movie() {
+    }
+
+    public Movie(int id, String name, String movieDirector, Genre movieGenre, String synopsis, int minimumAge) {
+        DecimalFormat decimalFormat = new DecimalFormat("#.#");
+
         this.id = id;
         this.name = name;
-        this.score = score;
         this.movieDirector = movieDirector;
         this.movieGenre = movieGenre;
         this.synopsis = synopsis;
         this.minimumAge = minimumAge;
-        ratings = new ArrayList<>();
     }
     //_______________________________________________________________________________________________________________
 
@@ -44,14 +48,6 @@ public class Movie {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public float getScore() {
-        return score;
-    }
-
-    public void setScore(float score) {
-        this.score = score;
     }
 
     public String getMovieDirector() {
@@ -93,9 +89,21 @@ public class Movie {
         if (this == o) return true;
         if (!(o instanceof Movie)) return false;
         Movie movie = (Movie) o;
-        return id == movie.id && Float.compare(movie.score, score) == 0 && minimumAge == movie.minimumAge &&
+        return id == movie.id && minimumAge == movie.minimumAge &&
                 Objects.equals(name, movie.name) && Objects.equals(movieDirector, movie.movieDirector) &&
                 movieGenre == movie.movieGenre && Objects.equals(synopsis, movie.synopsis);
     }
-    //_______________________________________________________________________________________________________________
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", movieDirector='" + movieDirector + '\'' +
+                ", movieGenre=" + movieGenre.getDescription() +
+                ", synopsis='" + synopsis + '\'' +
+                ", minimumAge=" + minimumAge +
+                '}';
+    }
+
 }

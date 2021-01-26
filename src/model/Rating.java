@@ -9,11 +9,11 @@ public class Rating {
     private int movieId;
 
     //CONSTRUCTOR
-    public Rating(int id, float rating, User user, Movie movie) {
+    public Rating(int id, float rating, int id_user, int id_movie) {
         this.id = id;
         this.rating = rating;
-        userId = user.getId();
-        movieId = movie.getId();
+        userId = id_user;
+        movieId = id_movie;
     }
     //_______________________________________________________________________________________________________________
 
