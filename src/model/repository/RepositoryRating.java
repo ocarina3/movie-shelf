@@ -2,7 +2,7 @@ package model.repository;
 
 import data.base.Connect;
 import model.entity.Rating;
-import view.Main;
+import view.principal.Main;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
