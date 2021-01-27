@@ -49,6 +49,32 @@ public class Main extends Application {
         createDatabase.createTableMovie();
         createDatabase.createTableRating();
 
+        Movie movie1 = new Movie(1, "Filme", "Diretor", Genre.DRAMA, "Sinopse", 10);
+        Movie movie2 = new Movie(2, "Filme2", "Diretor2", Genre.COMEDY, "Sinopse2", 10);
+        User user = new User(1, "Usuario", "usuario@email.com", "senha", LocalDate.of(2002, 1, 1));
+        User user2 = new User(2, "Usuario2", "usuario2@email.com", "senha", LocalDate.of(2002, 1, 1));
+        Rating rating = new Rating(1, 4, 1, 1);
+        Rating rating2 = new Rating(2, 4, 2, 1);
+        Rating rating3 = new Rating(3, 4, 1, 2);
+
+        ModelMovie.getInstance().createMovie(movie1);
+        ModelMovie.getInstance().createMovie(movie2);
+        ModelUser.getInstance().createClient(user);
+        ModelUser.getInstance().createClient(user2);
+        ModelRating.getInstance().createRating(rating);
+        ModelRating.getInstance().createRating(rating2);
+        ModelRating.getInstance().createRating(rating3);
+
+        System.out.println(ModelRating.getInstance().readAlreadyRatedEmails(1));
+
+        ModelMovie.getInstance().deleteMovieByName(movie1);
+        ModelMovie.getInstance().deleteMovieByName(movie2);
+        ModelUser.getInstance().deleteUserByEmail(user.getEmail());
+        ModelUser.getInstance().deleteUserByEmail(user2.getEmail());
+        ModelRating.getInstance().deleteRatingById(rating.getId());
+        ModelRating.getInstance().deleteRatingById(rating2.getId());
+        ModelRating.getInstance().deleteRatingById(rating3.getId());
+
 
 //_________________________________________USER____________________________________________________________
 

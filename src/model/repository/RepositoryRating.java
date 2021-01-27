@@ -41,7 +41,6 @@ public class RepositoryRating {
                 try {
                     p.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,ex);
                     System.out.println(ex.getMessage());
                 }
             }
@@ -94,6 +93,7 @@ public class RepositoryRating {
     }
 
     public Rating readRatingById(int rating_id){
+        if( readRatings("id", Integer.toString(rating_id)).size() == 0 ) return null;
         return readRatings("id", Integer.toString(rating_id)).get(0);
     }
 
@@ -183,8 +183,9 @@ public class RepositoryRating {
 
     public ArrayList<String> readAlreadyRatedEmails(int movie_id) {
 
-        String sql = "SELECT m.email AS email FROM rating r" +
-                " INNER JOIN movie m ON m.id = r.id_movie" +
+        String sql = "SELECT u.email AS email FROM user u" +
+                " INNER JOIN rating r ON r.id_user = u.id" +
+                " INNER JOIN movie m ON r.id_movie = m.id" +
                 " WHERE m.id = ?;";
 
         ResultSet result = null;
