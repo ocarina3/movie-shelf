@@ -22,7 +22,7 @@ public class Dialog {
 
     public static void error(String message) {
         Alert error = new Alert(Alert.AlertType.ERROR);
-        error.setTitle("Informação");
+        error.setTitle("Erro");
         error.setHeaderText(null);
         error.setContentText(message);
         error.showAndWait();
