@@ -21,15 +21,26 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Main extends Application {
 
+public class Main extends Application {
+    private static Stage stage;
+    private static Scene mainScene;
+    private static Scene registerScene;
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
+        stage = primaryStage;
+
+        Parent fxmlMain = FXMLLoader.load(getClass().getResource("main.fxml"));
+        mainScene = new Scene (fxmlMain);
+
+        Parent fxmlRegister = FXMLLoader.load(getClass().getResource("../register/register.fxml"));
+        registerScene = new Scene (fxmlRegister);
+
         primaryStage.setTitle("Ocarina");
-        primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../resources/icone.png")));
+
+        primaryStage.setScene(mainScene);
         primaryStage.show();
 
         // Instancia responsável por criar a base de dados
@@ -85,6 +96,17 @@ public class Main extends Application {
 
 
         ModelMovie.getInstance().deleteMovieByName(movie);
+    }
+
+    public static void changeScreen (String scr) {
+        switch(scr){
+            case "main":
+                stage.setScene(mainScene);
+                break;
+            case "register":
+                stage.setScene(registerScene);
+                break;
+        }
     }
 
 
