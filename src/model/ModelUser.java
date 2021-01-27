@@ -1,5 +1,6 @@
 package model;
 
+import model.entity.Movie;
 import model.entity.User;
 import model.repository.RepositoryUser;
 
@@ -36,7 +37,9 @@ public class ModelUser {
             repositoryUser.createAdmin(user);
         }
     }
-    
+    public void favoriteMovies(User user , Movie movie){
+        if (!repositoryUser.isFavotited(user, movie)) { repositoryUser.favoriteMovies(user,movie);}
+    }
     //_______________________________________________________________________________________________________________
     //READ
     
@@ -52,6 +55,9 @@ public class ModelUser {
         return repositoryUser.readUsersByName(value);
     }
 
+    public ArrayList <Movie> readFavoriteMovies(User user){return repositoryUser.readFavoriteMovies(user);}
+
+    public boolean isFavotited(User user, Movie movie) { return repositoryUser.isFavotited(user, movie);}
     //_______________________________________________________________________________________________________________
     //UPDATE
     public void updateUser(User user) {
@@ -71,6 +77,10 @@ public class ModelUser {
     public void deleteUserById(int value){
         if (repositoryUser.readUsersById(String.format("%d",value)) != null)
         repositoryUser.deleteUserById(String.format("%d",value));
+    }
+
+    public void deleteFavoriteMovies(User user, Movie movie){
+        if (repositoryUser.isFavotited(user,movie)){repositoryUser.deleteFavoriteMovies(user,movie);}
     }
     
 }
