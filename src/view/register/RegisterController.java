@@ -47,7 +47,7 @@ public class RegisterController {
     @FXML
     void onClick(ActionEvent event) {
 
-        if (txtfUsername.getText().equals("") || txtfEmail.getText().equals("") || passfSenha.getText().equals("") || passfConfirmarSenha.getText().equals("")) {
+        if (txtfUsername.getText().equals("") || txtfEmail.getText().equals("") || passfSenha.getText().equals("") || passfConfirmarSenha.getText().equals("") || dtAnoNascimento.getValue() == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setHeaderText(null);
             alert.setContentText("Favor informar todos campos");;
@@ -68,6 +68,10 @@ public class RegisterController {
                     passfSenha.setText("");
                     passfConfirmarSenha.setText("");
                     dtAnoNascimento.setValue(null);
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setContentText("Cadastro Conluído");;
+                    alert.show();
                     Main.changeScreen("main");
                 }
             } else {
