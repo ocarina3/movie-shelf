@@ -1,4 +1,4 @@
-package view;
+package view.principal;
 
 public class MainController {
 }
