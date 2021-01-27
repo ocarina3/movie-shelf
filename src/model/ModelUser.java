@@ -24,10 +24,11 @@ public class ModelUser {
     //_______________________________________________________________________________________________________________
     //CREATE
     
-    public void createClient(User user) {
+    public boolean createClient(User user) {
         if(repositoryUser.readUsersByEmail(user.getEmail()) == null){
             repositoryUser.createClient(user);
-        }else{System.out.println("Email já cadastrado");}
+            return true;
+        }else{return false;}
     }
 
     public void createAdmin(User user) {

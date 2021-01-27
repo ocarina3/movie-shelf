@@ -48,6 +48,15 @@ JFXPasswordField {
     -fx-prompt-text-fill: gray;
 }
 
+JFXDatePicker{
+    -fx-font-size: 24px;
+    -fx-prompt-text-fill: gray;
+}
+
+JFXDatePicker .text-field{
+    -jfx-unfocus-color: #4717F6;
+}
+
 #lbLogo{
     -fx-font-family: 'Lobster';
     -fx-font-size: 65px;

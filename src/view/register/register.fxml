@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
@@ -39,14 +40,6 @@
                   <Insets />
                </opaqueInsets>
             </JFXTextField>
-            <JFXTextField fx:id="txtfTelefone" focusColor="#4717f6" layoutX="453.0" layoutY="250.0" prefWidth="318.0" promptText="Telefone" unFocusColor="#4717f6">
-               <font>
-                  <Font size="24.0" />
-               </font>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </JFXTextField>
             <JFXTextField fx:id="txtfEmail" focusColor="#4717f6" layoutX="68.0" layoutY="351.0" prefWidth="704.0" promptText="E-mail " unFocusColor="#4717f6">
                <font>
                   <Font size="24.0" />
@@ -65,6 +58,7 @@
                   <Font size="24.0" />
                </font>
             </JFXPasswordField>
+            <JFXDatePicker fx:id="dtAnoNascimento" defaultColor="#4717f6" layoutX="453.0" layoutY="250.0" prefWidth="318.0" promptText="Data Nascimento" />
          </children>
       </Pane>
       <ImageView fx:id="imgRegisterMan" fitHeight="390.0" fitWidth="408.0" layoutX="855.0" layoutY="306.0" pickOnBounds="true" preserveRatio="true">
