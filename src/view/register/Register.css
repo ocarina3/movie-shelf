@@ -1,0 +1,55 @@
+@font-face {
+    font-family: Lobster;
+    src: url('../resources/Lobster_Regular.ttf');
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url('../resources/Roboto_Bold.ttf');
+}
+
+JFXButton{
+    -fx-border-radius: 5;
+    -fx-font-family: 'Roboto';
+    -fx-font-weight: Bold;
+    -fx-font-size: 24px;
+    -fx-background-color: #663CFD;
+}
+
+Label{
+    -fx-font-family: 'Roboto';
+    -fx-font-weight: Bold;
+    -fx-font-size: 50px;
+    -fx-text-fill: #663CFD;
+}
+
+
+JFXCheckBox{
+    -fx-font-size: 24px;
+    -fx-text-fill: black;
+    -fx-border-radius: 5;
+}
+
+JFXCheckBox .box{
+    -fx-background-color: white;
+    -fx-border-color: #4717F6;
+}
+
+JFXTextField {
+    -fx-prompt-text-fill: gray;
+}
+
+JFXCheckBox .box{
+    -fx-background-color: white;
+    -fx-border-color: #4717F6;
+}
+
+JFXPasswordField {
+    -fx-prompt-text-fill: gray;
+}
+
+#lbLogo{
+    -fx-font-family: 'Lobster';
+    -fx-font-size: 65px;
+    -fx-text-fill: white;
+}
