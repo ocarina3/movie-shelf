@@ -1,11 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.register.RegisterController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0A002C;" stylesheets="@Register.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.register.RegisterController">
    <children>
-      <JFXButton fx:id="btnVoltar" layoutX="495.0" layoutY="348.0" onAction="#onClick" prefHeight="25.0" prefWidth="291.0" style="-fx-background-color: black;" textFill="WHITE" />
+      <Pane prefHeight="720.0" prefWidth="838.0" style="-fx-background-color: white;">
+         <children>
+            <JFXButton fx:id="btnCadastrar" layoutX="170.0" layoutY="614.0" onAction="#onClick" prefHeight="54.0" prefWidth="499.0" stylesheets="@Register.css" text="Cadastrar" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </JFXButton>
+            <Label fx:id="lbCrieSuaConta" layoutX="70.0" layoutY="107.0" text="Crie sua conta">
+               <font>
+                  <Font size="50.0" />
+               </font>
+            </Label>
+            <JFXCheckBox fx:id="cbxKids" checkedColor="#663cfd" layoutX="68.0" layoutY="520.0" text="Kids" unCheckedColor="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </JFXCheckBox>
+            <JFXTextField fx:id="txtfUsername" focusColor="#4717f6" layoutX="68.0" layoutY="250.0" prefWidth="318.0" promptText="Username" unFocusColor="#4717f6">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </JFXTextField>
+            <JFXTextField fx:id="txtfTelefone" focusColor="#4717f6" layoutX="453.0" layoutY="250.0" prefWidth="318.0" promptText="Telefone" unFocusColor="#4717f6">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </JFXTextField>
+            <JFXTextField fx:id="txtfEmail" focusColor="#4717f6" layoutX="68.0" layoutY="351.0" prefWidth="704.0" promptText="E-mail " unFocusColor="#4717f6">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </JFXTextField>
+            <JFXPasswordField fx:id="passfSenha" focusColor="#4717f6" layoutX="68.0" layoutY="453.0" prefWidth="318.0" promptText="Senha" unFocusColor="#4717f6">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </JFXPasswordField>
+            <JFXPasswordField fx:id="passfConfirmarSenha" focusColor="#4717f6" layoutX="453.0" layoutY="453.0" prefWidth="318.0" promptText="Confirmar senha" unFocusColor="#4717f6">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </JFXPasswordField>
+         </children>
+      </Pane>
+      <ImageView fx:id="imgRegisterMan" fitHeight="390.0" fitWidth="408.0" layoutX="855.0" layoutY="306.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/registerMan.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lbLogo" layoutX="1166.0" layoutY="40.0" text="O" />
    </children>
 </AnchorPane>
