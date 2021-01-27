@@ -57,6 +57,10 @@ JFXDatePicker .text-field{
     -jfx-unfocus-color: #4717F6;
 }
 
+JFXDatePicker .label{
+    -fx-font-size: 15px;
+}
+
 #lbLogo{
     -fx-font-family: 'Lobster';
     -fx-font-size: 65px;
