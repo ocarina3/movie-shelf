@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0E0B16;" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0E0B16;" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.principal.MainController">
     <children>
         <Pane prefHeight="86.0" prefWidth="188.0" style="-fx-background-color: #4717F6;">
             <children>
@@ -30,7 +30,7 @@
         <Label fx:id="lbApresentacao" layoutX="57.0" layoutY="347.0" styleClass="lbTextoBoasVindas" text="TUDO SOBRE SEUS FILMES PREFERIDOS" />
         <Label fx:id="lbServicos" layoutX="57.0" layoutY="391.0" styleClass="lbTextoBoasVindas" text="AVALIAÇÕES, SINOPSES E MUITO MAIS" />
         <Line fx:id="lineWelcome" endX="4.0" layoutX="205.0" layoutY="328.0" startX="-148.0" stroke="#4717f6" strokeWidth="3.0" />
-        <Button fx:id="btnRegister" layoutX="57.0" layoutY="453.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="202.0" styleClass="btnRegister" text="Registrar-se" textFill="WHITE" />
+        <Button fx:id="btnRegister" layoutX="57.0" layoutY="453.0" mnemonicParsing="false" onAction="#onClick" prefHeight="54.0" prefWidth="202.0" styleClass="btnRegister" text="Registrar-se" textFill="WHITE" />
         <Line endX="-100.0" endY="181.0" layoutX="1301.0" layoutY="309.0" startX="-100.0" startY="-80.0" stroke="#4717f6" strokeWidth="3.0" />
         <Circle fill="#4717f6" layoutX="1201.0" layoutY="283.0" radius="7.0" stroke="#4717f6" strokeType="INSIDE" />
         <Circle fill="#4717f6" layoutX="1201.0" layoutY="359.0" radius="7.0" stroke="#4717f6" strokeType="INSIDE" />
