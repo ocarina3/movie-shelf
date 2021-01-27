@@ -69,7 +69,7 @@
       </Pane>
       <ImageView fx:id="imgRegisterMan" fitHeight="390.0" fitWidth="408.0" layoutX="855.0" layoutY="306.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../resources/registerMan.png" />
+            <Image url="@../resources/register.png" />
          </image>
       </ImageView>
       <Label fx:id="lbLogo" layoutX="1166.0" layoutY="40.0" text="O" />
