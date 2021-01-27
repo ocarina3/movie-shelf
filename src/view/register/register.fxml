@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
@@ -17,21 +16,16 @@
    <children>
       <Pane layoutX="-22.0" prefHeight="720.0" prefWidth="838.0" style="-fx-background-color: white;">
          <children>
-            <JFXButton fx:id="btnCadastrar" layoutX="170.0" layoutY="614.0" onAction="#onClick" prefHeight="54.0" prefWidth="499.0" stylesheets="@Register.css" text="Cadastrar" textFill="WHITE">
+            <JFXButton fx:id="btnRegister" layoutX="170.0" layoutY="614.0" onAction="#onClick" prefHeight="54.0" prefWidth="499.0" stylesheets="@Register.css" text="Cadastrar" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXButton>
-            <Label fx:id="lbCrieSuaConta" layoutX="70.0" layoutY="107.0" text="Crie sua conta">
+            <Label fx:id="lbCreateAccount" layoutX="70.0" layoutY="107.0" text="Crie sua conta">
                <font>
                   <Font size="50.0" />
                </font>
             </Label>
-            <JFXCheckBox fx:id="cbxKids" checkedColor="#663cfd" layoutX="68.0" layoutY="520.0" text="Kids" unCheckedColor="WHITE">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </JFXCheckBox>
             <JFXTextField fx:id="txtfUsername" focusColor="#4717f6" layoutX="68.0" layoutY="250.0" prefWidth="318.0" promptText="Username" unFocusColor="#4717f6">
                <font>
                   <Font size="24.0" />
@@ -48,17 +42,17 @@
                   <Insets />
                </opaqueInsets>
             </JFXTextField>
-            <JFXPasswordField fx:id="passfSenha" focusColor="#4717f6" layoutX="68.0" layoutY="453.0" prefWidth="318.0" promptText="Senha" unFocusColor="#4717f6">
+            <JFXPasswordField fx:id="pfPass" focusColor="#4717f6" layoutX="68.0" layoutY="453.0" prefWidth="318.0" promptText="Senha" unFocusColor="#4717f6">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXPasswordField>
-            <JFXPasswordField fx:id="passfConfirmarSenha" focusColor="#4717f6" layoutX="453.0" layoutY="453.0" prefWidth="318.0" promptText="Confirmar senha" unFocusColor="#4717f6">
+            <JFXPasswordField fx:id="pfConfirmPass" focusColor="#4717f6" layoutX="453.0" layoutY="453.0" prefWidth="318.0" promptText="Confirmar senha" unFocusColor="#4717f6">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXPasswordField>
-            <JFXDatePicker fx:id="dtAnoNascimento" defaultColor="#4717f6" layoutX="453.0" layoutY="250.0" prefWidth="318.0" promptText="Data Nascimento" />
+            <JFXDatePicker fx:id="dtBirthDate" defaultColor="#4717f6" layoutX="453.0" layoutY="250.0" prefWidth="318.0" promptText="Data Nascimento" />
          </children>
       </Pane>
       <ImageView fx:id="imgRegisterMan" fitHeight="390.0" fitWidth="408.0" layoutX="855.0" layoutY="306.0" pickOnBounds="true" preserveRatio="true">

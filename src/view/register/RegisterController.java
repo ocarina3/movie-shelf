@@ -10,33 +10,28 @@ import model.ModelUser;
 import model.entity.User;
 import view.principal.Main;
 
-import java.time.LocalDate;
-
 public class RegisterController {
 
     @FXML
-    private JFXButton btnCadastrar;
+    private JFXButton btnRegister;
 
     @FXML
-    private Label lbCrieSuaConta;
-
-    @FXML
-    private JFXCheckBox cbxKids;
+    private Label lbCreateAccount;
 
     @FXML
     private JFXTextField txtfUsername;
 
     @FXML
-    private JFXDatePicker dtAnoNascimento;
+    private JFXDatePicker dtBirthDate;
 
     @FXML
     private JFXTextField txtfEmail;
 
     @FXML
-    private JFXPasswordField passfSenha;
+    private JFXPasswordField pfPass;
 
     @FXML
-    private JFXPasswordField passfConfirmarSenha;
+    private JFXPasswordField pfConfirmPass;
 
     @FXML
     private ImageView imgRegisterMan;
@@ -47,16 +42,16 @@ public class RegisterController {
     @FXML
     void onClick(ActionEvent event) {
 
-        if (txtfUsername.getText().equals("") || txtfEmail.getText().equals("") || passfSenha.getText().equals("") || passfConfirmarSenha.getText().equals("") || dtAnoNascimento.getValue() == null) {
+        if (txtfUsername.getText().equals("") || txtfEmail.getText().equals("") || pfPass.getText().equals("") || pfConfirmPass.getText().equals("") || dtBirthDate.getValue() == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setHeaderText(null);
             alert.setContentText("Favor informar todos campos");;
             alert.show();
         }else{
-            User user = new User(0, txtfUsername.getText(),txtfEmail.getText(),passfSenha.getText(), dtAnoNascimento.getValue());
+            User user = new User(0, txtfUsername.getText(),txtfEmail.getText(), pfPass.getText(), dtBirthDate.getValue());
             boolean cadastro = ModelUser.getInstance().createClient(user);
 
-            if(passfSenha.getText().equals(passfConfirmarSenha.getText())){
+            if(pfPass.getText().equals(pfConfirmPass.getText())){
                 if(cadastro == false){
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setHeaderText(null);
@@ -65,9 +60,9 @@ public class RegisterController {
                 } else {
                     txtfUsername.setText("");
                     txtfEmail.setText("");
-                    passfSenha.setText("");
-                    passfConfirmarSenha.setText("");
-                    dtAnoNascimento.setValue(null);
+                    pfPass.setText("");
+                    pfConfirmPass.setText("");
+                    dtBirthDate.setValue(null);
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setHeaderText(null);
                     alert.setContentText("Cadastro Conluído");;
