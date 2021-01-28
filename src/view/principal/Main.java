@@ -62,27 +62,37 @@ public class Main extends Application {
         Movie movie2 = new Movie(2, "Filme2", "Diretor2", Genre.COMEDY, "Sinopse2", 10);
         User user = new User(1, "Usuario", "usuario@email.com", "senha", LocalDate.of(2002, 1, 1));
         User user2 = new User(2, "Usuario2", "usuario2@email.com", "senha", LocalDate.of(2002, 1, 1));
-       // Rating rating = new Rating(1, 4, 1, 1);
-       // Rating rating2 = new Rating(2, 4, 2, 1);
-       // Rating rating3 = new Rating(3, 4, 1, 2);
+        Rating rating = new Rating(1, 4, 1, 1);
+        Rating rating2 = new Rating(2, 4, 2, 1);
+        Rating rating3 = new Rating(3, 4, 1, 2);
 
         ModelMovie.getInstance().createMovie(movie1);
         ModelMovie.getInstance().createMovie(movie2);
         ModelUser.getInstance().createClient(user);
         ModelUser.getInstance().createClient(user2);
-       // ModelRating.getInstance().createRating(rating);
-       // ModelRating.getInstance().createRating(rating2);
-       // ModelRating.getInstance().createRating(rating3);
+        ModelRating.getInstance().createRating(rating);
+        ModelRating.getInstance().createRating(rating2);
+        ModelRating.getInstance().createRating(rating3);
 
-        System.out.println(ModelRating.getInstance().readAlreadyRatedEmails(1));
+        System.out.println(ModelRating.getInstance().readAlreadyRatedEmails(movie1));
 
+        // Delete rating instances
+        ArrayList<Rating> ratingsM1 = ModelRating.getInstance().readAllRatingByMovie(movie1);
+        ArrayList<Rating> ratingsM2 = ModelRating.getInstance().readAllRatingByMovie(movie2);
+        for( Rating ratingM1 : ratingsM1 ) {
+            System.out.println(ratingM1);
+            ModelRating.getInstance().deleteRatingById(ratingM1.getId());
+        }
+        for( Rating ratingM2 : ratingsM2 ) {
+            System.out.println(ratingM2);
+            ModelRating.getInstance().deleteRatingById(ratingM2.getId());
+        }
+
+        // Delete movies and user instances
         ModelMovie.getInstance().deleteMovieByName(movie1);
         ModelMovie.getInstance().deleteMovieByName(movie2);
         ModelUser.getInstance().deleteUserByEmail(user.getEmail());
         ModelUser.getInstance().deleteUserByEmail(user2.getEmail());
-        //ModelRating.getInstance().deleteRatingById(rating.getId());
-       // ModelRating.getInstance().deleteRatingById(rating2.getId());
-       // ModelRating.getInstance().deleteRatingById(rating3.getId());
 
 
 //_________________________________________USER____________________________________________________________
