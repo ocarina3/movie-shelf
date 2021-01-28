@@ -27,6 +27,8 @@ public class Main extends Application {
     private static Scene mainScene;
     private static Scene registerScene;
     private static Scene loginScene;
+    private static Scene homeScene;
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         stage = primaryStage;
@@ -39,6 +41,9 @@ public class Main extends Application {
 
         Parent fxmlLogin = FXMLLoader.load(getClass().getResource("../login/login.fxml"));
         loginScene = new Scene (fxmlLogin);
+
+        Parent fxmlHome = FXMLLoader.load(getClass().getResource("../home/home.fxml"));
+        homeScene = new Scene(fxmlHome);
 
         primaryStage.setTitle("Ocarina");
         primaryStage.setResizable(false);
@@ -57,17 +62,17 @@ public class Main extends Application {
         Movie movie2 = new Movie(2, "Filme2", "Diretor2", Genre.COMEDY, "Sinopse2", 10);
         User user = new User(1, "Usuario", "usuario@email.com", "senha", LocalDate.of(2002, 1, 1));
         User user2 = new User(2, "Usuario2", "usuario2@email.com", "senha", LocalDate.of(2002, 1, 1));
-        Rating rating = new Rating(1, 4, 1, 1);
-        Rating rating2 = new Rating(2, 4, 2, 1);
-        Rating rating3 = new Rating(3, 4, 1, 2);
+       // Rating rating = new Rating(1, 4, 1, 1);
+       // Rating rating2 = new Rating(2, 4, 2, 1);
+       // Rating rating3 = new Rating(3, 4, 1, 2);
 
         ModelMovie.getInstance().createMovie(movie1);
         ModelMovie.getInstance().createMovie(movie2);
         ModelUser.getInstance().createClient(user);
         ModelUser.getInstance().createClient(user2);
-        ModelRating.getInstance().createRating(rating);
-        ModelRating.getInstance().createRating(rating2);
-        ModelRating.getInstance().createRating(rating3);
+       // ModelRating.getInstance().createRating(rating);
+       // ModelRating.getInstance().createRating(rating2);
+       // ModelRating.getInstance().createRating(rating3);
 
         System.out.println(ModelRating.getInstance().readAlreadyRatedEmails(1));
 
@@ -75,9 +80,9 @@ public class Main extends Application {
         ModelMovie.getInstance().deleteMovieByName(movie2);
         ModelUser.getInstance().deleteUserByEmail(user.getEmail());
         ModelUser.getInstance().deleteUserByEmail(user2.getEmail());
-        ModelRating.getInstance().deleteRatingById(rating.getId());
-        ModelRating.getInstance().deleteRatingById(rating2.getId());
-        ModelRating.getInstance().deleteRatingById(rating3.getId());
+        //ModelRating.getInstance().deleteRatingById(rating.getId());
+       // ModelRating.getInstance().deleteRatingById(rating2.getId());
+       // ModelRating.getInstance().deleteRatingById(rating3.getId());
 
 
 //_________________________________________USER____________________________________________________________
@@ -138,6 +143,9 @@ public class Main extends Application {
                 break;
             case "login":
                 stage.setScene(loginScene);
+                break;
+            case "home":
+                stage.setScene(homeScene);
                 break;
         }
     }
