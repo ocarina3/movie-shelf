@@ -80,11 +80,9 @@ public class Main extends Application {
         ArrayList<Rating> ratingsM1 = ModelRating.getInstance().readAllRatingByMovie(movie1);
         ArrayList<Rating> ratingsM2 = ModelRating.getInstance().readAllRatingByMovie(movie2);
         for( Rating ratingM1 : ratingsM1 ) {
-            System.out.println(ratingM1);
             ModelRating.getInstance().deleteRatingById(ratingM1.getId());
         }
         for( Rating ratingM2 : ratingsM2 ) {
-            System.out.println(ratingM2);
             ModelRating.getInstance().deleteRatingById(ratingM2.getId());
         }
 
