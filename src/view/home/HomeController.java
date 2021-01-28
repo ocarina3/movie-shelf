@@ -1,7 +1,12 @@
 package view.home;
+import com.jfoenix.controls.JFXButton;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.shape.Line;
 import model.ModelUser;
 import view.login.LoginController;
 import view.principal.Main;
@@ -12,7 +17,33 @@ import java.util.ResourceBundle;
 public class HomeController implements Initializable {
 
     @FXML
-    private Label lbUsernameTop;
+    private Label lbUsername;
+
+    @FXML
+    private Label lbWelcomeAgain;
+
+    @FXML
+    private Button btnHome;
+
+    @FXML
+    private ImageView imgLogo;
+
+    @FXML
+    private Line lineLogo;
+
+    @FXML
+    private Label lbLogo;
+
+    @FXML
+    private JFXButton btnQuit;
+
+    @FXML
+    private JFXButton btnChangeUser;
+
+    @FXML
+    void backLogin(ActionEvent event) {
+        Main.changeScreen("login");
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -20,7 +51,7 @@ public class HomeController implements Initializable {
             @Override
             public void onScreenChanged(String newScreen, String currentUser) {
                 if(newScreen.equals("home")) {
-                    lbUsernameTop.setText(ModelUser.getInstance().readUsersByEmail(currentUser).getName());
+                    lbUsername.setText(ModelUser.getInstance().readUsersByEmail(currentUser).getName());
                 }
             }
         });
