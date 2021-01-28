@@ -1,6 +1,7 @@
 package model.repository;
 
 import data.base.Connect;
+import model.entity.Movie;
 import model.entity.Rating;
 import view.principal.Main;
 
@@ -181,12 +182,12 @@ public class RepositoryRating {
         return movieName;
     }
 
-    public ArrayList<String> readAlreadyRatedEmails(int movie_id) {
+    public ArrayList<String> readAlreadyRatedEmails(Movie movie) {
 
         String sql = "SELECT u.email AS email FROM user u" +
                 " INNER JOIN rating r ON r.id_user = u.id" +
                 " INNER JOIN movie m ON r.id_movie = m.id" +
-                " WHERE m.id = ?;";
+                " WHERE m.name = ?;";
 
         ResultSet result = null;
 
@@ -198,7 +199,7 @@ public class RepositoryRating {
         try {
 
             p = c.createPreparedStatement(sql);
-            p.setString(1,Integer.toString(movie_id));
+            p.setString(1, movie.getName());
             result = p.executeQuery();
 
             while (result.next()) {
@@ -222,6 +223,50 @@ public class RepositoryRating {
         }
 
         return ratedEmails;
+    }
+
+    public ArrayList<Rating> readAllRatingByMovie(Movie movie) {
+        String sql = "SELECT r.id_user, r.id_movie, r.rating, r.id FROM rating r" +
+                " INNER JOIN movie m ON r.id_movie = m.id" +
+                " WHERE m.id = ?;";
+
+        ResultSet result = null;
+
+        c.connect();
+        PreparedStatement p = null;
+
+        ArrayList<Rating> ratings = new ArrayList<>();
+
+        try {
+
+            p = c.createPreparedStatement(sql);
+            p.setString(1,Integer.toString(movie.getId()));
+            result = p.executeQuery();
+
+            while (result.next()) {
+                ratings.add(new Rating(
+                        result.getInt("id"),
+                        result.getFloat("rating"),
+                        result.getInt("id_user"),
+                        result.getInt("id_movie")
+                ));
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        } finally {
+            if (p != null) {
+                try{
+                    p.close();
+                    c.disconnect();
+                }catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+
+        return ratings;
     }
 
     private void updateRatingValue(String attribute, String attributeMatch, float newRating) {
