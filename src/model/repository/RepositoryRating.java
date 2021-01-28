@@ -187,7 +187,7 @@ public class RepositoryRating {
         String sql = "SELECT u.email AS email FROM user u" +
                 " INNER JOIN rating r ON r.id_user = u.id" +
                 " INNER JOIN movie m ON r.id_movie = m.id" +
-                " WHERE m.name = ?;";
+                " WHERE m.id = ?;";
 
         ResultSet result = null;
 
@@ -199,7 +199,7 @@ public class RepositoryRating {
         try {
 
             p = c.createPreparedStatement(sql);
-            p.setString(1, movie.getName());
+            p.setInt(1, movie.getId());
             result = p.executeQuery();
 
             while (result.next()) {
