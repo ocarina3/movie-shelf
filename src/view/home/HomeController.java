@@ -8,7 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Line;
 import model.ModelUser;
-import view.login.LoginController;
 import view.principal.Main;
 
 import java.net.URL;

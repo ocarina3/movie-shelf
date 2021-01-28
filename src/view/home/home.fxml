@@ -11,12 +11,12 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0A002C;" stylesheets="@Home.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.home.HomeController">
    <children>
-      <Label fx:id="lbUsername" layoutX="727.0" layoutY="146.0" text="Label" textFill="WHITE">
+      <Label fx:id="lbUsername" layoutX="681.0" layoutY="146.0" text="Label" textFill="WHITE">
          <font>
             <Font size="45.0" />
          </font>
       </Label>
-      <Label fx:id="lbWelcomeAgain" layoutX="399.0" layoutY="146.0" text="Welcome again, " textFill="WHITE">
+      <Label fx:id="lbWelcomeAgain" layoutX="360.0" layoutY="146.0" text="Welcome again, " textFill="WHITE">
          <font>
             <Font size="45.0" />
          </font>
