@@ -17,6 +17,8 @@ import model.entity.Rating;
 import model.entity.User;
 
 
+import javax.imageio.IIOException;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -41,9 +43,6 @@ public class Main extends Application {
 
         Parent fxmlLogin = FXMLLoader.load(getClass().getResource("../login/login.fxml"));
         loginScene = new Scene (fxmlLogin);
-
-        Parent fxmlHome = FXMLLoader.load(getClass().getResource("../home/home.fxml"));
-        homeScene = new Scene(fxmlHome);
 
         primaryStage.setTitle("Ocarina");
         primaryStage.setResizable(false);
@@ -133,7 +132,7 @@ public class Main extends Application {
         ModelMovie.getInstance().deleteMovieByName(movie);
     }
 
-    public static void changeScreen (String scr) {
+    public void changeScreen (String scr) {
         switch(scr){
             case "main":
                 stage.setScene(mainScene);
@@ -145,7 +144,13 @@ public class Main extends Application {
                 stage.setScene(loginScene);
                 break;
             case "home":
+                try {
+                Parent fxmlHome = FXMLLoader.load(getClass().getResource("../home/home.fxml"));
+                homeScene = new Scene(fxmlHome);
                 stage.setScene(homeScene);
+                } catch (IOException e) {
+                    System.out.println(e.getMessage());
+                }
                 break;
         }
     }

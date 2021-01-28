@@ -42,7 +42,8 @@ public class RegisterController {
 
     @FXML
     void backHome(ActionEvent event) {
-        Main.changeScreen("main");
+        Main main = new Main();
+        main.changeScreen("main");
         txtfUsername.setText("");
         txtfEmail.setText("");
         pfPass.setText("");
@@ -60,7 +61,7 @@ public class RegisterController {
                 User user = new User(0, txtfUsername.getText(),txtfEmail.getText(), pfPass.getText(), dtBirthDate.getValue());
                 boolean cadastro = ModelUser.getInstance().createClient(user);
 
-                if(cadastro == false){
+                if(!cadastro){
                     Dialog.error("E-mail ja cadastrado");
                 } else {
                     txtfUsername.setText("");
@@ -69,7 +70,8 @@ public class RegisterController {
                     pfConfirmPass.setText("");
                     dtBirthDate.setValue(null);
                     Dialog.information("Cadastro Conluído");
-                    Main.changeScreen("main");
+                    Main main = new Main();
+                    main.changeScreen("main");
                 }
             } else {
                 Dialog.error("As senhas não coincidem");
