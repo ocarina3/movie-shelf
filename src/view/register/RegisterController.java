@@ -56,10 +56,10 @@ public class RegisterController {
         if (txtfUsername.getText().equals("") || txtfEmail.getText().equals("") || pfPass.getText().equals("") || pfConfirmPass.getText().equals("") || dtBirthDate.getValue() == null) {
             Dialog.warning("Favor informar todos campos");
         }else{
-            User user = new User(0, txtfUsername.getText(),txtfEmail.getText(), pfPass.getText(), dtBirthDate.getValue());
-            boolean cadastro = ModelUser.getInstance().createClient(user);
-
             if(pfPass.getText().equals(pfConfirmPass.getText())){
+                User user = new User(0, txtfUsername.getText(),txtfEmail.getText(), pfPass.getText(), dtBirthDate.getValue());
+                boolean cadastro = ModelUser.getInstance().createClient(user);
+                
                 if(cadastro == false){
                     Dialog.error("E-mail ja cadastrado");
                 } else {
