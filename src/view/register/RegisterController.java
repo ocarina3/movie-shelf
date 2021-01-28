@@ -41,11 +41,17 @@ public class RegisterController {
     private Label lbLogo;
 
     @FXML
-    void home(ActionEvent event) {
-        Main.changeScreen("main"); }
+    void backHome(ActionEvent event) {
+        Main.changeScreen("main");
+        txtfUsername.setText("");
+        txtfEmail.setText("");
+        pfPass.setText("");
+        pfConfirmPass.setText("");
+        dtBirthDate.setValue(null);
+    }
 
     @FXML
-    void onClick(ActionEvent event) {
+    void makeRegister(ActionEvent event) {
 
         if (txtfUsername.getText().equals("") || txtfEmail.getText().equals("") || pfPass.getText().equals("") || pfConfirmPass.getText().equals("") || dtBirthDate.getValue() == null) {
             Dialog.warning("Favor informar todos campos");
