@@ -16,6 +16,13 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        lbUsernameTop.setText(ModelUser.getInstance().readUsersByEmail("as").getName());
+        Main.addOnChangesScreenListener(new Main.OnChangeScreen() {
+            @Override
+            public void onScreenChanged(String newScreen, String currentUser) {
+                if(newScreen.equals("home")) {
+                    lbUsernameTop.setText(ModelUser.getInstance().readUsersByEmail(currentUser).getName());
+                }
+            }
+        });
     }
 }

@@ -133,20 +133,44 @@ public class Main extends Application {
         ModelMovie.getInstance().deleteMovieByName(movie);
     }
 
-    public static void changeScreen (String scr) {
+    public static void changeScreen (String scr, String currentUser) {
         switch(scr){
             case "main":
                 stage.setScene(mainScene);
+                notifyAllListeners("main", currentUser);
                 break;
             case "register":
                 stage.setScene(registerScene);
+                notifyAllListeners("register", currentUser);
                 break;
             case "login":
                 stage.setScene(loginScene);
+                notifyAllListeners("login", currentUser);
                 break;
             case "home":
                 stage.setScene(homeScene);
+                notifyAllListeners("home", currentUser);
                 break;
+        }
+    }
+
+    public static void changeScreen (String scr) {
+        changeScreen(scr, null);
+    }
+
+    private static ArrayList<OnChangeScreen> listeners = new ArrayList<>();
+
+    public static interface OnChangeScreen{
+        void onScreenChanged(String newScreen, String currentUser);
+    }
+
+    public static void addOnChangesScreenListener (OnChangeScreen newListener){
+        listeners.add(newListener);
+    }
+
+    private static void notifyAllListeners (String newScreen, String currentUser){
+        for(OnChangeScreen o : listeners){
+            o.onScreenChanged(newScreen, currentUser);
         }
     }
 

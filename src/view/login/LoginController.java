@@ -58,7 +58,7 @@ public class LoginController {
             Dialog.error("Usuário ou senha incorreto(s)");
         } else {
             if((ModelUser.getInstance().readUsersByEmail(txtfEmail.getText()).getPassword()).equals(pfPass.getText())) {
-                Main.changeScreen("home");
+                Main.changeScreen("home", txtfEmail.getText());
                 txtfEmail.setText("");
                 pfPass.setText("");
             } else {
