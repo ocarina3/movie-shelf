@@ -12,6 +12,7 @@ import model.ModelUser;
 import utils.Dialog;
 import view.principal.Main;
 
+
 public class LoginController {
 
     @FXML

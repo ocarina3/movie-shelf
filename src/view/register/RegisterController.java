@@ -59,7 +59,7 @@ public class RegisterController {
             if(pfPass.getText().equals(pfConfirmPass.getText())){
                 User user = new User(0, txtfUsername.getText(),txtfEmail.getText(), pfPass.getText(), dtBirthDate.getValue());
                 boolean cadastro = ModelUser.getInstance().createClient(user);
-                
+
                 if(cadastro == false){
                     Dialog.error("E-mail ja cadastrado");
                 } else {
