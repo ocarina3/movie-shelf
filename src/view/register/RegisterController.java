@@ -41,6 +41,10 @@ public class RegisterController {
     private Label lbLogo;
 
     @FXML
+    void home(ActionEvent event) {
+        Main.changeScreen("main"); }
+
+    @FXML
     void onClick(ActionEvent event) {
 
         if (txtfUsername.getText().equals("") || txtfEmail.getText().equals("") || pfPass.getText().equals("") || pfConfirmPass.getText().equals("") || dtBirthDate.getValue() == null) {

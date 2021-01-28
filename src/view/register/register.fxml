@@ -5,6 +5,7 @@
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -26,7 +27,7 @@
                   <Font size="50.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="txtfUsername" focusColor="#4717f6" layoutX="68.0" layoutY="250.0" prefWidth="318.0" promptText="Username" unFocusColor="#4717f6">
+            <JFXTextField fx:id="txtfUsername" focusColor="#4717f6" labelFloat="true" layoutX="68.0" layoutY="250.0" prefWidth="318.0" promptText="Username" unFocusColor="#4717f6">
                <font>
                   <Font size="24.0" />
                </font>
@@ -34,7 +35,7 @@
                   <Insets />
                </opaqueInsets>
             </JFXTextField>
-            <JFXTextField fx:id="txtfEmail" focusColor="#4717f6" layoutX="68.0" layoutY="351.0" prefWidth="704.0" promptText="E-mail " unFocusColor="#4717f6">
+            <JFXTextField fx:id="txtfEmail" focusColor="#4717f6" labelFloat="true" layoutX="68.0" layoutY="351.0" prefWidth="704.0" promptText="E-mail " unFocusColor="#4717f6">
                <font>
                   <Font size="24.0" />
                </font>
@@ -42,12 +43,12 @@
                   <Insets />
                </opaqueInsets>
             </JFXTextField>
-            <JFXPasswordField fx:id="pfPass" focusColor="#4717f6" layoutX="68.0" layoutY="453.0" prefWidth="318.0" promptText="Senha" unFocusColor="#4717f6">
+            <JFXPasswordField fx:id="pfPass" focusColor="#4717f6" labelFloat="true" layoutX="68.0" layoutY="453.0" prefWidth="318.0" promptText="Senha" unFocusColor="#4717f6">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXPasswordField>
-            <JFXPasswordField fx:id="pfConfirmPass" focusColor="#4717f6" layoutX="453.0" layoutY="453.0" prefWidth="318.0" promptText="Confirmar senha" unFocusColor="#4717f6">
+            <JFXPasswordField fx:id="pfConfirmPass" focusColor="#4717f6" labelFloat="true" layoutX="453.0" layoutY="453.0" prefWidth="318.0" promptText="Confirmar senha" unFocusColor="#4717f6">
                <font>
                   <Font size="24.0" />
                </font>
@@ -60,6 +61,11 @@
             <Image url="@../resources/register.png" />
          </image>
       </ImageView>
-      <Label fx:id="lbLogo" layoutX="1166.0" layoutY="40.0" text="O" />
+      <Label fx:id="lbLogo" layoutX="1167.0" layoutY="41.0" text="O" />
+      <JFXButton fx:id="btnHome" layoutX="1167.0" layoutY="53.0" onAction="#home" opacity="0.0" prefHeight="60.0" prefWidth="44.0" style="-fx-background-color: #FFFFFF;" text=" ">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </JFXButton>
    </children>
 </AnchorPane>

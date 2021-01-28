@@ -12,14 +12,14 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0E0B16;" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.principal.MainController">
     <children>
-        <Pane prefHeight="86.0" prefWidth="188.0" style="-fx-background-color: #4717F6;">
-            <children>
-                <Label fx:id="lbLogo" layoutX="22.0" layoutY="21.0" prefHeight="45.0" prefWidth="195.0" styleClass="lbLogo" stylesheets="@Main.css" text="Ocarina" />
-            </children>
+        <Pane prefHeight="72.0" prefWidth="188.0" style="-fx-background-color: #4717F6;">
+         <children>
+                <Label fx:id="lbLogo" layoutX="30.0" layoutY="14.0" prefHeight="34.0" prefWidth="128.0" styleClass="lbLogo" stylesheets="@Main.css" text="Ocarina" />
+         </children>
         </Pane>
-        <Pane layoutX="187.0" prefHeight="86.0" prefWidth="1093.0" style="-fx-background-color: #663CFD;">
+        <Pane layoutX="187.0" prefHeight="72.0" prefWidth="1093.0" style="-fx-background-color: #663CFD;">
             <children>
-                <Button fx:id="btnLogin" layoutX="855.0" layoutY="26.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="120.0" styleClass="btnLogin" stylesheets="@Main.css" text="Login" textFill="WHITE">
+                <Button fx:id="btnLogin" layoutX="896.0" layoutY="19.0" mnemonicParsing="false" onAction="#clickLogin" prefHeight="34.0" prefWidth="120.0" styleClass="btnLogin" stylesheets="@Main.css" text="Login" textFill="WHITE">
                     <font>
                         <Font name="Nirmala UI" size="12.0" />
                     </font>

@@ -26,6 +26,7 @@ public class Main extends Application {
     private static Stage stage;
     private static Scene mainScene;
     private static Scene registerScene;
+    private static Scene loginScene;
     @Override
     public void start(Stage primaryStage) throws Exception{
         stage = primaryStage;
@@ -35,6 +36,9 @@ public class Main extends Application {
 
         Parent fxmlRegister = FXMLLoader.load(getClass().getResource("../register/register.fxml"));
         registerScene = new Scene (fxmlRegister);
+
+        Parent fxmlLogin = FXMLLoader.load(getClass().getResource("../login/login.fxml"));
+        loginScene = new Scene (fxmlLogin);
 
         primaryStage.setTitle("Ocarina");
         primaryStage.setResizable(false);
@@ -131,6 +135,9 @@ public class Main extends Application {
                 break;
             case "register":
                 stage.setScene(registerScene);
+                break;
+            case "login":
+                stage.setScene(loginScene);
                 break;
         }
     }

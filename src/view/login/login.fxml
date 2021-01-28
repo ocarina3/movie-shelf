@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.login.LoginController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a002c" height="720.0" stroke="BLACK" strokeType="INSIDE" width="722.0" />
+      <ImageView fitHeight="720.0" fitWidth="722.0">
+         <image>
+            <Image url="@../resources/waves.png" />
+         </image>
+      </ImageView>
+      <Text fill="#663cfd" layoutX="940.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" wrappingWidth="145.443359375">
+         <font>
+            <Font name="System Bold" size="48.0" />
+         </font>
+      </Text>
+      <JFXTextField focusColor="#663cfd" labelFloat="true" layoutX="833.0" layoutY="270.0" prefHeight="25.0" prefWidth="356.0" promptText="usuário" unFocusColor="#663cfd">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXTextField>
+      <ImageView layoutX="18.0" layoutY="18.0">
+         <image>
+            <Image url="@../resources/O.png" />
+         </image>
+      </ImageView>
+      <JFXPasswordField focusColor="#663cfd" labelFloat="true" layoutX="833.0" layoutY="381.0" prefHeight="25.0" prefWidth="356.0" promptText="senha" unFocusColor="#663cfd">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXPasswordField>
+      <JFXButton layoutX="833.0" layoutY="542.0" prefHeight="39.0" prefWidth="356.0" style="-fx-background-color: #663cfd;" text="Log in" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnLogo" layoutX="15.0" layoutY="11.0" onAction="#home" opacity="0.0" prefHeight="64.0" prefWidth="49.0" text=" " />
+      <AnchorPane layoutX="609.0" layoutY="184.0" />
+      <Text fill="WHITE" layoutX="291.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Faça login para continuar">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

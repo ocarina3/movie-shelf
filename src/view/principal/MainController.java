@@ -34,5 +34,6 @@ public class MainController {
         Main.changeScreen("register");
     }
 
-
+    @FXML
+    void clickLogin(ActionEvent event) {Main.changeScreen("login"); }
 }
