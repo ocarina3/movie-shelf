@@ -5,7 +5,7 @@
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -17,7 +17,7 @@
    <children>
       <Pane layoutX="-22.0" prefHeight="720.0" prefWidth="838.0" style="-fx-background-color: white;">
          <children>
-            <JFXButton fx:id="btnRegister" layoutX="170.0" layoutY="614.0" onAction="#onClick" prefHeight="54.0" prefWidth="499.0" stylesheets="@Register.css" text="Cadastrar" textFill="WHITE">
+            <JFXButton fx:id="btnRegister" layoutX="170.0" layoutY="614.0" onAction="#makeRegister" prefHeight="54.0" prefWidth="499.0" stylesheets="@Register.css" text="Cadastrar" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
@@ -27,7 +27,7 @@
                   <Font size="50.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="txtfUsername" focusColor="#4717f6" labelFloat="true" layoutX="68.0" layoutY="250.0" prefWidth="318.0" promptText="Username" unFocusColor="#4717f6">
+            <JFXTextField fx:id="txtfUsername" focusColor="#4717f6" layoutX="68.0" layoutY="250.0" prefWidth="318.0" promptText="Username" unFocusColor="#4717f6">
                <font>
                   <Font size="24.0" />
                </font>
@@ -35,7 +35,7 @@
                   <Insets />
                </opaqueInsets>
             </JFXTextField>
-            <JFXTextField fx:id="txtfEmail" focusColor="#4717f6" labelFloat="true" layoutX="68.0" layoutY="351.0" prefWidth="704.0" promptText="E-mail " unFocusColor="#4717f6">
+            <JFXTextField fx:id="txtfEmail" focusColor="#4717f6" layoutX="68.0" layoutY="351.0" prefWidth="704.0" promptText="E-mail " unFocusColor="#4717f6">
                <font>
                   <Font size="24.0" />
                </font>
@@ -43,16 +43,17 @@
                   <Insets />
                </opaqueInsets>
             </JFXTextField>
-            <JFXPasswordField fx:id="pfPass" focusColor="#4717f6" labelFloat="true" layoutX="68.0" layoutY="453.0" prefWidth="318.0" promptText="Senha" unFocusColor="#4717f6">
+            <JFXPasswordField fx:id="pfPass" focusColor="#4717f6" layoutX="68.0" layoutY="453.0" prefWidth="318.0" promptText="Senha" unFocusColor="#4717f6">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXPasswordField>
-            <JFXPasswordField fx:id="pfConfirmPass" focusColor="#4717f6" labelFloat="true" layoutX="453.0" layoutY="453.0" prefWidth="318.0" promptText="Confirmar senha" unFocusColor="#4717f6">
+            <JFXPasswordField fx:id="pfConfirmPass" focusColor="#4717f6" layoutX="453.0" layoutY="453.0" prefWidth="318.0" promptText="Confirmar senha" unFocusColor="#4717f6">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXPasswordField>
+            <Button fx:id="btnBack" layoutX="41.0" layoutY="14.0" mnemonicParsing="false" onAction="#backHome" prefHeight="40.0" prefWidth="40.0" />
             <JFXDatePicker fx:id="dtBirthDate" defaultColor="#4717f6" layoutX="453.0" layoutY="250.0" prefWidth="318.0" promptText="Data Nascimento" />
          </children>
       </Pane>
@@ -61,11 +62,5 @@
             <Image url="@../resources/register.png" />
          </image>
       </ImageView>
-      <Label fx:id="lbLogo" layoutX="1167.0" layoutY="41.0" text="O" />
-      <JFXButton fx:id="btnHome" layoutX="1167.0" layoutY="53.0" onAction="#home" opacity="0.0" prefHeight="60.0" prefWidth="44.0" style="-fx-background-color: #FFFFFF;" text=" ">
-         <cursor>
-            <Cursor fx:constant="DEFAULT" />
-         </cursor>
-      </JFXButton>
    </children>
 </AnchorPane>

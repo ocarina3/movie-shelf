@@ -8,6 +8,21 @@
     src: url('../resources/Roboto_Bold.ttf');
 }
 
+#btnBack{
+    -fx-border-radius: 5;
+    -fx-background-image: url("../resources/backArrow.png");
+    -fx-background-position: center;
+    -fx-background-color: #663CFD;
+}
+
+#btnBack:hover {
+    -fx-background-color: #4717F6;
+}
+
+#btnBack:pressed {
+    -fx-background-color: #663CFD;
+}
+
 JFXButton{
     -fx-border-radius: 5;
     -fx-font-family: 'Roboto';
