@@ -1,5 +1,6 @@
 package model;
 
+import model.entity.Movie;
 import model.entity.Rating;
 import model.repository.RepositoryRating;
 
@@ -24,9 +25,12 @@ public class ModelRating {
 
     // Create
     public void createRating(Rating rating) {
-        String raterUserEmail = ModelUser.getInstance().readUsersById(rating.getUserId()).getEmail();
 
-        ArrayList<String> alreadyRatedEmails = repositoryRating.readAlreadyRatedEmails(rating.getMovieId());
+        if( ModelUser.getInstance().readUsersById(rating.getUserId()) == null ) return;
+        String raterUserEmail = ModelUser.getInstance().readUsersById(rating.getUserId()).getEmail();
+        Movie ratedMovie = ModelMovie.getInstance().readMoviesById(Integer.toString(rating.getUserId()));
+
+        ArrayList<String> alreadyRatedEmails = repositoryRating.readAlreadyRatedEmails(ratedMovie);
 
         if( !alreadyRatedEmails.contains(raterUserEmail) )
             repositoryRating.createRating(rating);
@@ -49,8 +53,12 @@ public class ModelRating {
         return repositoryRating.readRatedMovieName(rating_id);
     }
 
-    public ArrayList<String> readAlreadyRatedEmails(int movie_id) {
-        return repositoryRating.readAlreadyRatedEmails(movie_id);
+    public ArrayList<Rating> readAllRatingByMovie(Movie movie) {
+        return repositoryRating.readAllRatingByMovie(movie);
+    }
+
+    public ArrayList<String> readAlreadyRatedEmails(Movie movie) {
+        return repositoryRating.readAlreadyRatedEmails(movie);
     }
 
     // Update
