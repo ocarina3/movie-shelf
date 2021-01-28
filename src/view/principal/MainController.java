@@ -31,13 +31,9 @@ public class MainController {
 
     @FXML
     void onClick(ActionEvent event) {
-        Main main = new Main();
-        main.changeScreen("register");
+        Main.changeScreen("register");
     }
 
     @FXML
-    void clickLogin(ActionEvent event) {
-        Main main = new Main();
-        main.changeScreen("login");
-    }
+    void clickLogin(ActionEvent event) {Main.changeScreen("login"); }
 }

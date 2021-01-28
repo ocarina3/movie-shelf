@@ -9,8 +9,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import model.ModelUser;
-import model.entity.CurrentUser;
-import model.entity.User;
 import utils.Dialog;
 import view.principal.Main;
 
@@ -47,12 +45,9 @@ public class LoginController {
     @FXML
     private ImageView imgPass;
 
-    public static User currentUser;
-
     @FXML
     void backHome(ActionEvent event) {
-        Main main = new Main();
-        main.changeScreen("main");
+        Main.changeScreen("main");
         txtfEmail.setText("");
         pfPass.setText("");
     }
@@ -63,9 +58,9 @@ public class LoginController {
             Dialog.error("Usuário ou senha incorreto(s)");
         } else {
             if((ModelUser.getInstance().readUsersByEmail(txtfEmail.getText()).getPassword()).equals(pfPass.getText())) {
-                CurrentUser.currentUser = ModelUser.getInstance().readUsersByEmail(txtfEmail.getText());
-                Main main = new Main();
-                main.changeScreen("home");
+                Main.changeScreen("home");
+                txtfEmail.setText("");
+                pfPass.setText("");
             } else {
                 Dialog.error("Usuário ou senha incorreto(s)");
             }
