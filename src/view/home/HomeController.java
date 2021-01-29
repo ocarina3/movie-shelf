@@ -44,6 +44,11 @@ public class HomeController implements Initializable {
         Main.changeScreen("login");
     }
 
+    @FXML
+    void goList(ActionEvent event) {
+        Main.changeScreen("list");
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Main.addOnChangesScreenListener(new Main.OnChangeScreen() {

@@ -21,7 +21,7 @@
             <Font size="45.0" />
          </font>
       </Label>
-      <Button fx:id="btnHome" layoutX="560.0" layoutY="309.0" mnemonicParsing="false" prefHeight="160.0" prefWidth="160.0" />
+      <Button fx:id="btnHome" layoutX="560.0" layoutY="309.0" mnemonicParsing="false" onAction="#goList" prefHeight="160.0" prefWidth="160.0" />
       <ImageView fx:id="imgLogo" fitHeight="48.0" fitWidth="57.0" layoutX="64.0" layoutY="635.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/logo.png" />
