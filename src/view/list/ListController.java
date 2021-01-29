@@ -80,6 +80,11 @@ public class ListController implements Initializable {
             }
         });
 
+        try {
+            loadPage("allmovies.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }
