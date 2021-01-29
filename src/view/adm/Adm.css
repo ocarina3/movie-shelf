@@ -1,0 +1,8 @@
+@font-face {
+    font-family: Lobster;
+    src: url('../resources/Lobster_Regular.ttf');
+}
+
+Label{
+    -fx-font-family: 'Lobster';
+}
