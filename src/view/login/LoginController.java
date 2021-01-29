@@ -67,4 +67,9 @@ public class LoginController {
 
         }
     }
+
+    @FXML
+    void teste(ActionEvent event){
+        Main.changeScreen("adm");
+    }
 }
