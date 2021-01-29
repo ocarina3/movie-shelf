@@ -29,6 +29,7 @@ public class Main extends Application {
     private static Scene loginScene;
     private static Scene homeScene;
     private static Scene admScene;
+    private static Scene listScene;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -48,6 +49,9 @@ public class Main extends Application {
 
         Parent fxmlAdm = FXMLLoader.load(getClass().getResource("../adm/adm.fxml"));
         admScene = new Scene(fxmlAdm);
+
+        Parent fxmlList = FXMLLoader.load(getClass().getResource("../list/list.fxml"));
+        listScene = new Scene(fxmlList);
 
 
 
@@ -168,6 +172,10 @@ public class Main extends Application {
             case "adm":
                 stage.setScene(admScene);
                 notifyAllListeners("adm", currentUser);
+                break;
+            case "list":
+                stage.setScene(listScene);
+                notifyAllListeners("list", currentUser);
                 break;
         }
     }
