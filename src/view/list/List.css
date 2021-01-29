@@ -1,0 +1,42 @@
+@font-face {
+    font-family: Lobster;
+    src: url('../resources/Lobster_Regular.ttf');
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url('../resources/Roboto_Bold.ttf');
+}
+
+#lbLogo{
+    -fx-font-family: Lobster;
+}
+
+JFXButton{
+    -fx-font-family: Roboto;
+    -fx-font-size: 18px;
+    -fx-background-color: #4717F6;
+}
+
+JFXButton:hover{
+    -fx-background-color: #663CFD;
+}
+
+JFXButton{
+    -fx-border-radius: 0;
+    -fx-font-family: Roboto;
+    -fx-font-size: 18px;
+    -fx-background-color: #4717F6;
+}
+
+JFXButton:focused{
+    -fx-background-color: #0A002C;
+    -fx-background-image: url("../resources/arrowbtn.png");
+    -fx-background-position: 180 25;
+    -fx-background-repeat: no-repeat;
+}
+
+JFXTextField{
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #ADADAD;
+}

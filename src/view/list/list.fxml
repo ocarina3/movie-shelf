@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@List.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.list.ListController">
+   <children>
+      <Pane prefHeight="153.0" prefWidth="242.0" style="-fx-background-color: #4717F6;">
+         <children>
+            <Label fx:id="lbLogo" layoutX="50.0" layoutY="14.0" text="Ocarina" textFill="WHITE">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <VBox layoutY="151.0" prefHeight="573.0" prefWidth="242.0" style="-fx-background-color: #4717F6;">
+         <children>
+            <JFXButton fx:id="btnAllMovies" alignment="BASELINE_LEFT" focusTraversable="false" prefHeight="74.0" prefWidth="242.0" text="Todos Filmes" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnTerror" alignment="BASELINE_LEFT" focusTraversable="false" prefHeight="74.0" prefWidth="242.0" text="Terror" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnAction" alignment="BASELINE_LEFT" focusTraversable="false" prefHeight="74.0" prefWidth="242.0" text="Ação" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnAdventure" alignment="BASELINE_LEFT" focusTraversable="false" prefHeight="74.0" prefWidth="242.0" text="Aventura" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnComedy" alignment="BASELINE_LEFT" focusTraversable="false" prefHeight="74.0" prefWidth="242.0" text="Comédia" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnThriller" alignment="BASELINE_LEFT" focusTraversable="false" prefHeight="74.0" prefWidth="242.0" text="Suspense" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnFavorites" alignment="BASELINE_LEFT" focusTraversable="false" prefHeight="74.0" prefWidth="242.0" text="Favoritos" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnBestRatings" alignment="BASELINE_LEFT" focusTraversable="false" prefHeight="74.0" prefWidth="242.0" text="Melhores Notas" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </VBox>
+      <Pane layoutX="242.0" prefHeight="86.0" prefWidth="1039.0" style="-fx-background-color: #663CFD;">
+         <children>
+            <Label fx:id="lbUsername" layoutX="871.0" layoutY="26.0" text="LuanReiDelas" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtfSearch" focusColor="WHITE" focusTraversable="false" layoutX="90.0" layoutY="20.0" prefHeight="32.0" prefWidth="242.0" promptText="Pesquisa" unFocusColor="#663cfd">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </JFXTextField>
+            <ImageView fx:id="imgSearch" fitHeight="30.0" fitWidth="30.0" layoutX="43.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/search.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="pnScreen" layoutX="242.0" layoutY="86.0" prefHeight="638.0" prefWidth="1039.0" style="-fx-background-color: #0A002C;" />
+   </children>
+</AnchorPane>
