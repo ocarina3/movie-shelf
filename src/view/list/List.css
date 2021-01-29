@@ -36,7 +36,7 @@ JFXButton:focused{
     -fx-background-repeat: no-repeat;
 }
 
-JFXTextField{
+#txtfSearch{
     -fx-text-fill: white;
     -fx-prompt-text-fill: #ADADAD;
 }
@@ -70,4 +70,32 @@ JFXTextField{
 
 .scroll-pane .corner {
     -fx-background-insets: 0;
+}
+
+#pnImg{
+    -fx-background-color: black;
+}
+
+#pnRate{
+    -fx-background-color: yellow;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+}
+
+#lbRate{
+    -fx-text-fill: black;
+    -fx-font-family: Roboto;
+    -fx-font-size: 12px;
+}
+
+#lbTitle{
+    -fx-text-fill: white;
+    -fx-font-family: Roboto;
+    -fx-font-size: 24px;
+}
+
+#lbGender{
+    -fx-text-fill: #4d4d4d;
+    -fx-font-family: Roboto;
+    -fx-font-size: 18px;
 }
