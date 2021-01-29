@@ -36,6 +36,10 @@ public class ModelMovie {
         return repositoryMovie.readMoviesByName(value);
     }
 
+    public ArrayList<Movie> searchMovies(String value) {
+        return repositoryMovie.searchMovie(value);
+    }
+
     public void updateMovie(Movie movie) {
         if(repositoryMovie.readMoviesById(String.format("%d", movie.getId())) != null) {
             repositoryMovie.updateMovie(movie);
