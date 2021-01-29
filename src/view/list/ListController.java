@@ -4,13 +4,17 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import model.ModelUser;
 import view.principal.Main;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -53,7 +57,17 @@ public class ListController implements Initializable {
     private ImageView imgSearch;
 
     @FXML
-    private Pane pnScreen;
+    private AnchorPane pnScreen;
+
+    @FXML
+    void allMovies(ActionEvent event) throws IOException {
+        loadPage("allmovies.fxml");
+    }
+
+    private void loadPage(String page) throws IOException {
+        AnchorPane root = FXMLLoader.load(getClass().getResource(page));
+        pnScreen.getChildren().setAll(root);
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -65,6 +79,7 @@ public class ListController implements Initializable {
                 }
             }
         });
+
 
     }
 }

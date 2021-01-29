@@ -31,7 +31,7 @@ JFXButton{
 
 JFXButton:focused{
     -fx-background-color: #0A002C;
-    -fx-background-image: url("../resources/arrowbtn.png");
+    -fx-background-image: url("../resources/arrowList.png");
     -fx-background-position: 180 25;
     -fx-background-repeat: no-repeat;
 }
@@ -39,4 +39,35 @@ JFXButton:focused{
 JFXTextField{
     -fx-text-fill: white;
     -fx-prompt-text-fill: #ADADAD;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: white;
+    -fx-background-radius: 5em;
+}
+
+.scroll-pane {
+    -fx-background-color:  #0A002C;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-pane {
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.scroll-pane:focused {
+    -fx-background-insets: 0;
+}
+
+.scroll-pane .corner {
+    -fx-background-insets: 0;
 }
