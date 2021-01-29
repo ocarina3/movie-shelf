@@ -28,6 +28,10 @@ public class ModelMovie {
         }
     }
 
+    public ArrayList<Movie> readAllMovies() {
+        return repositoryMovie.readAllMovies();
+    }
+
     public Movie readMoviesById(String value) {
         return repositoryMovie.readMoviesById(value);
     }

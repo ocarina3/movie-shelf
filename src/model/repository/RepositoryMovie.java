@@ -52,6 +52,47 @@ public class RepositoryMovie {
         }
     }
 
+    public ArrayList<Movie> readAllMovies() {
+        String sql = "SELECT * FROM movie;";
+
+        ResultSet result = null;
+
+        c.connect();
+        PreparedStatement p = null;
+        ArrayList<Movie> movies = new ArrayList<>();
+
+        try {
+
+            p = c.createPreparedStatement(sql);
+            result = p.executeQuery();
+
+            while (result.next()) {
+                Movie movie = new Movie();
+                movie.setId(result.getInt("id"));
+                movie.setName(result.getString("name"));
+                movie.setMovieDirector(result.getString("movieDirector"));
+                movie.setMovieGenre(Genre.valueOf(result.getString("movieGenre")));
+                movie.setSynopsis(result.getString("synopsis"));
+                movie.setMinimumAge(result.getInt("minimumAge"));
+                movies.add(movie);
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        } finally {
+            if (p != null) {
+                try{
+                    p.close();
+                    c.disconnect();
+                }catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        return movies;
+    }
+
     private ArrayList<Movie> readMovies(String attribute, String value) {
         String sql = "SELECT * FROM movie WHERE " + attribute + " = ?;";
 
