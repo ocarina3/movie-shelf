@@ -4,8 +4,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import model.ModelMovie;
+import model.ModelRating;
+import model.entity.Movie;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class AllMoviesController implements Initializable {
@@ -23,7 +27,9 @@ public class AllMoviesController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         int posX = 74;
         int posY = 155;
-        for(int i=0;i<16;i++){
+        int i = 1;
+
+        for(Movie movie : ModelMovie.getInstance().readAllMovies()){
             if(posX <= 788){
                 Pane pnImg = new Pane();
                 pnImg.setLayoutX(posX);
@@ -42,7 +48,7 @@ public class AllMoviesController implements Initializable {
                 lbRate.setLayoutX(posX + 80);
                 lbRate.setLayoutY(posY - 21);
                 lbRate.setId("lbRate");
-                lbRate.setText("Nota"+i);
+                lbRate.setText(ModelRating.getInstance().readRatedMovieName(movie.getId()));
                 pnMovies.getChildren().add(lbRate);
                 Label lbTitle = new Label();
                 lbTitle.setPrefSize(63, 32);
@@ -50,7 +56,7 @@ public class AllMoviesController implements Initializable {
                 lbTitle.setLayoutY(posY + 264);
                 lbTitle.setPrefSize(170, 29);
                 lbTitle.setId("lbTitle");
-                lbTitle.setText("Titulo"+i);
+                lbTitle.setText(movie.getName());
                 pnMovies.getChildren().add(lbTitle);
                 Label lbGender = new Label();
                 lbGender.setPrefSize(63, 32);
@@ -58,14 +64,15 @@ public class AllMoviesController implements Initializable {
                 lbGender.setLayoutY(posY + 300);
                 lbGender.setPrefSize(90, 23);
                 lbGender.setId("lbGender");
-                lbGender.setText("Gênero"+i);
+                lbGender.setText(movie.getMovieGenre().getDescription());
                 pnMovies.getChildren().add(lbGender);
                 posX += 238;
             } else {
-                posY = 155 + (376 * ((i + 1) / 4));
+                posY = 155 + (376 * (i / 4));
                 posX = 74;
                 i--;
             }
+            i++;
         }
     }
 }
