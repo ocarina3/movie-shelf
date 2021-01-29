@@ -46,7 +46,7 @@ public class HomeController implements Initializable {
 
     @FXML
     void goList(ActionEvent event) {
-        Main.changeScreen("list");
+        Main.changeScreen("list", lbUsername.getText());
     }
 
     @Override
