@@ -28,6 +28,7 @@ public class Main extends Application {
     private static Scene registerScene;
     private static Scene loginScene;
     private static Scene homeScene;
+    private static Scene admScene;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -44,6 +45,11 @@ public class Main extends Application {
 
         Parent fxmlHome = FXMLLoader.load(getClass().getResource("../home/home.fxml"));
         homeScene = new Scene(fxmlHome);
+
+        Parent fxmlAdm = FXMLLoader.load(getClass().getResource("../adm/adm.fxml"));
+        admScene = new Scene(fxmlAdm);
+
+
 
         primaryStage.setTitle("Ocarina");
         primaryStage.setResizable(false);
@@ -158,6 +164,10 @@ public class Main extends Application {
             case "home":
                 stage.setScene(homeScene);
                 notifyAllListeners("home", currentUser);
+                break;
+            case "adm":
+                stage.setScene(admScene);
+                notifyAllListeners("adm", currentUser);
                 break;
         }
     }
