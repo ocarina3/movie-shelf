@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.adm.AdmController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a002c" height="728.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" />
+      <Text fill="#fcfcfc" layoutX="436.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bem vindo, mestre!">
+         <font>
+            <Font name="System Bold" size="45.0" />
+         </font>
+      </Text>
+      <ImageView layoutX="631.0" layoutY="251.0">
+         <image>
+            <Image url="@../resources/cadeado_adm.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="537.0" layoutY="301.0" prefHeight="39.0" prefWidth="222.0" text="Listagem de filmes" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <Line endX="72.25" layoutX="656.0" layoutY="332.0" startX="-86.0" stroke="#663cfd" />
+      <JFXButton layoutX="538.0" layoutY="366.0" prefHeight="39.0" prefWidth="117.0" text="Adicionar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <padding>
+            <Insets left="25.0" />
+         </padding>
+      </JFXButton>
+      <Line endX="30.25" layoutX="620.0" layoutY="395.0" startX="-51.5" stroke="#663cfd" />
+      <JFXButton layoutX="535.0" layoutY="429.0" prefHeight="39.0" prefWidth="100.0" text="Alterar " textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <padding>
+            <Insets right="-34.0" />
+         </padding>
+      </JFXButton>
+      <Line endX="6.5" layoutX="622.0" layoutY="457.0" startX="-51.5" stroke="#663cfd" />
+      <JFXButton layoutX="537.0" layoutY="493.0" prefHeight="39.0" prefWidth="111.0" text="Remover " textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <padding>
+            <Insets right="-34.0" />
+         </padding>
+      </JFXButton>
+      <Line endX="21.75" layoutX="621.0" layoutY="522.0" startX="-51.5" stroke="#663cfd" />
+      <ImageView layoutX="525.0" layoutY="313.0">
+         <image>
+            <Image url="@../resources/catalog_icon.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="540.0" layoutY="377.0">
+         <image>
+            <Image url="@../resources/plus_icon.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="542.0" layoutY="312.0">
+         <image>
+            <Image url="@../resources/fi-rr-menu-burger%201.png" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="540.0" layoutY="439.0">
+         <image>
+            <Image url="@../resources/refresh_icon.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="541.0" layoutY="505.0">
+         <image>
+            <Image url="@../resources/remove_icon.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="41.0" layoutY="645.0" prefHeight="34.0" prefWidth="81.0" style="-fx-background-color: #663CFD;" text="Sair" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <padding>
+            <Insets bottom="2.0" left="23.0" />
+         </padding>
+      </JFXButton>
+      <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="50.0" layoutY="653.0">
+         <image>
+            <Image url="@../resources/x_icon.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="1088.0" layoutY="645.0" prefHeight="34.0" prefWidth="159.0" style="-fx-background-color: #663CFD;" text="Alterar dados" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <padding>
+            <Insets bottom="2.0" left="23.0" />
+         </padding>
+      </JFXButton>
+      <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="1095.0" layoutY="653.0">
+         <image>
+            <Image url="@../resources/profile_icon.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
