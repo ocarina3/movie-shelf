@@ -17,6 +17,7 @@ import model.entity.Rating;
 import model.entity.User;
 
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -50,8 +51,8 @@ public class Main extends Application {
         Parent fxmlAdm = FXMLLoader.load(getClass().getResource("../adm/adm.fxml"));
         admScene = new Scene(fxmlAdm);
 
-        Parent fxmlList = FXMLLoader.load(getClass().getResource("../list/list.fxml"));
-        listScene = new Scene(fxmlList);
+       // Parent fxmlList = FXMLLoader.load(getClass().getResource("../list/list.fxml"));
+       // listScene = new Scene(fxmlList);
 
 
 
@@ -174,6 +175,13 @@ public class Main extends Application {
                 notifyAllListeners("adm", currentUser);
                 break;
             case "list":
+                Parent fxmlList = null;
+                try {
+                    fxmlList = FXMLLoader.load(Main.class.getResource("../list/list.fxml"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                listScene = new Scene(fxmlList);
                 stage.setScene(listScene);
                 notifyAllListeners("list", currentUser);
                 break;
