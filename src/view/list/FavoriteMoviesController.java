@@ -12,13 +12,14 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.ModelMovie;
-import model.ModelRating;
+import model.ModelUser;
 import model.entity.Movie;
+import view.principal.Main;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ComedyMoviesController implements Initializable {
+public class FavoriteMoviesController implements Initializable {
 
     @FXML
     private Pane pnMovies;
@@ -29,13 +30,25 @@ public class ComedyMoviesController implements Initializable {
     @FXML
     private Label lbGender;
 
+    public static String currentUserEmail;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        Main.addOnChangesScreenListener(new Main.OnChangeScreen() {
+            @Override
+            public void onScreenChanged(String newScreen, String currentUser) {
+                if(newScreen.equals("list")) {
+                    currentUserEmail = (ModelUser.getInstance().readUsersByEmail(currentUser).getEmail());
+                }
+            }
+        });
+
         int posX = 74;
         int posY = 155;
         int i = 1;
 
-        for(Movie movie : ModelMovie.getInstance().readAllMovies()){
+        for(Movie movie : ModelUser.getInstance().readFavoriteMovies(ModelUser.getInstance().readUsersByEmail(currentUserEmail))){
 
             EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent e)
@@ -55,7 +68,6 @@ public class ComedyMoviesController implements Initializable {
                 }
             };
 
-            if((movie.getMovieGenre().getDescription()).equals("Comédia")){
                 if(posX <= 788){
                     Pane pnImg = new Pane();
                     pnImg.setLayoutX(posX);
@@ -68,6 +80,7 @@ public class ComedyMoviesController implements Initializable {
                     btnMovie.setLayoutY(posY);
                     btnMovie.setPrefSize(185, 238);
                     btnMovie.setId("btnMovie");
+                    btnMovie.setOnAction(event);
                     pnMovies.getChildren().add(btnMovie);
                     Pane pnRate = new Pane();
                     pnRate.setPrefSize(63, 32);
@@ -105,7 +118,6 @@ public class ComedyMoviesController implements Initializable {
                     i--;
                 }
                 i++;
-            }
         }
     }
 }

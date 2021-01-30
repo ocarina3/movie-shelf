@@ -1,14 +1,23 @@
 package view.list;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import model.ModelMovie;
 import model.ModelRating;
 import model.entity.Movie;
+import view.principal.Main;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -30,6 +39,25 @@ public class DramaMoviesController implements Initializable {
         int i = 1;
 
         for(Movie movie : ModelMovie.getInstance().readAllMovies()){
+
+            EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
+                public void handle(ActionEvent e)
+                {
+                    InfoMoviesController.movieId = movie.getId();
+                    try {
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("infomovies.fxml"));
+                        Parent root1 = (Parent) fxmlLoader.load();
+                        Stage stage = new Stage();
+                        stage.setTitle("Info");
+                        stage.setScene(new Scene(root1));
+                        stage.setResizable(false);
+                        stage.show();
+                    } catch (Exception exception) {
+                        System.out.println("Erro");
+                    }
+                }
+            };
+
             if((movie.getMovieGenre().getDescription()).equals("Drama")){
                 if(posX <= 788){
                     Pane pnImg = new Pane();
@@ -43,6 +71,7 @@ public class DramaMoviesController implements Initializable {
                     btnMovie.setLayoutY(posY);
                     btnMovie.setPrefSize(185, 238);
                     btnMovie.setId("btnMovie");
+                    btnMovie.setOnAction(event);
                     pnMovies.getChildren().add(btnMovie);
                     Pane pnRate = new Pane();
                     pnRate.setPrefSize(63, 32);

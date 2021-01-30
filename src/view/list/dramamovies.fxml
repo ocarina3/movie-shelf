@@ -9,11 +9,6 @@
    <children>
       <Pane fx:id="pnMovies" layoutY="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #0A002C;">
          <children>
-            <Label layoutX="96.0" layoutY="70.0" text="Novos Filmes" textFill="WHITE">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
             <Pane layoutX="74.0" layoutY="155.0" prefHeight="238.0" prefWidth="185.0" style="-fx-background-color: #0A002C;">
                <children>
                   <Pane layoutX="61.0" layoutY="-16.0" prefHeight="32.0" prefWidth="63.0" style="-fx-background-color: #0A002C; -fx-border-radius: 20; -fx-background-radius: 20;">
@@ -39,5 +34,10 @@
             </Label>
          </children>
       </Pane>
+      <Label layoutX="106.0" layoutY="80.0" text="Drama" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

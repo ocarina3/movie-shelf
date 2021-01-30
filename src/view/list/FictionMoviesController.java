@@ -12,13 +12,12 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.ModelMovie;
-import model.ModelRating;
 import model.entity.Movie;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ComedyMoviesController implements Initializable {
+public class FictionMoviesController implements Initializable {
 
     @FXML
     private Pane pnMovies;
@@ -55,7 +54,7 @@ public class ComedyMoviesController implements Initializable {
                 }
             };
 
-            if((movie.getMovieGenre().getDescription()).equals("Comédia")){
+            if((movie.getMovieGenre().getDescription()).equals("Ficção Científica")){
                 if(posX <= 788){
                     Pane pnImg = new Pane();
                     pnImg.setLayoutX(posX);
@@ -68,6 +67,7 @@ public class ComedyMoviesController implements Initializable {
                     btnMovie.setLayoutY(posY);
                     btnMovie.setPrefSize(185, 238);
                     btnMovie.setId("btnMovie");
+                    btnMovie.setOnAction(event);
                     pnMovies.getChildren().add(btnMovie);
                     Pane pnRate = new Pane();
                     pnRate.setPrefSize(63, 32);

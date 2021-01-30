@@ -75,6 +75,31 @@ public class ListController implements Initializable {
         loadPage("comedymovies.fxml");
     }
 
+    @FXML
+    void terrorMovies(ActionEvent event) throws IOException {
+        loadPage("terrormovies.fxml");
+    }
+
+    @FXML
+    void actionandadventureMovies(ActionEvent event) throws IOException {
+        loadPage("actionandadventuremovies.fxml");
+    }
+
+    @FXML
+    void fantasyMovies(ActionEvent event) throws IOException {
+        loadPage("fantasymovies.fxml");
+    }
+
+    @FXML
+    void fictionMovies(ActionEvent event) throws IOException {
+        loadPage("fictionmovies.fxml");
+    }
+
+    @FXML
+    void favoriteMovies(ActionEvent event) throws IOException {
+        loadPage("favoritemovies.fxml");
+    }
+
     private void loadPage(String page) throws IOException {
         AnchorPane root = FXMLLoader.load(getClass().getResource(page));
         pnScreen.getChildren().setAll(root);

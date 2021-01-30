@@ -48,12 +48,12 @@
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btnTerror" alignment="BASELINE_LEFT" prefHeight="74.0" prefWidth="242.0" text="Terror" textFill="WHITE">
+            <JFXButton fx:id="btnTerror" alignment="BASELINE_LEFT" onAction="#terrorMovies" prefHeight="74.0" prefWidth="242.0" text="Terror" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btnActionAdventure" alignment="BASELINE_LEFT" prefHeight="74.0" prefWidth="242.0" text="Ação e Aventura" textFill="WHITE">
+            <JFXButton fx:id="btnActionAdventure" alignment="BASELINE_LEFT" onAction="#actionandadventureMovies" prefHeight="74.0" prefWidth="242.0" text="Ação e Aventura" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
@@ -68,17 +68,17 @@
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btnFantasy" alignment="BASELINE_LEFT" prefHeight="74.0" prefWidth="242.0" text="Fantasia" textFill="WHITE">
+            <JFXButton fx:id="btnFantasy" alignment="BASELINE_LEFT" onAction="#fantasyMovies" prefHeight="74.0" prefWidth="242.0" text="Fantasia" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btnScienceFiction" alignment="BASELINE_LEFT" prefHeight="74.0" prefWidth="242.0" text="Ficção Científica" textFill="WHITE">
+            <JFXButton fx:id="btnScienceFiction" alignment="BASELINE_LEFT" onAction="#fictionMovies" prefHeight="74.0" prefWidth="242.0" text="Ficção Científica" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btnFavorites" alignment="BASELINE_LEFT" prefHeight="74.0" prefWidth="242.0" text="Favoritos" textFill="WHITE">
+            <JFXButton fx:id="btnFavorites" alignment="BASELINE_LEFT" onAction="#favoriteMovies" prefHeight="74.0" prefWidth="242.0" text="Favoritos" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>

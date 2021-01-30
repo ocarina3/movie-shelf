@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="738.0" style="-fx-background-color: #4717F6;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.list.InfoMoviesController">
+   <children>
+      <Pane layoutX="78.0" layoutY="298.0" prefHeight="43.0" prefWidth="110.0" style="-fx-background-color: yellow; -fx-border-radius: 40; -fx-background-radius: 40;" />
+      <ImageView fx:id="imgMovie" fitHeight="260.0" fitWidth="200.0" layoutX="37.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/potter.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lbTitle" layoutX="290.0" layoutY="40.0" text="Title" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="289.0" layoutY="75.0" text="Gênero: " textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbGenre" layoutX="349.0" layoutY="75.0" text="Genre" textFill="#bfbfbf">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Pane layoutX="290.0" layoutY="177.0" prefHeight="238.0" prefWidth="412.0">
+         <children>
+            <TextArea fx:id="txtaSinopse" editable="false" prefHeight="238.0" prefWidth="412.0" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextArea>
+         </children>
+      </Pane>
+      <Label fx:id="lbSinopse" layoutX="290.0" layoutY="149.0" text="Sinopse" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="74.0" layoutY="372.0" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: #19016E;" text="Avaliar Filme" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <Label fx:id="lbRate" layoutX="102.0" layoutY="302.0" text="10">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="128.0" layoutY="302.0" text="/10">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
