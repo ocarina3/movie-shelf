@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.changeData.ChangeDataController">
+   <children>
+      <ImageView fitHeight="720.0" fitWidth="574.0">
+         <image>
+            <Image url="@../resources/alterardados.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a002c" height="720.0" layoutX="484.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="796.0" />
+      <JFXTextField fx:id="txtNomeUsuario" focusColor="WHITE" labelFloat="true" layoutX="528.0" layoutY="139.0" prefHeight="51.0" prefWidth="318.0" promptText="Nome de usuário" unFocusColor="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtEmail" focusColor="WHITE" labelFloat="true" layoutX="528.0" layoutY="272.0" prefHeight="51.0" prefWidth="704.0" promptText="E-mail" unFocusColor="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXTextField>
+      <JFXDatePicker fx:id="txtData" defaultColor="WHITE" layoutX="912.0" layoutY="162.0" prefHeight="28.0" prefWidth="318.0" promptText="Data de nascimento" />
+      <JFXTextField fx:id="txtSenha" focusColor="WHITE" labelFloat="true" layoutX="527.0" layoutY="406.0" prefHeight="51.0" prefWidth="318.0" promptText="Nova senha" unFocusColor="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtConfirmarSenha" focusColor="WHITE" labelFloat="true" layoutX="910.0" layoutY="406.0" prefHeight="51.0" prefWidth="318.0" promptText="Confirmar senha" unFocusColor="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton layoutX="625.0" layoutY="601.0" prefHeight="54.0" prefWidth="499.0" style="-fx-background-color: #FFFFFF;" text="Alterar" textFill="#663cfd">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
