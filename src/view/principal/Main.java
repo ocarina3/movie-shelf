@@ -73,7 +73,7 @@ public class Main extends Application {
         User user = new User(1, "Usuario", "usuario@email.com", "senha", LocalDate.of(2002, 1, 1));
         User user2 = new User(2, "Usuario2", "usuario2@email.com", "senha", LocalDate.of(2002, 1, 1));
         Rating rating = new Rating(1, 4, 1, 1);
-        Rating rating2 = new Rating(2, 4, 2, 1);
+        Rating rating2 = new Rating(2, 3, 2, 1);
         Rating rating3 = new Rating(3, 4, 1, 2);
 
         ModelMovie.getInstance().createMovie(movie1);
@@ -84,7 +84,7 @@ public class Main extends Application {
         ModelRating.getInstance().createRating(rating2);
         ModelRating.getInstance().createRating(rating3);
 
-        System.out.println(ModelRating.getInstance().readAlreadyRatedEmails(movie1));
+        System.out.println(ModelRating.getInstance().readRatingsByMovie(movie1));
 
         // Delete rating instances
         ArrayList<Rating> ratingsM1 = ModelRating.getInstance().readAllRatingByMovie(movie1);
