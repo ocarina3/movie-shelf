@@ -45,12 +45,16 @@ public class ModelRating {
         return repositoryRating.readRatingsByValue(value);
     }
 
+    public ArrayList<Rating> readRatingsByMovie(Movie movie) {
+        return repositoryRating.readRatingsByMovie(movie);
+    }
+
     public String readRaterUserName(int rating_id) {
         return repositoryRating.readRaterUserName(rating_id);
     }
 
-    public String readRatedMovieName(int rating_id) {
-        return repositoryRating.readRatedMovieName(rating_id);
+    public float readAvgRatingByMovie(Movie movie)  {
+        return repositoryRating.readAvgRatingByMovie(movie);
     }
 
     public ArrayList<Rating> readAllRatingByMovie(Movie movie) {

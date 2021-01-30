@@ -93,6 +93,51 @@ public class RepositoryRating {
         return ratings;
     }
 
+    public ArrayList<Rating> readRatingsByMovie(Movie movie) {
+        String sql = "SELECT r.id AS id, r.rating AS rating, r.id_user as id_user, r.id_movie as id_movie FROM rating r" +
+                " INNER JOIN movie m ON m.id = r.id_movie" +
+                " WHERE m.id = ?;";
+
+        ResultSet result = null;
+
+        c.connect();
+        PreparedStatement p = null;
+        ArrayList<Rating> ratings = new ArrayList<>();
+
+        try {
+
+            p = c.createPreparedStatement(sql);
+            p.setInt(1, movie.getId());
+            result = p.executeQuery();
+
+            while (result.next()) {
+                Rating rating = new Rating(
+                        result.getInt("id"),
+                        result.getFloat("rating"),
+                        result.getInt("id_user"),
+                        result.getInt("id_movie")
+                );
+
+                ratings.add(rating);
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        } finally {
+            if (p != null) {
+                try{
+                    p.close();
+                    c.disconnect();
+                }catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+
+        return ratings;
+    }
+
     public Rating readRatingById(int rating_id){
         if( readRatings("id", Integer.toString(rating_id)).size() == 0 ) return null;
         return readRatings("id", Integer.toString(rating_id)).get(0);
@@ -142,27 +187,27 @@ public class RepositoryRating {
         return userName;
     }
 
-    public String readRatedMovieName(int rating_id) {
+    public float readAvgRatingByMovie(Movie movie) {
 
-        String sql = "SELECT m.name AS name FROM rating r" +
+        String sql = "SELECT avg(r.rating) AS average FROM rating r" +
                 " INNER JOIN movie m ON m.id = r.id_movie" +
-                " WHERE r.id = ?;";
+                " WHERE m.id = ?;";
 
         ResultSet result = null;
 
         c.connect();
         PreparedStatement p = null;
 
-        String movieName = null;
+        float average = 0;
 
         try {
 
             p = c.createPreparedStatement(sql);
-            p.setString(1,Integer.toString(rating_id));
+            p.setInt(1,movie.getId());
             result = p.executeQuery();
 
             while (result.next()) {
-                movieName = result.getString("name");
+                average = result.getFloat("average");
             }
 
         } catch (SQLException e) {
@@ -179,7 +224,7 @@ public class RepositoryRating {
             }
         }
 
-        return movieName;
+        return average;
     }
 
     public ArrayList<String> readAlreadyRatedEmails(Movie movie) {
