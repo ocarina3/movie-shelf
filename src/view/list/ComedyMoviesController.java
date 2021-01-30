@@ -55,7 +55,7 @@ public class ComedyMoviesController implements Initializable {
                     lbRate.setLayoutX(posX + 80);
                     lbRate.setLayoutY(posY - 21);
                     lbRate.setId("lbRate");
-                    lbRate.setText(ModelRating.getInstance().readRatedMovieName(movie.getId()));
+                    lbRate.setText("nota" + i);
                     pnMovies.getChildren().add(lbRate);
                     Label lbTitle = new Label();
                     lbTitle.setPrefSize(63, 32);
