@@ -99,3 +99,17 @@ JFXButton:focused{
     -fx-font-family: Roboto;
     -fx-font-size: 18px;
 }
+
+#btnMovie{
+    -fx-background-image: url("../resources/potter.png");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+}
+
+#btnMovie:hover{
+    -fx-opacity: 0.2;
+}
+
+#btnMovie:pressed{
+    -fx-opacity: 1;
+}

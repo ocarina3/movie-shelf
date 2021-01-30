@@ -2,6 +2,7 @@ package view.list;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import model.ModelMovie;
@@ -37,6 +38,12 @@ public class AllMoviesController implements Initializable {
                 pnImg.setPrefSize(185, 238);
                 pnImg.setId("pnImg");
                 pnMovies.getChildren().add(pnImg);
+                Button btnMovie = new Button();
+                btnMovie.setLayoutX(posX);
+                btnMovie.setLayoutY(posY);
+                btnMovie.setPrefSize(185, 238);
+                btnMovie.setId("btnMovie");
+                pnMovies.getChildren().add(btnMovie);
                 Pane pnRate = new Pane();
                 pnRate.setPrefSize(63, 32);
                 pnRate.setLayoutX(posX + 65);

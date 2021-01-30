@@ -33,22 +33,23 @@ public class ListController implements Initializable {
     private JFXButton btnTerror;
 
     @FXML
-    private JFXButton btnAction;
+    private JFXButton btnActionAdventure;
 
     @FXML
-    private JFXButton btnAdventure;
+    private JFXButton btnDrama;
 
     @FXML
     private JFXButton btnComedy;
 
     @FXML
-    private JFXButton btnThriller;
+    private JFXButton btnFantasy;
+
+    @FXML
+    private JFXButton btnScienceFiction;
 
     @FXML
     private JFXButton btnFavorites;
 
-    @FXML
-    private JFXButton btnBestRatings;
 
     @FXML
     private JFXTextField txtfSearch;
@@ -62,6 +63,16 @@ public class ListController implements Initializable {
     @FXML
     void allMovies(ActionEvent event) throws IOException {
         loadPage("allmovies.fxml");
+    }
+
+    @FXML
+    void dramaMovies(ActionEvent event) throws IOException {
+        loadPage("dramamovies.fxml");
+    }
+
+    @FXML
+    void comedyMovies(ActionEvent event) throws IOException {
+        loadPage("comedymovies.fxml");
     }
 
     private void loadPage(String page) throws IOException {

@@ -97,8 +97,8 @@ public class Main extends Application {
         }
 
         // Delete movies and user instances
-        ModelMovie.getInstance().deleteMovieByName(movie1);
-        ModelMovie.getInstance().deleteMovieByName(movie2);
+        //ModelMovie.getInstance().deleteMovieByName(movie1);
+        //ModelMovie.getInstance().deleteMovieByName(movie2);
         ModelUser.getInstance().deleteUserByEmail(user.getEmail());
         ModelUser.getInstance().deleteUserByEmail(user2.getEmail());
 
@@ -143,7 +143,7 @@ public class Main extends Application {
         ModelMovie.getInstance().updateMovie(movie);
 
         //DELETANDO O MOVIE
-        System.out.println(ModelMovie.getInstance().readMoviesById(String.format("%d",movie.getId())));
+       // System.out.println(ModelMovie.getInstance().readMoviesById(String.format("%d",movie.getId())));
 
 //_____________________________________________________________________________________________________________________
 
