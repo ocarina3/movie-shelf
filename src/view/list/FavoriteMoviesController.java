@@ -35,21 +35,12 @@ public class FavoriteMoviesController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        Main.addOnChangesScreenListener(new Main.OnChangeScreen() {
-            @Override
-            public void onScreenChanged(String newScreen, String currentUser) {
-                if(newScreen.equals("list")) {
-                    currentUserEmail = (ModelUser.getInstance().readUsersByEmail(currentUser).getEmail());
-                }
-            }
-        });
-
         int posX = 74;
         int posY = 155;
         int i = 1;
 
         for(Movie movie : ModelUser.getInstance().readFavoriteMovies(ModelUser.getInstance().readUsersByEmail(currentUserEmail))){
-
+            System.out.println(currentUserEmail);
             EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent e)
                 {

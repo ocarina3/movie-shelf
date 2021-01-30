@@ -68,6 +68,7 @@ public class Main extends Application {
         createDatabase.createTableUser();
         createDatabase.createTableMovie();
         createDatabase.createTableRating();
+        createDatabase.createTableFavoriteMovies();
 
         Movie movie1 = new Movie(1, "Filme", "Diretor", Genre.DRAMA, "Sinopse", 10);
         Movie movie2 = new Movie(2, "Filme2", "Diretor2", Genre.COMEDY, "Sinopse2", 10);

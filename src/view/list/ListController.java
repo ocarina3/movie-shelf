@@ -112,6 +112,7 @@ public class ListController implements Initializable {
             public void onScreenChanged(String newScreen, String currentUser) {
                 if(newScreen.equals("list")) {
                     lbUsername.setText(ModelUser.getInstance().readUsersByEmail(currentUser).getName());
+                    FavoriteMoviesController.currentUserEmail = ModelUser.getInstance().readUsersByEmail(currentUser).getName();
                 }
             }
         });
