@@ -60,4 +60,7 @@ public class HomeController implements Initializable {
             }
         });
     }
+
+    @FXML
+    void changeData(ActionEvent event){Main.changeScreen("changeData");}
 }
