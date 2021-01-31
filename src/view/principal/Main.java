@@ -3,6 +3,7 @@ package view.principal;
 import data.base.Connect;
 import data.base.CreateDatabase;
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -32,6 +33,7 @@ public class Main extends Application {
     private static Scene admScene;
     private static Scene listScene;
     private static Scene changeDataScene;
+    private static Scene addMovies;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -54,6 +56,9 @@ public class Main extends Application {
 
         Parent fxmlChangeData = FXMLLoader.load(getClass().getResource("../changeData/ChangeData.fxml"));
         changeDataScene = new Scene(fxmlChangeData);
+
+        Parent fxmlAddMovies = FXMLLoader.load(getClass().getResource("../addMovies/addmovies.fxml"));
+        addMovies = new Scene(fxmlAddMovies);
 
        // Parent fxmlList = FXMLLoader.load(getClass().getResource("../list/list.fxml"));
        // listScene = new Scene(fxmlList);
@@ -194,6 +199,9 @@ public class Main extends Application {
                 stage.setScene(changeDataScene);
                 notifyAllListeners("changeData", currentUser);
                 break;
+            case "addMovies":
+                stage.setScene(addMovies);
+                notifyAllListeners("addMovies", currentUser);
         }
     }
 
