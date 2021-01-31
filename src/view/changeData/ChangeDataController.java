@@ -72,9 +72,8 @@ public class ChangeDataController implements Initializable {
             if(pfPass.getText().equals(pfConfirmPass.getText())){
                 User user = new User(ModelUser.getInstance().readUsersByEmail(email).getId(), txtfUser.getText(),txtfEmail.getText(), pfPass.getText(), dtBirthdate.getValue());
                 boolean update = ModelUser.getInstance().updateUser(user);
-
                 if(update == false){
-                    utils.Dialog.error("E-mail ja cadastrado");
+                    utils.Dialog.error("Erro ao atualizar");
                 } else {
                     utils.Dialog.information("Cadastro Conluído");
                     Main.changeScreen("login");
@@ -86,7 +85,7 @@ public class ChangeDataController implements Initializable {
     }
 
     public void backHome(ActionEvent event) {
-        Main.changeScreen("home");
+        Main.changeScreen("home", email);
     }
 
 

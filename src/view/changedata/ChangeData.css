@@ -10,6 +10,7 @@ JFXCheckBox .box{
 
 JFXPasswordField {
     -fx-prompt-text-fill: white;
+    -fx-text-fill: white;
 }
 
 JFXDatePicker{
@@ -20,6 +21,7 @@ JFXDatePicker{
 JFXDatePicker .text-field{
     -jfx-unfocus-color: #4717F6;
     -fx-prompt-text-fill: white;
+    -fx-text-fill: white;
 }
 
 JFXDatePicker .label{

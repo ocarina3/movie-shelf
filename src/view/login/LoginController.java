@@ -58,9 +58,15 @@ public class LoginController {
             Dialog.error("Usuário ou senha incorreto(s)");
         } else {
             if((ModelUser.getInstance().readUsersByEmail(txtfEmail.getText()).getPassword()).equals(pfPass.getText())) {
-                Main.changeScreen("home", txtfEmail.getText());
-                txtfEmail.setText("");
-                pfPass.setText("");
+                if(ModelUser.getInstance().isAdmin(ModelUser.getInstance().readUsersByEmail(txtfEmail.getText())) == true){
+                    Main.changeScreen("adm", txtfEmail.getText());
+                    txtfEmail.setText("");
+                    pfPass.setText("");
+                } else {
+                    Main.changeScreen("home", txtfEmail.getText());
+                    txtfEmail.setText("");
+                    pfPass.setText("");
+                }
             } else {
                 Dialog.error("Usuário ou senha incorreto(s)");
             }
