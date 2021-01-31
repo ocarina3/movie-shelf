@@ -114,5 +114,6 @@
             <Font size="48.0" />
          </font>
       </Label>
+      <JFXButton fx:id="btnSecret" layoutX="761.0" layoutY="112.0" onAction="#addMovie" prefHeight="76.0" prefWidth="59.0" text=" " />
    </children>
 </AnchorPane>

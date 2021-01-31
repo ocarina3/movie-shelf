@@ -77,6 +77,12 @@ public class AdmController {
     private ImageView imgChangeDatas;
 
     @FXML
+    private JFXButton btnSecret;
+
+    @FXML
+    void addMovie(ActionEvent event){Main.changeScreen("addMovies");}
+
+    @FXML
     void backLogin(ActionEvent event) {
         Main.changeScreen("login");
     }
