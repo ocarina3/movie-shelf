@@ -140,6 +140,44 @@ public class RepositoryUser { //Criação de Usuario passando suas informações
         return users;
     }
 
+    public boolean isAdmin(User user)
+    {
+        String sql = "SELECT * FROM user WHERE id = ?;";
+
+        if (user == null) return false;
+
+        ResultSet result = null;
+        c.connect();
+        PreparedStatement p = null;
+        ArrayList<User> users = new ArrayList<>(1);
+
+        try {
+
+            p = c.createPreparedStatement(sql);
+            p.setInt(1,user.getId());
+            result = p.executeQuery();
+
+            while (result.next()) {
+                return result.getBoolean("admin");
+            }
+
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        } finally {
+            if (p != null) {
+                try{
+                    p.close();
+                    c.disconnect();
+                }catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        return false;
+    }
+
     public User readUsersById(String value){
         if(readUsers("id", value).size() != 0){
             return readUsers("id", value).get(0);}
@@ -234,6 +272,7 @@ public class RepositoryUser { //Criação de Usuario passando suas informações
     //UPDATE
 
     public void updateUser(User user) {
+        if(!(readUsersByEmail(user.getEmail()).equals(readUsersById(String.format("%d",user.getId()))))) return;
         String sql = "UPDATE user SET name = ?, email = ?, password = ?, birthDate = ?  WHERE id = ?;";
 
         c.connect();
