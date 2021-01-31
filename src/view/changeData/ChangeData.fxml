@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDatePicker?>
-<?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -19,35 +18,30 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a002c" height="720.0" layoutX="484.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="796.0" />
-      <JFXTextField fx:id="txtfUser" focusColor="WHITE" labelFloat="true" layoutX="528.0" layoutY="139.0" prefHeight="51.0" prefWidth="318.0" promptText="Nome de usuário" unFocusColor="WHITE">
+      <JFXTextField fx:id="txtNomeUsuario" focusColor="WHITE" labelFloat="true" layoutX="528.0" layoutY="139.0" prefHeight="51.0" prefWidth="318.0" promptText="Nome de usuário" unFocusColor="WHITE">
          <font>
             <Font size="24.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtfEmail" focusColor="WHITE" labelFloat="true" layoutX="528.0" layoutY="272.0" prefHeight="51.0" prefWidth="704.0" promptText="E-mail" unFocusColor="WHITE">
+      <JFXTextField fx:id="txtEmail" focusColor="WHITE" labelFloat="true" layoutX="528.0" layoutY="272.0" prefHeight="51.0" prefWidth="704.0" promptText="E-mail" unFocusColor="WHITE">
          <font>
             <Font size="24.0" />
          </font>
       </JFXTextField>
-      <JFXDatePicker fx:id="dtBirthdate" defaultColor="WHITE" layoutX="912.0" layoutY="162.0" prefHeight="28.0" prefWidth="318.0" promptText="Data de nascimento" style="-fx-border-style: #FFFFFF;" />
-      <JFXButton fx:id="btnAlterar" layoutX="625.0" layoutY="601.0" onAction="#changeRegister" prefHeight="54.0" prefWidth="499.0" style="-fx-background-color: #FFFFFF;" text="Alterar" textFill="#663cfd">
+      <JFXDatePicker fx:id="txtData" defaultColor="WHITE" layoutX="912.0" layoutY="162.0" prefHeight="28.0" prefWidth="318.0" promptText="Data de nascimento" />
+      <JFXTextField fx:id="txtSenha" focusColor="WHITE" labelFloat="true" layoutX="527.0" layoutY="406.0" prefHeight="51.0" prefWidth="318.0" promptText="Nova senha" unFocusColor="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtConfirmarSenha" focusColor="WHITE" labelFloat="true" layoutX="910.0" layoutY="406.0" prefHeight="51.0" prefWidth="318.0" promptText="Confirmar senha" unFocusColor="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton layoutX="625.0" layoutY="601.0" prefHeight="54.0" prefWidth="499.0" style="-fx-background-color: #FFFFFF;" text="Alterar" textFill="#663cfd">
          <font>
             <Font name="System Bold" size="24.0" />
-         </font>
-      </JFXButton>
-      <JFXPasswordField fx:id="pfPass" focusColor="WHITE" labelFloat="true" layoutX="527.0" layoutY="406.0" prefHeight="51.0" prefWidth="318.0" promptText="Nova senha" unFocusColor="WHITE">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </JFXPasswordField>
-      <JFXPasswordField fx:id="pfConfirmPass" focusColor="WHITE" labelFloat="true" layoutX="910.0" layoutY="406.0" prefHeight="51.0" prefWidth="318.0" promptText="Confirmar nova senha" unFocusColor="WHITE">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </JFXPasswordField>
-      <JFXButton fx:id="btnQuit" alignment="CENTER_RIGHT" layoutX="27.0" layoutY="655.0" onAction="#backHome" prefHeight="28.0" prefWidth="63.0" style="-fx-background-color: #FFFFFF;" text="Sair" textFill="#663cfd">
-         <font>
-            <Font name="System Bold" size="12.0" />
          </font>
       </JFXButton>
    </children>

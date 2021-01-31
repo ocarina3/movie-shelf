@@ -2,22 +2,13 @@ package view.changeData;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import model.ModelUser;
-import model.entity.User;
-import utils.Dialog;
-import view.principal.Main;
 
 import javax.swing.text.html.ImageView;
 import java.awt.*;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class ChangeDataController implements Initializable {
+public class ChangeDataController {
 
     @FXML
     private ImageView imgAlterarDados;
@@ -26,43 +17,23 @@ public class ChangeDataController implements Initializable {
     private Rectangle rctBackground;
 
     @FXML
-    private JFXTextField txtfUser;
+    private JFXTextField txtNomeUsuario;
 
     @FXML
-    private JFXTextField txtfEmail;
+    private JFXTextField txtEmail;
 
     @FXML
-    private JFXDatePicker dtBirthdate;
+    private JFXDatePicker txtData;
 
     @FXML
-    private JFXPasswordField pfPass;
+    private JFXTextField txtSenha;
 
     @FXML
-    private JFXPasswordField pfConfirmPass;
+    private JFXTextField txtConfirmarSenha;
 
     @FXML
     private JFXButton btnAlterar;
 
-    @FXML
-    private JFXButton btnQuit;
-
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        Main.addOnChangesScreenListener(new Main.OnChangeScreen() {
-            @Override
-            public void onScreenChanged(String newScreen, String currentUser) {
-                    txtfUser.setText(ModelUser.getInstance().readUsersByEmail(currentUser).getName());
-                    txtfEmail.setText(ModelUser.getInstance().readUsersByEmail(currentUser).getEmail());
-                    dtBirthdate.setValue(ModelUser.getInstance().readUsersByEmail(currentUser).getBirthDate());
-            }
-        });
-    }
-
-    public void changeRegister(ActionEvent event) {
-    }
-
-    public void backHome(ActionEvent event) {Main.changeScreen("home");}
 
 
 
