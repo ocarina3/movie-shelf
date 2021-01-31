@@ -2,3 +2,8 @@ JFXTextField {
     -fx-prompt-text-fill: white;
     -fx-text-fill: white;
 }
+
+JFXTextArea {
+    -fx-prompt-text-fill: white;
+    -fx-text-fill: white;
+}

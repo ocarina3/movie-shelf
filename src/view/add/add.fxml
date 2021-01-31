@@ -25,7 +25,7 @@
          </font>
       </Text>
       <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#2300a0" height="280.0" layoutX="330.0" layoutY="388.0" stroke="BLACK" strokeType="INSIDE" width="816.0" />
-      <JFXTextArea focusColor="BLACK" layoutX="348.0" layoutY="399.0" prefHeight="261.0" prefWidth="785.0" promptText="Sinopse:" unFocusColor="#ff000000" wrapText="true">
+      <JFXTextArea focusColor="#ffffff00" layoutX="348.0" layoutY="399.0" prefHeight="261.0" prefWidth="785.0" promptText="Sinopse" unFocusColor="#ffffff00" wrapText="true">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
