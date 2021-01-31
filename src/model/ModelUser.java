@@ -76,8 +76,8 @@ public class ModelUser {
     //_______________________________________________________________________________________________________________
     //UPDATE
     public boolean updateUser(User user) {
-        if(repositoryUser.readUsersById(String.format("%d",user.getId())) != null &&
-            repositoryUser.readUsersByEmail(user.getEmail()) == null ){
+        if(readUsersById(user.getId()) != null &&
+        (readUsersByEmail(user.getEmail()) == null|| readUsersByEmail(user.getEmail()).equals(user)) ){
             repositoryUser.updateUser(user);
             return true;
         } else {
