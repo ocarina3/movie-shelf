@@ -61,11 +61,6 @@ public class Main extends Application {
         Parent fxmlUpdateMovies = FXMLLoader.load(getClass().getResource("../update/update.fxml"));
         updateMovies = new Scene(fxmlUpdateMovies);
 
-       // Parent fxmlList = FXMLLoader.load(getClass().getResource("../list/list.fxml"));
-       // listScene = new Scene(fxmlList);
-
-
-
         primaryStage.setTitle("Ocarina");
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../resources/icone.png")));
