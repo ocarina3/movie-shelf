@@ -47,15 +47,21 @@ public class ModelMovie {
         return repositoryMovie.searchMovie(value);
     }
 
-    public void updateMovie(Movie movie) {
+    public boolean updateMovie(Movie movie) {
         if(repositoryMovie.readMoviesById(String.format("%d", movie.getId())) != null) {
             repositoryMovie.updateMovie(movie);
+            return true;
+        } else {
+            return false;
         }
     }
 
-    public void deleteMovieByName(Movie movie) {
+    public boolean deleteMovieByName(Movie movie) {
         if(repositoryMovie.readMoviesByName(movie.getName()) != null) {
             repositoryMovie.deleteMovieByName(movie.getName());
+            return true;
+        } else {
+            return false;
         }
     }
 

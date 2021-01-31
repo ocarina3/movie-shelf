@@ -30,7 +30,7 @@
          </font>
       </JFXButton>
       <Line fx:id="lineListMovies" endX="72.25" layoutX="656.0" layoutY="332.0" startX="-86.0" stroke="#663cfd" />
-      <JFXButton fx:id="btnAddMovies" focusTraversable="false" layoutX="538.0" layoutY="366.0" onAction="#loadImg" prefHeight="39.0" prefWidth="117.0" text="Adicionar" textFill="WHITE">
+      <JFXButton fx:id="btnAddMovies" focusTraversable="false" layoutX="538.0" layoutY="366.0" onAction="#addMovie" prefHeight="39.0" prefWidth="117.0" text="Adicionar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -114,6 +114,5 @@
             <Font size="48.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnSecret" layoutX="761.0" layoutY="112.0" onAction="#addMovie" prefHeight="76.0" prefWidth="59.0" text=" " />
    </children>
 </AnchorPane>

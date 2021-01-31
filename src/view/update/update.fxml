@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.image.Image?>
@@ -35,12 +36,12 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtfGenre" focusColor="WHITE" labelFloat="true" layoutX="815.0" layoutY="192.0" prefWidth="331.0" promptText="Gênero:" unFocusColor="#4717f6">
+      <JFXTextField fx:id="txtfDirector" focusColor="WHITE" labelFloat="true" layoutX="815.0" layoutY="192.0" prefWidth="331.0" promptText="Diretor:" unFocusColor="#4717f6">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtfRate" focusColor="WHITE" labelFloat="true" layoutX="330.0" layoutY="298.0" prefWidth="331.0" promptText="Nota:" unFocusColor="#4717f6">
+      <JFXTextField fx:id="txtfMinAge" focusColor="WHITE" labelFloat="true" layoutX="815.0" layoutY="318.0" prefWidth="331.0" promptText="Idade Minima:" unFocusColor="#4717f6">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -70,5 +71,6 @@
             <Image url="@../resources/search.png" />
          </image>
       </ImageView>
+      <JFXComboBox fx:id="cbGenre" focusColor="#405aa800" layoutX="330.0" layoutY="312.0" prefHeight="51.0" prefWidth="213.0" promptText="Gênero" style="-fx-background-color: #2300A0;" unFocusColor="#4d4d4d00" />
    </children>
 </AnchorPane>

@@ -38,9 +38,7 @@ public class FavoriteMoviesController implements Initializable {
         int posX = 74;
         int posY = 155;
         int i = 1;
-
         for(Movie movie : ModelUser.getInstance().readFavoriteMovies(ModelUser.getInstance().readUsersByEmail(currentUserEmail))){
-            System.out.println(currentUserEmail);
             EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent e)
                 {

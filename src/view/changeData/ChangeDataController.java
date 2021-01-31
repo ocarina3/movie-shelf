@@ -75,7 +75,7 @@ public class ChangeDataController implements Initializable {
                 if(update == false){
                     utils.Dialog.error("Erro ao atualizar");
                 } else {
-                    utils.Dialog.information("Cadastro Conluído");
+                    utils.Dialog.information("Atualização Conluída");
                     Main.changeScreen("login");
                 }
             } else {

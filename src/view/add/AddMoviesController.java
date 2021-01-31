@@ -79,9 +79,10 @@ public class AddMoviesController implements Initializable {
                 txtaSinopse.setText("");
                 txtfDirector.setText("");
                 txtfName.setText("");
+                txtfMinAge.setText("");
                 cbGenre.setValue("Gênero");
                 Dialog.information("Cadastro Conluído");
-                Main.changeScreen("adm");
+                Main.changeScreen("addMovies");
             }
         }
     }
