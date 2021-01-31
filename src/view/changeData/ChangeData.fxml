@@ -10,7 +10,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.changeData.ChangeDataController">
    <children>
       <ImageView fitHeight="720.0" fitWidth="574.0">
@@ -50,5 +49,10 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXButton>
+      <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="33.0" layoutY="660.0">
+         <image>
+            <Image url="@../resources/x_purple_icon.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
