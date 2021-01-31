@@ -31,6 +31,7 @@ public class Main extends Application {
     private static Scene listScene;
     private static Scene changeDataScene;
     private static Scene addMovies;
+    private static Scene updateMovies;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -56,6 +57,9 @@ public class Main extends Application {
 
         Parent fxmlAddMovies = FXMLLoader.load(getClass().getResource("../add/add.fxml"));
         addMovies = new Scene(fxmlAddMovies);
+
+        Parent fxmlUpdateMovies = FXMLLoader.load(getClass().getResource("../update/update.fxml"));
+        updateMovies = new Scene(fxmlUpdateMovies);
 
        // Parent fxmlList = FXMLLoader.load(getClass().getResource("../list/list.fxml"));
        // listScene = new Scene(fxmlList);
@@ -199,6 +203,11 @@ public class Main extends Application {
             case "addMovies":
                 stage.setScene(addMovies);
                 notifyAllListeners("addMovies", currentUser);
+                break;
+            case "updateMovies":
+                stage.setScene(updateMovies);
+                notifyAllListeners("updateMovies", currentUser);
+                break;
         }
     }
 

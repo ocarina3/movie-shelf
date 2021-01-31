@@ -32,9 +32,12 @@ public class ModelUser {
         }else{return false;}
     }
 
-    public void createAdmin(User user) {
+    public boolean createAdmin(User user) {
         if(repositoryUser.readUsersByEmail(user.getEmail()) == null){
             repositoryUser.createAdmin(user);
+            return true;
+        } else {
+            return false;
         }
     }
     public void favoriteMovies(User user , Movie movie){

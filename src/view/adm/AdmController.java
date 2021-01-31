@@ -88,6 +88,11 @@ public class AdmController {
     }
 
     @FXML
+    void updateMovie(ActionEvent event) {
+        Main.changeScreen("updateMovies");
+    }
+
+    @FXML
     void loadImg(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
 
