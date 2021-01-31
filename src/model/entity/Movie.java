@@ -24,7 +24,6 @@ public class Movie {
     public Movie(String name, String movieDirector, Genre movieGenre, String synopsis, int minimumAge) {
         DecimalFormat decimalFormat = new DecimalFormat("#.#");
 
-        this.id = id;
         this.name = name;
         this.movieDirector = movieDirector;
         this.movieGenre = movieGenre;

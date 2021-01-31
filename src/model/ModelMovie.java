@@ -22,9 +22,12 @@ public class ModelMovie {
         repositoryMovie = new RepositoryMovie();
     }
 
-    public void createMovie(Movie movie) {
+    public boolean createMovie(Movie movie) {
         if(repositoryMovie.readMoviesByName(movie.getName()) != null) {
             repositoryMovie.createMovie(movie);
+            return true;
+        } else {
+            return false;
         }
     }
 

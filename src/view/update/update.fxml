@@ -14,38 +14,38 @@
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#663cfd" height="720.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" />
       <JFXButton layoutX="55.0" layoutY="150.0" prefHeight="238.0" prefWidth="185.0" ripplerFill="#9a7eff" style="-fx-background-color: #2300A0;" text=" " />
-      <ImageView disable="true" fitHeight="75.0" fitWidth="75.0" layoutX="110.0" layoutY="231.0">
+      <ImageView fx:id="imgMovie" disable="true" fitHeight="75.0" fitWidth="75.0" layoutX="110.0" layoutY="231.0">
          <image>
             <Image url="@../resources/plus.png" />
          </image>
       </ImageView>
-      <Text fill="WHITE" layoutX="55.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adicionar filmes" wrappingWidth="344.1357421875">
+      <Text fill="WHITE" layoutX="55.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alterar filmes" wrappingWidth="344.1357421875">
          <font>
             <Font name="System Bold" size="45.0" />
          </font>
       </Text>
       <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#2300a0" height="280.0" layoutX="330.0" layoutY="388.0" stroke="BLACK" strokeType="INSIDE" width="816.0" />
-      <JFXTextArea focusColor="#ffffff00" layoutX="348.0" layoutY="399.0" prefHeight="261.0" prefWidth="785.0" promptText="Sinopse" unFocusColor="#ffffff00" wrapText="true">
+      <JFXTextArea fx:id="txtaSinopse" focusColor="#ffffff00" layoutX="348.0" layoutY="399.0" prefHeight="261.0" prefWidth="785.0" promptText="Sinopse" unFocusColor="#ffffff00" wrapText="true">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXTextArea>
-      <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="330.0" layoutY="192.0" prefWidth="331.0" promptText="Nome:" unFocusColor="#4717f6">
+      <JFXTextField fx:id="txtfName" focusColor="WHITE" labelFloat="true" layoutX="330.0" layoutY="192.0" prefWidth="331.0" promptText="Nome:" unFocusColor="#4717f6">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXTextField>
-      <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="815.0" layoutY="192.0" prefWidth="331.0" promptText="Gênero:" unFocusColor="#4717f6">
+      <JFXTextField fx:id="txtfGenre" focusColor="WHITE" labelFloat="true" layoutX="815.0" layoutY="192.0" prefWidth="331.0" promptText="Gênero:" unFocusColor="#4717f6">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXTextField>
-      <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="330.0" layoutY="298.0" prefWidth="331.0" promptText="Nota:" unFocusColor="#4717f6">
+      <JFXTextField fx:id="txtfRate" focusColor="WHITE" labelFloat="true" layoutX="330.0" layoutY="298.0" prefWidth="331.0" promptText="Nota:" unFocusColor="#4717f6">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXTextField>
-      <JFXButton fx:id="btnCadastro" layoutX="55.0" layoutY="617.0" onAction="#cadastrar" prefHeight="44.0" prefWidth="185.0" style="-fx-background-color: #FFFFFF;" text="Cadastrar" textFill="#663cfd">
+      <JFXButton fx:id="btnChange" layoutX="55.0" layoutY="617.0" onAction="#changeMovie" prefHeight="44.0" prefWidth="185.0" style="-fx-background-color: #FFFFFF;" text="Alterar" textFill="#663cfd">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -58,6 +58,16 @@
       <ImageView disable="true" fitHeight="18.0" fitWidth="18.0" layoutX="1156.0" layoutY="75.0">
          <image>
             <Image url="@../resources/x_icon.png" />
+         </image>
+      </ImageView>
+      <JFXTextField fx:id="txtfSearch" focusColor="WHITE" labelFloat="true" layoutX="582.0" layoutY="56.0" prefWidth="331.0" unFocusColor="#4717f6">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXTextField>
+      <ImageView fitHeight="39.0" fitWidth="43.0" layoutX="532.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/search.png" />
          </image>
       </ImageView>
    </children>

@@ -24,7 +24,7 @@
             <Image url="@../resources/cadeado_adm.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btnListMovies" focusTraversable="false" layoutX="537.0" layoutY="301.0" prefHeight="39.0" prefWidth="222.0" text="Listagem de filmes" textFill="WHITE">
+      <JFXButton fx:id="btnListMovies" focusTraversable="false" layoutX="537.0" layoutY="301.0" onAction="#listMovies" prefHeight="39.0" prefWidth="222.0" text="Listagem de filmes" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
