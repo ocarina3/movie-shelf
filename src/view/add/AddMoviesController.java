@@ -1,10 +1,8 @@
-package view.addMovies;
+package view.add;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import view.principal.Main;
-
-import java.awt.event.ActionEvent;
 
 public class AddMoviesController {
 

@@ -39,6 +39,8 @@ public class HomeController implements Initializable {
     @FXML
     private JFXButton btnChangeUser;
 
+    String email;
+
     @FXML
     void backLogin(ActionEvent event) {
         Main.changeScreen("login");
@@ -49,6 +51,11 @@ public class HomeController implements Initializable {
         Main.changeScreen("list", lbUsername.getText());
     }
 
+    @FXML
+    void changeData(ActionEvent event){
+        Main.changeScreen("changeData", email);
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Main.addOnChangesScreenListener(new Main.OnChangeScreen() {
@@ -56,11 +63,9 @@ public class HomeController implements Initializable {
             public void onScreenChanged(String newScreen, String currentUser) {
                 if(newScreen.equals("home")) {
                     lbUsername.setText(ModelUser.getInstance().readUsersByEmail(currentUser).getName());
+                    email = currentUser;
                 }
             }
         });
     }
-
-    @FXML
-    void changeData(ActionEvent event){Main.changeScreen("changeData");}
 }

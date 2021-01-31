@@ -1,9 +1,7 @@
 package view.principal;
 
-import data.base.Connect;
 import data.base.CreateDatabase;
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -21,7 +19,6 @@ import model.entity.User;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class Main extends Application {
@@ -54,10 +51,10 @@ public class Main extends Application {
         Parent fxmlAdm = FXMLLoader.load(getClass().getResource("../adm/adm.fxml"));
         admScene = new Scene(fxmlAdm);
 
-        Parent fxmlChangeData = FXMLLoader.load(getClass().getResource("../changeData/ChangeData.fxml"));
+        Parent fxmlChangeData = FXMLLoader.load(getClass().getResource("../changedata/changedata.fxml"));
         changeDataScene = new Scene(fxmlChangeData);
 
-        Parent fxmlAddMovies = FXMLLoader.load(getClass().getResource("../addMovies/addmovies.fxml"));
+        Parent fxmlAddMovies = FXMLLoader.load(getClass().getResource("../add/add.fxml"));
         addMovies = new Scene(fxmlAddMovies);
 
        // Parent fxmlList = FXMLLoader.load(getClass().getResource("../list/list.fxml"));

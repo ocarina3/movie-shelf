@@ -60,9 +60,12 @@ public class ModelUser {
     public boolean isFavotited(User user, Movie movie) { return repositoryUser.isFavotited(user, movie);}
     //_______________________________________________________________________________________________________________
     //UPDATE
-    public void updateUser(User user) {
+    public boolean updateUser(User user) {
         if(repositoryUser.readUsersById(String.format("%d",user.getId())) != null){
             repositoryUser.updateUser(user);
+            return true;
+        } else {
+            return false;
         }
     }
     
