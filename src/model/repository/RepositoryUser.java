@@ -272,7 +272,7 @@ public class RepositoryUser { //Criação de Usuario passando suas informações
     //UPDATE
 
     public void updateUser(User user) {
-        if(!(readUsersByEmail(user.getEmail()).equals(readUsersById(String.format("%d",user.getId()))))) return;
+
         String sql = "UPDATE user SET name = ?, email = ?, password = ?, birthDate = ?  WHERE id = ?;";
 
         c.connect();

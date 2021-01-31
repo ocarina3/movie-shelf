@@ -42,7 +42,7 @@ public class ModelUser {
     }
     //_______________________________________________________________________________________________________________
     //READ
-    
+
     public User readUsersById(int value){
         return repositoryUser.readUsersById(String.format("%d",value));
     }
@@ -57,11 +57,24 @@ public class ModelUser {
 
     public ArrayList <Movie> readFavoriteMovies(User user){return repositoryUser.readFavoriteMovies(user);}
 
-    public boolean isFavotited(User user, Movie movie) { return repositoryUser.isFavotited(user, movie);}
+    public boolean isFavotited(User user, Movie movie) {
+        if(ModelUser.getInstance().readUsersById(user.getId()) != null){
+            return repositoryUser.isFavotited(user, movie);
+        }
+        else return false;
+        }
+
+    public boolean isAdmin(User user){
+        if(ModelUser.getInstance().readUsersById(user.getId()) != null){
+            return repositoryUser.isAdmin(user);
+        }
+        else return false;
+    }
     //_______________________________________________________________________________________________________________
     //UPDATE
     public boolean updateUser(User user) {
-        if(repositoryUser.readUsersById(String.format("%d",user.getId())) != null){
+        if(repositoryUser.readUsersById(String.format("%d",user.getId())) != null &&
+            repositoryUser.readUsersByEmail(user.getEmail()) == null ){
             repositoryUser.updateUser(user);
             return true;
         } else {
