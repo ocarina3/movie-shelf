@@ -56,6 +56,15 @@ public class ModelMovie {
         }
     }
 
+    public boolean deleteMovieById(String value) {
+        if(repositoryMovie.readMoviesById(value) != null) {
+            repositoryMovie.deleteMovieById(value);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public boolean deleteMovieByName(Movie movie) {
         if(repositoryMovie.readMoviesByName(movie.getName()) != null) {
             repositoryMovie.deleteMovieByName(movie.getName());

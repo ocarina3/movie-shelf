@@ -244,6 +244,10 @@ public class RepositoryMovie {
         }
     }
 
+    public void deleteMovieById(String value) {
+        deleteMovie("id",value);
+    }
+
     public void deleteMovieByName(String value) {
         deleteMovie("name",value);
     }
