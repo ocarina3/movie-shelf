@@ -49,6 +49,10 @@ public class AddMoviesController implements Initializable {
     @FXML
     private JFXTextField txtfMinAge;
 
+    String email;
+
+    int movieId;
+
     @FXML
     void createMovie(ActionEvent event) {
         if (txtfName.getText().equals("") || txtfDirector.equals("") || txtaSinopse.getText().equals("")|| cbGenre.getValue().equals("")) {
@@ -90,7 +94,7 @@ public class AddMoviesController implements Initializable {
     @FXML
     public void backHomeAdm(javafx.event.ActionEvent event) {
 
-        Main.changeScreen("adm");
+        Main.changeScreen("adm", email);
     }
 
     @Override
@@ -102,6 +106,14 @@ public class AddMoviesController implements Initializable {
         cbGenre.getItems().add(Genre.FANTASY.getDescription());
         cbGenre.getItems().add(Genre.HORROR.getDescription());
 
+        Main.addOnChangesScreenListener(new Main.OnChangeScreen() {
+            @Override
+            public void onScreenChanged(String newScreen, String currentUser) {
+                if(newScreen.equals("addMovies")) {
+                    email = currentUser;
+                }
+            }
+        });
 
 
     }
