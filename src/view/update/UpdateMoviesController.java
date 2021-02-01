@@ -98,7 +98,7 @@ public class UpdateMoviesController implements Initializable {
                 cbGenre.setValue("Gênero");
                 txtfSearch.setText("");
                 movieId = 0;
-                Main.changeScreen("updateMovies");
+                Main.changeScreen("updateMovies", email);
             }
         }
     }

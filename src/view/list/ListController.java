@@ -2,6 +2,7 @@ package view.list;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.JFXToggleButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -72,12 +73,29 @@ public class ListController implements Initializable {
     private JFXButton btnBack;
 
     @FXML
+    private JFXToggleButton tgbDirector;
+
+    @FXML
     void back(ActionEvent event){
         if(ModelUser.getInstance().isAdmin(ModelUser.getInstance().readUsersByEmail(email)) == true){
             Main.changeScreen("adm", email);
         } else {
             Main.changeScreen("home", email);
         }
+    }
+
+    @FXML
+    void isDirector(ActionEvent event) {
+        if(tgbDirector.isSelected() == true) {
+            tgbDirector.setText("Diretor");
+        } else {
+            tgbDirector.setText("Nome do Filme");
+        }
+    }
+
+    @FXML
+    void bestRatingsMovies(ActionEvent event) throws IOException {
+        loadPage("bestratings/bestratings.fxml");
     }
 
     @FXML
@@ -88,7 +106,13 @@ public class ListController implements Initializable {
     @FXML
     void searchMovies(ActionEvent event) throws IOException {
         SearchMoviesController.search = txtfSearch.getText();
-        loadPage("searchmovies.fxml");
+        DirectorSearchMoviesController.search = txtfSearch.getText();
+        System.out.println(tgbDirector.isSelected());
+        if(tgbDirector.isSelected() == false) {
+            loadPage("searchmovies.fxml");
+        } else {
+            loadPage("directorsearchmovies.fxml");
+        }
     }
 
     @FXML
@@ -149,6 +173,8 @@ public class ListController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        tgbDirector.setText("Nome do Filme");
 
     }
 }

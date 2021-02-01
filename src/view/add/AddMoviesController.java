@@ -87,14 +87,13 @@ public class AddMoviesController implements Initializable {
                 txtfMinAge.setText("");
                 cbGenre.setValue("Gênero");
                 Dialog.information("Cadastro Conluído");
-                Main.changeScreen("addMovies");
+                Main.changeScreen("addMovies", email);
             }
         }
     }
 
     @FXML
     public void backHomeAdm(javafx.event.ActionEvent event) {
-
         Main.changeScreen("adm", email);
     }
 
