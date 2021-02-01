@@ -50,6 +50,8 @@ public class ListController implements Initializable {
     @FXML
     private JFXButton btnFavorites;
 
+    @FXML
+    private JFXButton btnSearch;
 
     @FXML
     private JFXTextField txtfSearch;
@@ -63,6 +65,12 @@ public class ListController implements Initializable {
     @FXML
     void allMovies(ActionEvent event) throws IOException {
         loadPage("allmovies.fxml");
+    }
+
+    @FXML
+    void searchMovies(ActionEvent event) throws IOException {
+        SearchMoviesController.search = txtfSearch.getText();
+        loadPage("searchmovies.fxml");
     }
 
     @FXML

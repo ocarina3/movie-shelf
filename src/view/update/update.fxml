@@ -61,16 +61,17 @@
             <Image url="@../resources/x_icon.png" />
          </image>
       </ImageView>
-      <JFXTextField fx:id="txtfSearch" focusColor="WHITE" labelFloat="true" layoutX="582.0" layoutY="56.0" prefWidth="331.0" unFocusColor="#4717f6">
+      <JFXTextField fx:id="txtfSearch" focusColor="WHITE" labelFloat="true" layoutX="582.0" layoutY="56.0" prefHeight="39.0" prefWidth="440.0" unFocusColor="#4717f6">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXTextField>
-      <ImageView fitHeight="39.0" fitWidth="43.0" layoutX="532.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+      <JFXComboBox fx:id="cbGenre" focusColor="#405aa800" layoutX="330.0" layoutY="312.0" prefHeight="51.0" prefWidth="213.0" promptText="Gênero" style="-fx-background-color: #2300A0;" unFocusColor="#4d4d4d00" />
+      <JFXButton fx:id="btnSearch" layoutX="517.0" layoutY="56.0" onAction="#searchMovie" prefHeight="51.0" prefWidth="52.0" ripplerFill="#9a7eff" style="-fx-background-color: #2300A0;" text=" " />
+      <ImageView disable="true" fitHeight="35.0" fitWidth="38.0" layoutX="525.0" layoutY="64.0">
          <image>
             <Image url="@../resources/search.png" />
          </image>
       </ImageView>
-      <JFXComboBox fx:id="cbGenre" focusColor="#405aa800" layoutX="330.0" layoutY="312.0" prefHeight="51.0" prefWidth="213.0" promptText="Gênero" style="-fx-background-color: #2300A0;" unFocusColor="#4d4d4d00" />
    </children>
 </AnchorPane>
