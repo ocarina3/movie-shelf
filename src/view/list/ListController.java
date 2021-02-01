@@ -21,6 +21,8 @@ import java.util.ResourceBundle;
 
 public class ListController implements Initializable {
 
+    public static String email;
+
     @FXML
     private Label lbLogo;
 
@@ -121,7 +123,8 @@ public class ListController implements Initializable {
             public void onScreenChanged(String newScreen, String currentUser) {
                 if(newScreen.equals("list")) {
                     lbUsername.setText(ModelUser.getInstance().readUsersByEmail(currentUser).getName());
-                    FavoriteMoviesController.currentUserEmail = currentUser;
+                    email = currentUser;
+                    FavoriteMoviesController.currentUserEmail = email;
                 }
             }
         });
