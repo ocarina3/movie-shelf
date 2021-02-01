@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -23,7 +24,7 @@
             <Font size="24.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtfEmail" focusColor="#4717f6" layoutX="528.0" layoutY="272.0" prefHeight="51.0" prefWidth="704.0" promptText="E-mail" unFocusColor="#4717f6">
+      <JFXTextField fx:id="txtfEmail" focusColor="#4717f6" layoutX="528.0" layoutY="290.0" prefHeight="51.0" prefWidth="704.0" promptText="E-mail" unFocusColor="#4717f6">
          <font>
             <Font size="24.0" />
          </font>
@@ -34,12 +35,12 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </JFXButton>
-      <JFXPasswordField fx:id="pfPass" focusColor="#4717f6" layoutX="527.0" layoutY="406.0" prefHeight="51.0" prefWidth="318.0" promptText="Nova senha" unFocusColor="#4717f6">
+      <JFXPasswordField fx:id="pfPass" focusColor="#4717f6" layoutX="527.0" layoutY="450.0" prefHeight="51.0" prefWidth="318.0" promptText="Nova senha" unFocusColor="#4717f6">
          <font>
             <Font size="24.0" />
          </font>
       </JFXPasswordField>
-      <JFXPasswordField fx:id="pfConfirmPass" focusColor="#4717f6" layoutX="910.0" layoutY="406.0" prefHeight="51.0" prefWidth="318.0" promptText="Confirmar nova senha" unFocusColor="#4717f6">
+      <JFXPasswordField fx:id="pfConfirmPass" focusColor="#4717f6" layoutX="910.0" layoutY="450.0" prefHeight="51.0" prefWidth="318.0" promptText="Confirmar nova senha" unFocusColor="#4717f6">
          <font>
             <Font size="24.0" />
          </font>
@@ -54,5 +55,30 @@
             <Image url="@../resources/x_purple_icon.png" />
          </image>
       </ImageView>
+      <Label layoutX="528.0" layoutY="90.0" text="Nome de Usuário:" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="528.0" layoutY="242.0" text="E-mail:" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="529.0" layoutY="407.0" text="Senha:" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="910.0" layoutY="90.0" text="Data de Nascimento:" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="910.0" layoutY="407.0" text="Confirmar Senha:" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

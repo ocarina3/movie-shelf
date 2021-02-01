@@ -48,6 +48,25 @@ public class UpdateMoviesController implements Initializable {
     @FXML
     private JFXComboBox<String> cbGenre;
 
+    String email;
+
+    int movieId;
+
+    @FXML
+    void searchMovie(ActionEvent event) {
+        for(Movie movie : ModelMovie.getInstance().readAllMovies()){
+            if((movie.getName().equalsIgnoreCase(txtfSearch.getText()))){
+                txtfName.setText(movie.getName());
+                txtfDirector.setText(movie.getMovieDirector());
+                txtaSinopse.setText(movie.getSynopsis());
+                txtfMinAge.setText(Integer.toString(movie.getMinimumAge()));
+                cbGenre.setValue(movie.getMovieGenre().getDescription());
+                movieId = movie.getId();
+
+            }
+        }
+    }
+
     @FXML
     public void changeMovie(javafx.event.ActionEvent event) {
         if (txtfName.getText().equals("") || cbGenre.getValue().equals("") || txtfDirector.getText().equals("") || txtaSinopse.getText().equals("")) {
@@ -55,30 +74,37 @@ public class UpdateMoviesController implements Initializable {
         }else{
             Movie movie;
             if(cbGenre.getValue().equals(Genre.COMEDY.getDescription())) {
-                movie = new Movie(txtfName.getText(), txtfDirector.getText(), Genre.COMEDY, txtaSinopse.getText(), Integer.parseInt(txtfMinAge.getText()));
+                movie = new Movie(movieId, txtfName.getText(), txtfDirector.getText(), Genre.COMEDY, txtaSinopse.getText(), Integer.parseInt(txtfMinAge.getText()));
             } else if (cbGenre.getValue().equals(Genre.HORROR.getDescription())) {
-                movie = new Movie(txtfName.getText(), txtfDirector.getText(), Genre.HORROR, txtaSinopse.getText(), Integer.parseInt(txtfMinAge.getText()));
+                movie = new Movie(movieId, txtfName.getText(), txtfDirector.getText(), Genre.HORROR, txtaSinopse.getText(), Integer.parseInt(txtfMinAge.getText()));
             } else if (cbGenre.getValue().equals(Genre.ACTION_ADVENTURE.getDescription())) {
-                movie = new Movie(txtfName.getText(), txtfDirector.getText(), Genre.ACTION_ADVENTURE, txtaSinopse.getText(), Integer.parseInt(txtfMinAge.getText()));
+                movie = new Movie(movieId, txtfName.getText(), txtfDirector.getText(), Genre.ACTION_ADVENTURE, txtaSinopse.getText(), Integer.parseInt(txtfMinAge.getText()));
             } else if (cbGenre.getValue().equals(Genre.FANTASY.getDescription())) {
-                movie = new Movie(txtfName.getText(), txtfDirector.getText(), Genre.FANTASY, txtaSinopse.getText(), Integer.parseInt(txtfMinAge.getText()));
+                movie = new Movie(movieId, txtfName.getText(), txtfDirector.getText(), Genre.FANTASY, txtaSinopse.getText(), Integer.parseInt(txtfMinAge.getText()));
             } else if (cbGenre.getValue().equals(Genre.DRAMA.getDescription())) {
-                movie = new Movie(txtfName.getText(), txtfDirector.getText(), Genre.DRAMA, txtaSinopse.getText(), Integer.parseInt(txtfMinAge.getText()));
+                movie = new Movie(movieId, txtfName.getText(), txtfDirector.getText(), Genre.DRAMA, txtaSinopse.getText(), Integer.parseInt(txtfMinAge.getText()));
             }else {
-                movie = new Movie(txtfName.getText(), txtfDirector.getText(), Genre.SCIENCE_FICTION, txtaSinopse.getText(), Integer.parseInt(txtfMinAge.getText()));
+                movie = new Movie(movieId, txtfName.getText(), txtfDirector.getText(), Genre.SCIENCE_FICTION, txtaSinopse.getText(), Integer.parseInt(txtfMinAge.getText()));
             }
             boolean update = ModelMovie.getInstance().updateMovie(movie);
             if(update == false){
                 utils.Dialog.error("Erro ao atualizar");
             } else {
                 utils.Dialog.information("Atualização Conluída");
-                Main.changeScreen("login");
+                txtfName.setText("");
+                txtfDirector.setText("");
+                txtaSinopse.setText("");
+                txtfMinAge.setText("");
+                cbGenre.setValue("Gênero");
+                txtfSearch.setText("");
+                movieId = 0;
+                Main.changeScreen("updateMovies");
             }
         }
     }
 
     @FXML
-    public void backHomeAdm(javafx.event.ActionEvent event) {  Main.changeScreen("adm");}
+    public void backHomeAdm(javafx.event.ActionEvent event) {  Main.changeScreen("adm", email);}
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -88,5 +114,13 @@ public class UpdateMoviesController implements Initializable {
         cbGenre.getItems().add(Genre.SCIENCE_FICTION.getDescription());
         cbGenre.getItems().add(Genre.FANTASY.getDescription());
         cbGenre.getItems().add(Genre.HORROR.getDescription());
+        Main.addOnChangesScreenListener(new Main.OnChangeScreen() {
+            @Override
+            public void onScreenChanged(String newScreen, String currentUser) {
+                if(newScreen.equals("updateMovies")) {
+                    email = currentUser;
+                }
+            }
+        });
     }
 }

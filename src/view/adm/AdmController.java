@@ -91,7 +91,7 @@ public class AdmController implements Initializable {
     }
 
     @FXML
-    void addMovie(ActionEvent event){Main.changeScreen("addMovies");}
+    void addMovie(ActionEvent event){Main.changeScreen("addMovies", email);}
 
     @FXML
     void backLogin(ActionEvent event) {
@@ -100,7 +100,7 @@ public class AdmController implements Initializable {
 
     @FXML
     void updateMovie(ActionEvent event) {
-        Main.changeScreen("updateMovies");
+        Main.changeScreen("updateMovies", email);
     }
 
     @FXML
