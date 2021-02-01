@@ -72,6 +72,7 @@ public class InfoMoviesController implements Initializable {
                 Rating rt = new Rating(0, Rate, ModelUser.getInstance().readUsersByEmail(ListController.email).getId(), movieId);
                 ModelRating.getInstance().createRating(rt);
             }
+            Dialog.information("Avaliação Recolhida");
         }
     }
 
