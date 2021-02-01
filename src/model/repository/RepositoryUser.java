@@ -246,8 +246,14 @@ public class RepositoryUser { //Criação de Usuario passando suas informações
             p.setInt(2,movie.getId());
             result = p.executeQuery();
 
-
              r = true;
+            try{
+            int i = result.getInt("id_user");
+            int j = result.getInt("id_movie");}
+            catch (SQLException e) {
+                r = false;
+            }
+
         } catch (SQLException e) {
 
             e.printStackTrace();

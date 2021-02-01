@@ -61,7 +61,7 @@ public class ModelUser {
     public ArrayList <Movie> readFavoriteMovies(User user){return repositoryUser.readFavoriteMovies(user);}
 
     public boolean isFavotited(User user, Movie movie) {
-        if(ModelUser.getInstance().readUsersById(user.getId()) != null){
+        if(readUsersById(user.getId()) != null){
             return repositoryUser.isFavotited(user, movie);
         }
         else return false;
