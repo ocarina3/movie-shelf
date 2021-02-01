@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import model.ModelUser;
+import view.list.favorite.FavoriteMoviesController;
 import view.principal.Main;
 
 import java.io.IOException;
@@ -64,7 +65,7 @@ public class ListController implements Initializable {
 
     @FXML
     void allMovies(ActionEvent event) throws IOException {
-        loadPage("allmovies.fxml");
+        loadPage("allmovies/allmovies.fxml");
     }
 
     @FXML
@@ -75,37 +76,37 @@ public class ListController implements Initializable {
 
     @FXML
     void dramaMovies(ActionEvent event) throws IOException {
-        loadPage("dramamovies.fxml");
+        loadPage("drama/dramamovies.fxml");
     }
 
     @FXML
     void comedyMovies(ActionEvent event) throws IOException {
-        loadPage("comedymovies.fxml");
+        loadPage("comedy/comedymovies.fxml");
     }
 
     @FXML
     void terrorMovies(ActionEvent event) throws IOException {
-        loadPage("terrormovies.fxml");
+        loadPage("terror/terrormovies.fxml");
     }
 
     @FXML
     void actionandadventureMovies(ActionEvent event) throws IOException {
-        loadPage("actionandadventuremovies.fxml");
+        loadPage("action/actionandadventuremovies.fxml");
     }
 
     @FXML
     void fantasyMovies(ActionEvent event) throws IOException {
-        loadPage("fantasymovies.fxml");
+        loadPage("fantasy/fantasymovies.fxml");
     }
 
     @FXML
     void fictionMovies(ActionEvent event) throws IOException {
-        loadPage("fictionmovies.fxml");
+        loadPage("fiction/fictionmovies.fxml");
     }
 
     @FXML
     void favoriteMovies(ActionEvent event) throws IOException {
-        loadPage("favoritemovies.fxml");
+        loadPage("favorite/favoritemovies.fxml");
     }
 
     private void loadPage(String page) throws IOException {
@@ -126,7 +127,7 @@ public class ListController implements Initializable {
         });
 
         try {
-            loadPage("allmovies.fxml");
+            loadPage("allmovies/allmovies.fxml");
         } catch (IOException e) {
             e.printStackTrace();
         }
