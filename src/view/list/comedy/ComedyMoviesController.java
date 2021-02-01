@@ -1,4 +1,4 @@
-package view.list;
+package view.list.comedy;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import model.ModelMovie;
 import model.ModelRating;
 import model.entity.Movie;
+import view.list.InfoMoviesController;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -42,7 +43,7 @@ public class ComedyMoviesController implements Initializable {
                 {
                     InfoMoviesController.movieId = movie.getId();
                     try {
-                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("infomovies.fxml"));
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../infomovies.fxml"));
                         Parent root1 = (Parent) fxmlLoader.load();
                         Stage stage = new Stage();
                         stage.setTitle("Info");
