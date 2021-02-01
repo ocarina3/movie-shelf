@@ -38,6 +38,7 @@ import java.util.logging.Logger;
 
 public class AddMoviesController implements Initializable {
 
+    public BufferedImage bufferedImage;
     @FXML
     private JFXButton btnQuick;
 
@@ -74,11 +75,11 @@ public class AddMoviesController implements Initializable {
 
     @FXML
     void createMovie(ActionEvent event) {
+
         if (txtfName.getText().equals("") || txtfDirector.equals("") || txtaSinopse.getText().equals("")|| cbGenre.getValue().equals("")) {
             Dialog.warning("Favor informar todos campos");
         }else{
             Movie movie;
-
             if(cbGenre.getValue().equals(Genre.COMEDY.getDescription())) {
                  movie = new Movie(txtfName.getText(), txtfDirector.getText(), Genre.COMEDY, txtaSinopse.getText(), Integer.parseInt(txtfMinAge.getText()));
             } else if (cbGenre.getValue().equals(Genre.HORROR.getDescription())) {
@@ -92,6 +93,8 @@ public class AddMoviesController implements Initializable {
             }else {
                  movie = new Movie(txtfName.getText(), txtfDirector.getText(), Genre.SCIENCE_FICTION, txtaSinopse.getText(), Integer.parseInt(txtfMinAge.getText()));
             }
+
+            movie.setImageBuffered(bufferedImage);
 
             System.out.println(movie.toString());
             boolean cadastro = ModelMovie.getInstance().createMovie(movie);
@@ -130,7 +133,7 @@ public class AddMoviesController implements Initializable {
         File file = fileChooser.showOpenDialog(null);
 
         try {
-            BufferedImage bufferedImage = ImageIO.read(file);
+            bufferedImage = ImageIO.read(file);
             Image image = SwingFXUtils.toFXImage(bufferedImage, null);
             ImageIcon myImageView;
             imgMovie.setFitHeight(260);
