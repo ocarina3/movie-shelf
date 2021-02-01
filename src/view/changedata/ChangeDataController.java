@@ -15,6 +15,7 @@ import view.principal.Main;
 import javax.swing.text.html.ImageView;
 import java.awt.*;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class ChangeDataController implements Initializable {
@@ -85,7 +86,11 @@ public class ChangeDataController implements Initializable {
     }
 
     public void backHome(ActionEvent event) {
-        Main.changeScreen("home", email);
+        if(ModelUser.getInstance().isAdmin(ModelUser.getInstance().readUsersByEmail(email)) == true){
+            Main.changeScreen("adm", email);
+        } else {
+            Main.changeScreen("home", email);
+        }
     }
 
 
