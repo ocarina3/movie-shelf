@@ -37,7 +37,8 @@ public class CreateDatabase {
                 "movieDirector varchar," +
                 "movieGenre varchar," +
                 "synopsis varchar ," +
-                "minimumAge integer" +
+                "minimumAge integer," +
+                "images LONGBLOB" +
                 ");";
 
         boolean connected = false;
