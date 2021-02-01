@@ -2,9 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
-<?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXToggleButton?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -33,12 +31,12 @@
          </children></Pane>
       <Label fx:id="lbTitle" layoutX="290.0" layoutY="40.0" text="Title" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font size="24.0" />
          </font>
       </Label>
       <Label layoutX="289.0" layoutY="75.0" text="Gênero: " textFill="WHITE">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
       <Label fx:id="lbGenre" layoutX="349.0" layoutY="75.0" text="Genre" textFill="#bfbfbf">
@@ -53,35 +51,27 @@
       </Pane>
       <Label fx:id="lbSinopse" layoutX="290.0" layoutY="149.0" text="Sinopse" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
-      <JFXButton layoutX="73.0" layoutY="377.0" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: #19016E;" text="Avaliar Filme" textFill="WHITE">
+      <JFXButton layoutX="74.0" layoutY="364.0" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: #19016E;" text="Avaliar Filme" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXButton>
       <JFXToggleButton fx:id="favoriteButton" layoutX="511.0" layoutY="27.0" onAction="#addFavorite" text="Meus Favoritos" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font size="18.0" />
          </font></JFXToggleButton>
-      <Label layoutX="289.0" layoutY="113.0" text="Diretor:" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <Label fx:id="lbDirector" layoutX="349.0" layoutY="113.0" text="Director" textFill="#bfbfbf">
+      <Label layoutX="289.0" layoutY="110.0" text="Diretor:" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="75.0" layoutY="345.0" prefHeight="25.0" prefWidth="70.0" promptText="Nota:" unFocusColor="WHITE">
+      <Label fx:id="lbDirector" layoutX="349.0" layoutY="110.0" text="Director" textFill="#bfbfbf">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font size="15.0" />
          </font>
-         <padding>
-            <Insets bottom="-5.0" />
-         </padding>
-      </JFXTextField>
+      </Label>
    </children>
 </Pane>
