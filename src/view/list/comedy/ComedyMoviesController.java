@@ -84,10 +84,10 @@ public class ComedyMoviesController implements Initializable {
                         pnMovies.getChildren().add(pnRate);
                         Label lbRate = new Label();
                         lbRate.setPrefSize(63, 32);
-                        lbRate.setLayoutX(posX + 80);
+                        lbRate.setLayoutX(posX + 86);
                         lbRate.setLayoutY(posY - 21);
                         lbRate.setId("lbRate");
-                        lbRate.setText("nota" + i);
+                        lbRate.setText(Float.toString(ModelRating.getInstance().readAvgRatingByMovie(ModelMovie.getInstance().readMoviesById(Integer.toString(movie.getId())))));
                         pnMovies.getChildren().add(lbRate);
                         Label lbTitle = new Label();
                         lbTitle.setPrefSize(63, 32);
