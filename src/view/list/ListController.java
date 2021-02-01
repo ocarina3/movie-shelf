@@ -66,6 +66,21 @@ public class ListController implements Initializable {
     private AnchorPane pnScreen;
 
     @FXML
+    private JFXButton btnBestRatings;
+
+    @FXML
+    private JFXButton btnBack;
+
+    @FXML
+    void back(ActionEvent event){
+        if(ModelUser.getInstance().isAdmin(ModelUser.getInstance().readUsersByEmail(email)) == true){
+            Main.changeScreen("adm", email);
+        } else {
+            Main.changeScreen("home", email);
+        }
+    }
+
+    @FXML
     void allMovies(ActionEvent event) throws IOException {
         loadPage("allmovies/allmovies.fxml");
     }

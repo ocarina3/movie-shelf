@@ -69,6 +69,7 @@ public class ComedyMoviesController implements Initializable {
                     btnMovie.setLayoutY(posY);
                     btnMovie.setPrefSize(185, 238);
                     btnMovie.setId("btnMovie");
+                    btnMovie.setOnAction(event);
                     pnMovies.getChildren().add(btnMovie);
                     Pane pnRate = new Pane();
                     pnRate.setPrefSize(63, 32);

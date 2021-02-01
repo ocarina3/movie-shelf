@@ -15,11 +15,17 @@
    <children>
       <Pane prefHeight="153.0" prefWidth="242.0" style="-fx-background-color: #4717F6;">
          <children>
-            <Label fx:id="lbLogo" layoutX="50.0" layoutY="14.0" text="Ocarina" textFill="WHITE">
+            <Label fx:id="lbLogo" layoutX="101.0" layoutY="14.0" text="Ocarina" textFill="WHITE">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
+            <JFXButton fx:id="btnBack" layoutX="27.0" layoutY="11.0" onAction="#back" prefHeight="51.0" prefWidth="52.0" ripplerFill="#af99ff" style="-fx-background-color: #2300A0;" text=" " />
+            <ImageView fx:id="imgBack" disable="true" fitHeight="35.0" fitWidth="38.0" layoutX="35.0" layoutY="19.0">
+               <image>
+                  <Image url="@../resources/backArrow.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <Pane layoutX="242.0" prefHeight="86.0" prefWidth="1039.0" style="-fx-background-color: #663CFD;">
@@ -47,7 +53,7 @@
             </ImageView>
          </children>
       </Pane>
-      <VBox layoutY="151.0" prefHeight="573.0" prefWidth="242.0" style="-fx-background-color: #4717F6;">
+      <VBox layoutY="86.0" prefHeight="638.0" prefWidth="242.0" style="-fx-background-color: #4717F6;">
          <children>
             <JFXButton fx:id="btnAllMovies" alignment="BASELINE_LEFT" onAction="#allMovies" prefHeight="74.0" prefWidth="242.0" text="Todos Filmes" textFill="WHITE">
                <font>
@@ -85,6 +91,11 @@
                </font>
             </JFXButton>
             <JFXButton fx:id="btnFavorites" alignment="BASELINE_LEFT" onAction="#favoriteMovies" prefHeight="74.0" prefWidth="242.0" text="Favoritos" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnBestRatings" alignment="BASELINE_LEFT" onAction="#favoriteMovies" prefHeight="74.0" prefWidth="242.0" text="Favoritos" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
