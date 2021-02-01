@@ -2,6 +2,7 @@ package model;
 
 import model.entity.Movie;
 import model.entity.Rating;
+import model.entity.User;
 import model.repository.RepositoryRating;
 
 import java.util.ArrayList;
@@ -51,6 +52,10 @@ public class ModelRating {
 
     public String readRaterUserName(int rating_id) {
         return repositoryRating.readRaterUserName(rating_id);
+    }
+
+    public ArrayList<Rating> readUserRatingsByMovie(Movie movie, User user) {
+        return repositoryRating.readUserRatingsByMovie(movie, user);
     }
 
     public float readAvgRatingByMovie(Movie movie)  {

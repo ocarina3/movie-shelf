@@ -1,10 +1,13 @@
 package model.repository;
 
 import data.base.Connect;
+import model.ModelUser;
 import model.entity.Movie;
 import model.entity.Rating;
+import model.entity.User;
 import view.principal.Main;
 
+import java.sql.Array;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -136,6 +139,18 @@ public class RepositoryRating {
         }
 
         return ratings;
+    }
+
+    public ArrayList<Rating> readUserRatingsByMovie(Movie movie, User user) {
+        ArrayList<Rating> ratings = this.readRatingsByMovie(movie);
+
+        ArrayList<Rating> filteredRatings = new ArrayList<>();
+
+        for ( Rating rating : ratings ) {
+            if(rating.getId() == user.getId()) filteredRatings.add(rating);
+        }
+
+        return filteredRatings;
     }
 
     public Rating readRatingById(int rating_id){

@@ -95,7 +95,7 @@ public class Main extends Application {
         ModelRating.getInstance().createRating(rating2);
         ModelRating.getInstance().createRating(rating3);
 
-        System.out.println(ModelRating.getInstance().readRatingsByMovie(movie1));
+        System.out.println(ModelRating.getInstance().readUserRatingsByMovie(movie1, user2));
 
         // Delete rating instances
         ArrayList<Rating> ratingsM1 = ModelRating.getInstance().readAllRatingByMovie(movie1);
