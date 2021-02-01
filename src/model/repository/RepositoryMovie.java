@@ -120,10 +120,11 @@ public class RepositoryMovie {
                 movie.setMovieGenre(Genre.valueOf(result.getString("movieGenre")));
                 movie.setSynopsis(result.getString("synopsis"));
                 movie.setMinimumAge(result.getInt("minimumAge"));
+                movie.setImageByte(result.getBytes("images"));
                 movies.add(movie);
             }
 
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
 
             e.printStackTrace();
         } finally {
@@ -170,10 +171,11 @@ public class RepositoryMovie {
                 movie.setMovieGenre(Genre.valueOf(result.getString("movieGenre")));
                 movie.setSynopsis(result.getString("synopsis"));
                 movie.setMinimumAge(result.getInt("minimumAge"));
+                movie.setImageByte(result.getBytes("images"));
                 movies.add(movie);
             }
 
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
         } finally {
             if (p != null) {
@@ -189,7 +191,7 @@ public class RepositoryMovie {
     }
 
     public void updateMovie(Movie movie) {
-        String sql = "UPDATE movie SET name = ?, movieDirector = ?, movieGenre = ?, synopsis = ?, minimumAge = ?" +
+        String sql = "UPDATE movie SET name = ?, movieDirector = ?, movieGenre = ?, synopsis = ?, minimumAge = ?, images = ?" +
                 "WHERE id = ?";
 
         c.connect();
@@ -203,9 +205,10 @@ public class RepositoryMovie {
             p.setString(3, movie.getMovieGenre().toString());
             p.setString(4, movie.getSynopsis());
             p.setInt(5, movie.getMinimumAge());
-            p.setInt(6, movie.getId());
+            p.setBytes(6, movie.getImageByte());
+            p.setInt(7, movie.getId());
             p.executeUpdate();
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }finally {
