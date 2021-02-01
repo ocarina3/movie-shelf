@@ -94,6 +94,11 @@ public class AdmController implements Initializable {
     void addMovie(ActionEvent event){Main.changeScreen("addMovies", email);}
 
     @FXML
+    void changeData(ActionEvent event) {
+        Main.changeScreen("changeData", email);
+    }
+
+    @FXML
     void backLogin(ActionEvent event) {
         Main.changeScreen("login");
     }
