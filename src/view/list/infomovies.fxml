@@ -11,7 +11,19 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="738.0" style="-fx-background-color: #4717F6;" stylesheets="@../add/AddMovies.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.list.InfoMoviesController">
    <children>
-      <Pane layoutX="30.0" layoutY="296.0" prefHeight="43.0" prefWidth="88.0" style="-fx-background-color: yellow; -fx-border-radius: 40; -fx-background-radius: 40;" />
+      <Pane layoutX="30.0" layoutY="296.0" prefHeight="43.0" prefWidth="88.0" style="-fx-background-color: yellow; -fx-border-radius: 40; -fx-background-radius: 40;">
+         <children>
+            <Label fx:id="lbRate" layoutX="14.0" layoutY="4.0" text="10">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="4.0" text="/10">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children></Pane>
       <ImageView fx:id="imgMovie" fitHeight="260.0" fitWidth="200.0" layoutX="37.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/potter.png" />
@@ -47,16 +59,9 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXButton>
-      <Label fx:id="lbRate" layoutX="32.0" layoutY="300.0" text="10">
+      <JFXToggleButton fx:id="favoriteButton" layoutX="38.0" layoutY="353.0" onAction="#addFavorite" text="Meus Favoritos" textFill="WHITE">
          <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="58.0" layoutY="300.0" text="/10">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <JFXToggleButton fx:id="favoriteButton" layoutX="72.0" layoutY="357.0" onAction="#addFavorite" text="Meus Favoritos" />
+            <Font size="18.0" />
+         </font></JFXToggleButton>
    </children>
 </Pane>

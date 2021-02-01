@@ -14,7 +14,9 @@ import javafx.stage.Stage;
 import model.ModelMovie;
 import model.ModelUser;
 import model.entity.Movie;
+import model.entity.User;
 import view.list.InfoMoviesController;
+import view.list.ListController;
 import view.principal.Main;
 
 import java.net.URL;
@@ -57,7 +59,8 @@ public class FavoriteMoviesController implements Initializable {
                     }
                 }
             };
-
+            User user = ModelUser.getInstance().readUsersByEmail(ListController.email);
+            if(ModelUser.getInstance().isFavotited(user, movie) == true){
                 if(posX <= 788){
                     Pane pnImg = new Pane();
                     pnImg.setLayoutX(posX);
@@ -108,6 +111,7 @@ public class FavoriteMoviesController implements Initializable {
                     i--;
                 }
                 i++;
+            }
         }
     }
 }

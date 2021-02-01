@@ -44,23 +44,22 @@ public class InfoMoviesController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Main.addOnChangesScreenListener(new Main.OnChangeScreen() {
-            @Override
-            public void onScreenChanged (String newScreen, String currentUser){
-                if (newScreen.equals("")) {
-                    lbTitle.setText(ModelMovie.getInstance().readMoviesById(Integer.toString(movieId)).getName());
-                    lbGenre.setText(ModelMovie.getInstance().readMoviesById(Integer.toString(movieId)).getMovieGenre().getDescription());
-                    txtaSinopse.setText(ModelMovie.getInstance().readMoviesById(Integer.toString(movieId)).getSynopsis());
-                    lbRate.setText("10");
-                    email = currentUser;
-                }
-            }
-        });
+        lbTitle.setText(ModelMovie.getInstance().readMoviesById(Integer.toString(movieId)).getName());
+        lbGenre.setText(ModelMovie.getInstance().readMoviesById(Integer.toString(movieId)).getMovieGenre().getDescription());
+        txtaSinopse.setText(ModelMovie.getInstance().readMoviesById(Integer.toString(movieId)).getSynopsis());
+        lbRate.setText("10");
+
+        User user = ModelUser.getInstance().readUsersByEmail(ListController.email);
+        Movie movie = ModelMovie.getInstance().readMoviesById(Integer.toString(movieId));
+        if(ModelUser.getInstance().isFavotited(user, movie)){
+            favoriteButton.setSelected(true);
+        }
+
     }
 
     public void addFavorite(ActionEvent actionEvent) {
         User user = ModelUser.getInstance().readUsersByEmail(ListController.email);
-        Movie movie = ModelMovie.getInstance().readMoviesById(String.format("%d",movieId));
+        Movie movie = ModelMovie.getInstance().readMoviesById(Integer.toString(movieId));
         boolean i = ModelUser.getInstance().isFavotited(user,movie);
 
         if (!(ModelUser.getInstance().isFavotited(user,movie))) {
