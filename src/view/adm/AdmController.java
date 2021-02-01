@@ -104,32 +104,8 @@ public class AdmController implements Initializable {
     }
 
     @FXML
-    void loadImg(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-
-        //Set extension filter
-        FileChooser.ExtensionFilter extFilterJPG =
-                new FileChooser.ExtensionFilter("JPG files (*.JPG)", "*.JPG");
-        FileChooser.ExtensionFilter extFilterjpg =
-                new FileChooser.ExtensionFilter("jpg files (*.jpg)", "*.jpg");
-        FileChooser.ExtensionFilter extFilterPNG =
-                new FileChooser.ExtensionFilter("PNG files (*.PNG)", "*.PNG");
-        FileChooser.ExtensionFilter extFilterpng =
-                new FileChooser.ExtensionFilter("png files (*.png)", "*.png");
-        fileChooser.getExtensionFilters()
-                .addAll(extFilterJPG, extFilterjpg, extFilterPNG, extFilterpng);
-
-        //Show open file dialog
-        File file = fileChooser.showOpenDialog(null);
-
-        try {
-            BufferedImage bufferedImage = ImageIO.read(file);
-            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
-            ImageIcon myImageView;
-            imgLock.setImage(image);
-        } catch (IOException ex) {
-            Logger.getLogger(AdmController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    void removeMovie(ActionEvent event) {
+        Main.changeScreen("deleteMovies", email);
     }
 
     @Override

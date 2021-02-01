@@ -40,6 +40,9 @@ public class InfoMoviesController implements Initializable {
     private Label lbSinopse;
 
     @FXML
+    private Label lbDirector;
+
+    @FXML
     private Label lbRate;
 
     @Override
@@ -47,6 +50,7 @@ public class InfoMoviesController implements Initializable {
         lbTitle.setText(ModelMovie.getInstance().readMoviesById(Integer.toString(movieId)).getName());
         lbGenre.setText(ModelMovie.getInstance().readMoviesById(Integer.toString(movieId)).getMovieGenre().getDescription());
         txtaSinopse.setText(ModelMovie.getInstance().readMoviesById(Integer.toString(movieId)).getSynopsis());
+        lbDirector.setText(ModelMovie.getInstance().readMoviesById(Integer.toString(movieId)).getMovieDirector());
         lbRate.setText("10");
 
         User user = ModelUser.getInstance().readUsersByEmail(ListController.email);

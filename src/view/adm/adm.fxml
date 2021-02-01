@@ -48,7 +48,7 @@
          </padding>
       </JFXButton>
       <Line fx:id="lineUpdateMovies" endX="6.5" layoutX="622.0" layoutY="457.0" startX="-51.5" stroke="#663cfd" />
-      <JFXButton fx:id="btnRemoveMovies" focusTraversable="false" layoutX="537.0" layoutY="493.0" prefHeight="39.0" prefWidth="111.0" text="Remover " textFill="WHITE">
+      <JFXButton fx:id="btnRemoveMovies" focusTraversable="false" layoutX="537.0" layoutY="493.0" onAction="#removeMovie" prefHeight="39.0" prefWidth="111.0" text="Remover " textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

@@ -32,6 +32,7 @@ public class Main extends Application {
     private static Scene changeDataScene;
     private static Scene addMovies;
     private static Scene updateMovies;
+    private static Scene deleteMovies;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -60,6 +61,9 @@ public class Main extends Application {
 
         Parent fxmlUpdateMovies = FXMLLoader.load(getClass().getResource("../update/update.fxml"));
         updateMovies = new Scene(fxmlUpdateMovies);
+
+        Parent fxmlDeleteMovies = FXMLLoader.load(getClass().getResource("../delete/delete.fxml"));
+        deleteMovies = new Scene(fxmlDeleteMovies);
 
         primaryStage.setTitle("Ocarina");
         primaryStage.setResizable(false);
@@ -202,6 +206,10 @@ public class Main extends Application {
             case "updateMovies":
                 stage.setScene(updateMovies);
                 notifyAllListeners("updateMovies", currentUser);
+                break;
+            case "deleteMovies":
+                stage.setScene(deleteMovies);
+                notifyAllListeners("deleteMovies", currentUser);
                 break;
         }
     }
