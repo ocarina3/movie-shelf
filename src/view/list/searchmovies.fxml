@@ -34,7 +34,7 @@
             </Label>
          </children>
       </Pane>
-      <Label layoutX="106.0" layoutY="80.0" text="Terror" textFill="WHITE">
+      <Label layoutX="106.0" layoutY="80.0" text="Pesquisa" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
