@@ -41,7 +41,7 @@ public class ModelUser {
         }
     }
     public void favoriteMovies(User user , Movie movie){
-        if (!repositoryUser.isFavotited(user, movie)) { repositoryUser.favoriteMovies(user,movie);}
+        if (!(repositoryUser.isFavotited(user, movie))) { repositoryUser.favoriteMovies(user,movie);}
     }
     //_______________________________________________________________________________________________________________
     //READ
@@ -77,7 +77,7 @@ public class ModelUser {
     //UPDATE
     public boolean updateUser(User user) {
         if(readUsersById(user.getId()) != null &&
-        (readUsersByEmail(user.getEmail()) == null|| readUsersByEmail(user.getEmail()).equals(user)) ){
+        (readUsersByEmail(user.getEmail()) == null|| readUsersByEmail(user.getEmail()).getEmail().equals(user.getEmail())) ){
             repositoryUser.updateUser(user);
             return true;
         } else {
