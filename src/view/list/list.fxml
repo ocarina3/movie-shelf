@@ -61,47 +61,47 @@
       </Pane>
       <VBox layoutY="86.0" prefHeight="638.0" prefWidth="242.0" style="-fx-background-color: #4717F6;">
          <children>
-            <JFXButton fx:id="btnAllMovies" alignment="BASELINE_LEFT" onAction="#allMovies" prefHeight="74.0" prefWidth="242.0" text="Todos Filmes" textFill="WHITE">
+            <JFXButton fx:id="btnAllMovies" alignment="BASELINE_LEFT" onAction="#allMovies" prefHeight="74.0" prefWidth="242.0" ripplerFill="TRANSPARENT" text="Todos Filmes" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btnTerror" alignment="BASELINE_LEFT" onAction="#terrorMovies" prefHeight="74.0" prefWidth="242.0" text="Terror" textFill="WHITE">
+            <JFXButton fx:id="btnTerror" alignment="BASELINE_LEFT" onAction="#terrorMovies" prefHeight="74.0" prefWidth="242.0" ripplerFill="TRANSPARENT" text="Terror" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btnActionAdventure" alignment="BASELINE_LEFT" onAction="#actionandadventureMovies" prefHeight="74.0" prefWidth="242.0" text="Ação e Aventura" textFill="WHITE">
+            <JFXButton fx:id="btnActionAdventure" alignment="BASELINE_LEFT" onAction="#actionandadventureMovies" prefHeight="74.0" prefWidth="242.0" ripplerFill="TRANSPARENT" text="Ação e Aventura" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btnDrama" alignment="BASELINE_LEFT" onAction="#dramaMovies" prefHeight="74.0" prefWidth="242.0" text="Drama" textFill="WHITE">
+            <JFXButton fx:id="btnDrama" alignment="BASELINE_LEFT" onAction="#dramaMovies" prefHeight="74.0" prefWidth="242.0" ripplerFill="TRANSPARENT" text="Drama" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btnComedy" alignment="BASELINE_LEFT" onAction="#comedyMovies" prefHeight="74.0" prefWidth="242.0" text="Comédia" textFill="WHITE">
+            <JFXButton fx:id="btnComedy" alignment="BASELINE_LEFT" onAction="#comedyMovies" prefHeight="74.0" prefWidth="242.0" ripplerFill="TRANSPARENT" text="Comédia" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btnFantasy" alignment="BASELINE_LEFT" onAction="#fantasyMovies" prefHeight="74.0" prefWidth="242.0" text="Fantasia" textFill="WHITE">
+            <JFXButton fx:id="btnFantasy" alignment="BASELINE_LEFT" onAction="#fantasyMovies" prefHeight="74.0" prefWidth="242.0" ripplerFill="TRANSPARENT" text="Fantasia" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btnScienceFiction" alignment="BASELINE_LEFT" onAction="#fictionMovies" prefHeight="74.0" prefWidth="242.0" text="Ficção Científica" textFill="WHITE">
+            <JFXButton fx:id="btnScienceFiction" alignment="BASELINE_LEFT" onAction="#fictionMovies" prefHeight="74.0" prefWidth="242.0" ripplerFill="TRANSPARENT" text="Ficção Científica" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btnFavorites" alignment="BASELINE_LEFT" onAction="#favoriteMovies" prefHeight="74.0" prefWidth="242.0" text="Favoritos" textFill="WHITE">
+            <JFXButton fx:id="btnFavorites" alignment="BASELINE_LEFT" onAction="#favoriteMovies" prefHeight="74.0" prefWidth="242.0" ripplerFill="TRANSPARENT" text="Favoritos" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btnBestRatings" alignment="BASELINE_LEFT" onAction="#bestRatingsMovies" prefHeight="74.0" prefWidth="242.0" text="Melhores Notas" textFill="WHITE">
+            <JFXButton fx:id="btnBestRatings" alignment="BASELINE_LEFT" onAction="#bestRatingsMovies" prefHeight="74.0" prefWidth="242.0" ripplerFill="TRANSPARENT" text="Melhores Notas" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>

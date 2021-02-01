@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import model.ModelUser;
+import view.list.allmovies.AllMoviesController;
 import view.list.favorite.FavoriteMoviesController;
 import view.principal.Main;
 
@@ -107,7 +108,6 @@ public class ListController implements Initializable {
     void searchMovies(ActionEvent event) throws IOException {
         SearchMoviesController.search = txtfSearch.getText();
         DirectorSearchMoviesController.search = txtfSearch.getText();
-        System.out.println(tgbDirector.isSelected());
         if(tgbDirector.isSelected() == false) {
             loadPage("searchmovies.fxml");
         } else {
@@ -164,15 +164,15 @@ public class ListController implements Initializable {
                     lbUsername.setText(ModelUser.getInstance().readUsersByEmail(currentUser).getName());
                     email = currentUser;
                     FavoriteMoviesController.currentUserEmail = email;
+                    AllMoviesController.currentEmail = currentUser;
+                    try {
+                        loadPage("allmovies/allmovies.fxml");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
-
-        try {
-            loadPage("allmovies/allmovies.fxml");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         tgbDirector.setText("Nome do Filme");
 
