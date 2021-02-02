@@ -1,5 +1,6 @@
 package view.list.favorite;
 
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -9,6 +10,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.ModelMovie;
@@ -63,10 +66,13 @@ public class FavoriteMoviesController implements Initializable {
             User user = ModelUser.getInstance().readUsersByEmail(ListController.email);
             if(ModelUser.getInstance().isFavotited(user, movie) == true){
                 if(posX <= 788){
-                    Pane pnImg = new Pane();
+                    ImageView pnImg = new ImageView();
                     pnImg.setLayoutX(posX);
                     pnImg.setLayoutY(posY);
-                    pnImg.setPrefSize(185, 238);
+                    pnImg.setFitHeight(238);
+                    pnImg.setFitWidth(185);
+                    Image image = SwingFXUtils.toFXImage(movie.getImageBuffered(), null);
+                    pnImg.setImage(image);
                     pnImg.setId("pnImg");
                     pnMovies.getChildren().add(pnImg);
                     Button btnMovie = new Button();
