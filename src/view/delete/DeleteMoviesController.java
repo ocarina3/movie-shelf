@@ -4,9 +4,11 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.ModelMovie;
 import model.entity.Genre;
@@ -60,6 +62,12 @@ public class DeleteMoviesController implements Initializable {
                 txtfMinAge.setText(Integer.toString(movie.getMinimumAge()));
                 txtfGenre.setText(movie.getMovieGenre().getDescription());
                 movieId = movie.getId();
+                Image image = SwingFXUtils.toFXImage(movie.getImageBuffered(), null);
+                imgMovie.setFitHeight(260);
+                imgMovie.setFitWidth(200);
+                imgMovie.setLayoutX(55);
+                imgMovie.setLayoutY(150);
+                imgMovie.setImage(image);
 
             }
         }
@@ -93,6 +101,11 @@ public class DeleteMoviesController implements Initializable {
                 txtfMinAge.setText("");
                 txtfGenre.setText("");
                 txtfSearch.setText("");
+                imgMovie.setFitWidth(75);
+                imgMovie.setFitHeight(75);
+                imgMovie.setLayoutX(110);
+                imgMovie.setLayoutY(231);
+                imgMovie.setImage(new Image (getClass().getResourceAsStream("../resources/plus.png")));
                 movieId = 0;
                 Main.changeScreen("deleteMovies", email);
             }
