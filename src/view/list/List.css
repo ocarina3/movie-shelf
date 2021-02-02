@@ -101,15 +101,23 @@ JFXButton:focused{
 }
 
 #btnMovie{
-    -fx-background-image: url("../resources/potter.png");
-    -fx-background-position: center;
-    -fx-background-repeat: no-repeat;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+    -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 1em; /* 12 */
+    -fx-text-fill: #828282;
 }
 
 #btnMovie:hover{
+    -fx-background-color: white;
     -fx-opacity: 0.2;
 }
 
 #btnMovie:pressed{
-    -fx-opacity: 1;
+    -fx-background-color: black;
+    -fx-opacity: 0.2;
 }

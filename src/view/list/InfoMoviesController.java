@@ -3,11 +3,13 @@ package view.list;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.ModelMovie;
 import model.ModelRating;
@@ -87,6 +89,8 @@ public class InfoMoviesController implements Initializable {
         txtaSinopse.setText(ModelMovie.getInstance().readMoviesById(Integer.toString(movieId)).getSynopsis());
         lbDirector.setText(ModelMovie.getInstance().readMoviesById(Integer.toString(movieId)).getMovieDirector());
         lbRate.setText(Float.toString(ModelRating.getInstance().readAvgRatingByMovie(ModelMovie.getInstance().readMoviesById(Integer.toString(movieId)))));
+        Image image = SwingFXUtils.toFXImage(ModelMovie.getInstance().readMoviesById(Integer.toString(movieId)).getImageBuffered(), null);
+        imgMovie.setImage(image);
 
         User user = ModelUser.getInstance().readUsersByEmail(ListController.email);
         Movie movie = ModelMovie.getInstance().readMoviesById(Integer.toString(movieId));

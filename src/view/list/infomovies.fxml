@@ -17,7 +17,7 @@
             <Image url="@../resources/potter.png" />
          </image>
       </ImageView>
-      <Pane layoutX="100.0" layoutY="265.0" prefHeight="43.0" prefWidth="74.0" style="-fx-background-color: yellow; -fx-border-radius: 40; -fx-background-radius: 40;">
+      <Pane layoutX="94.0" layoutY="265.0" prefHeight="43.0" prefWidth="74.0" style="-fx-background-color: yellow; -fx-border-radius: 40; -fx-background-radius: 40;">
          <children>
             <Label fx:id="lbRate" alignment="CENTER" contentDisplay="CENTER" layoutX="-3.0" layoutY="4.0" prefHeight="35.0" prefWidth="81.0" text="10.0">
                <font>
@@ -69,6 +69,6 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="txtfRate" alignment="CENTER" focusColor="WHITE" layoutX="70.0" layoutY="330.0" promptText="Sua Nota:" unFocusColor="WHITE" />
+      <JFXTextField fx:id="txtfRate" alignment="CENTER" focusColor="WHITE" layoutX="70.0" layoutY="330.0" promptText="Sua Nota: " unFocusColor="WHITE" />
    </children>
 </Pane>
