@@ -1,6 +1,8 @@
 package model;
 
+import model.entity.Movie;
 import model.entity.Rating;
+import model.entity.User;
 import model.repository.RepositoryRating;
 
 import java.util.ArrayList;
@@ -24,9 +26,13 @@ public class ModelRating {
 
     // Create
     public void createRating(Rating rating) {
+
+        if( ModelUser.getInstance().readUsersById(rating.getUserId()) == null ) return;
         String raterUserEmail = ModelUser.getInstance().readUsersById(rating.getUserId()).getEmail();
 
-        ArrayList<String> alreadyRatedEmails = repositoryRating.readAlreadyRatedEmails(rating.getMovieId());
+        Movie ratedMovie = ModelMovie.getInstance().readMoviesById(Integer.toString(rating.getMovieId()));
+
+        ArrayList<String> alreadyRatedEmails = repositoryRating.readAlreadyRatedEmails(ratedMovie);
 
         if( !alreadyRatedEmails.contains(raterUserEmail) )
             repositoryRating.createRating(rating);
@@ -41,16 +47,28 @@ public class ModelRating {
         return repositoryRating.readRatingsByValue(value);
     }
 
+    public ArrayList<Rating> readRatingsByMovie(Movie movie) {
+        return repositoryRating.readRatingsByMovie(movie);
+    }
+
     public String readRaterUserName(int rating_id) {
         return repositoryRating.readRaterUserName(rating_id);
     }
 
-    public String readRatedMovieName(int rating_id) {
-        return repositoryRating.readRatedMovieName(rating_id);
+    public ArrayList<Rating> readUserRatingsByMovie(Movie movie, User user) {
+        return repositoryRating.readUserRatingsByMovie(movie, user);
     }
 
-    public ArrayList<String> readAlreadyRatedEmails(int movie_id) {
-        return repositoryRating.readAlreadyRatedEmails(movie_id);
+    public float readAvgRatingByMovie(Movie movie)  {
+        return repositoryRating.readAvgRatingByMovie(movie);
+    }
+
+    public ArrayList<Rating> readAllRatingByMovie(Movie movie) {
+        return repositoryRating.readAllRatingByMovie(movie);
+    }
+
+    public ArrayList<String> readAlreadyRatedEmails(Movie movie) {
+        return repositoryRating.readAlreadyRatedEmails(movie);
     }
 
     // Update

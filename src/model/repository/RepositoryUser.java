@@ -1,8 +1,11 @@
 package model.repository;
 
 import data.base.Connect;
+import model.ModelMovie;
+import model.entity.Genre;
+import model.entity.Movie;
 import model.entity.User;
-import view.Main;
+import view.principal.Main;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,7 +30,6 @@ public class RepositoryUser { //Criação de Usuario passando suas informações
         c.connect();
 
         PreparedStatement p = c.createPreparedStatement(sql);
-        System.out.println(user.getBirthDate());
 
         try
         {
@@ -48,7 +50,7 @@ public class RepositoryUser { //Criação de Usuario passando suas informações
                     p.close();
                 }catch (SQLException ex){
                     Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,ex);
-                    System.out.println("ERRO");
+                    System.out.println(ex);
                 }
             }
             c.disconnect();
@@ -61,6 +63,36 @@ public class RepositoryUser { //Criação de Usuario passando suas informações
 
     public void createAdmin(User user) {
         createUser(user,true);
+    }
+
+    public void favoriteMovies(User user ,Movie movie)
+    {
+        String sql = "INSERT INTO favoriteMovies(id,id_user,id_movie) VALUES(?,?,?);";
+        c.connect();
+
+        PreparedStatement p = c.createPreparedStatement(sql);
+
+        try
+        {
+            p.setInt(2,user.getId());
+            p.setInt(3,movie.getId());
+            p.executeUpdate();
+        }catch (SQLException e)
+        {
+            System.out.println(e);
+        }
+        finally {
+            if(p != null)
+            {
+                try{
+                    p.close();
+                }catch (SQLException ex){
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,ex);
+                    System.out.println(ex);
+                }
+            }
+            c.disconnect();
+        }
     }
 
     //_______________________________________________________________________________________________________________
@@ -108,6 +140,44 @@ public class RepositoryUser { //Criação de Usuario passando suas informações
         return users;
     }
 
+    public boolean isAdmin(User user)
+    {
+        String sql = "SELECT * FROM user WHERE id = ?;";
+
+        if (user == null) return false;
+
+        ResultSet result = null;
+        c.connect();
+        PreparedStatement p = null;
+        ArrayList<User> users = new ArrayList<>(1);
+
+        try {
+
+            p = c.createPreparedStatement(sql);
+            p.setInt(1,user.getId());
+            result = p.executeQuery();
+
+            while (result.next()) {
+                return result.getBoolean("admin");
+            }
+
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        } finally {
+            if (p != null) {
+                try{
+                    p.close();
+                    c.disconnect();
+                }catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        return false;
+    }
+
     public User readUsersById(String value){
         if(readUsers("id", value).size() != 0){
             return readUsers("id", value).get(0);}
@@ -126,10 +196,89 @@ public class RepositoryUser { //Criação de Usuario passando suas informações
         return null;
     }
 
+    public ArrayList <Movie> readFavoriteMovies(User user) {
+        String sql = "SELECT id_movie FROM favoriteMovies Where id_user = ?;";
+        ResultSet result = null;
+
+        c.connect();
+        PreparedStatement p = null;
+        ArrayList<Movie> movies = new ArrayList<>(1);
+
+        try {
+
+            p = c.createPreparedStatement(sql);
+            p.setInt(1, user.getId());
+            result = p.executeQuery();
+
+            int movieId;
+            while (result.next()) {
+                movieId = result.getInt("id_movie");
+                movies.add(ModelMovie.getInstance().readMoviesById(String.format("%d",movieId)));
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        } finally {
+            if (p != null) {
+                try{
+                    p.close();
+                    c.disconnect();
+                }catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        return movies;
+    }
+
+    public boolean isFavotited(User user, Movie movie) {
+        String sql = "SELECT * FROM favoriteMovies WHERE id_user = ? AND id_movie = ?;";
+        ResultSet result = null;
+        Boolean r = false;
+        c.connect();
+        PreparedStatement p = null;
+        ArrayList<Movie> movies = new ArrayList<>(1);
+        try {
+
+            p = c.createPreparedStatement(sql);
+            p.setInt(1, user.getId());
+            p.setInt(2,movie.getId());
+            result = p.executeQuery();
+
+             r = true;
+            try{
+            int i = result.getInt("id_user");
+            int j = result.getInt("id_movie");}
+            catch (SQLException e) {
+                r = false;
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        } finally {
+            if (p != null) {
+                try{
+                    p.close();
+                    c.disconnect();
+                }catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        return r;
+    }
+
+
+
+
+
     //_______________________________________________________________________________________________________________
     //UPDATE
 
     public void updateUser(User user) {
+
         String sql = "UPDATE user SET name = ?, email = ?, password = ?, birthDate = ?  WHERE id = ?;";
 
         c.connect();
@@ -196,5 +345,34 @@ public class RepositoryUser { //Criação de Usuario passando suas informações
 
     public void deleteUserById(String value){
         deleteUser("id", value);
+    }
+
+    public void deleteFavoriteMovies(User user, Movie movie) {
+        String sql = "DELETE FROM favoriteMovies WHERE id_user = ? AND id_movie = ?";
+
+        c.connect();
+        PreparedStatement p = null;
+        try{
+
+            p = c.createPreparedStatement(sql);
+            p.setInt(1,user.getId());
+            p.setInt(2, movie.getId());
+            int deletedUsers = p.executeUpdate();
+            System.out.println(deletedUsers);
+
+        }catch (SQLException e){
+
+            e.printStackTrace();
+        }finally {
+            if (p != null) {
+                try{
+                    p.close();
+                    c.disconnect();
+                }catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+
     }
 }

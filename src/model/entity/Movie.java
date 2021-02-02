@@ -1,7 +1,14 @@
 package model.entity;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class Movie {
@@ -15,10 +22,21 @@ public class Movie {
     private Genre movieGenre;
     private String synopsis;
     private int minimumAge;
+    private BufferedImage image;
     //_______________________________________________________________________________________________________________
 
     //CONSTRUCTOR
     public Movie() {
+    }
+
+    public Movie(String name, String movieDirector, Genre movieGenre, String synopsis, int minimumAge) {
+        DecimalFormat decimalFormat = new DecimalFormat("#.#");
+
+        this.name = name;
+        this.movieDirector = movieDirector;
+        this.movieGenre = movieGenre;
+        this.synopsis = synopsis;
+        this.minimumAge = minimumAge;
     }
 
     public Movie(int id, String name, String movieDirector, Genre movieGenre, String synopsis, int minimumAge) {
@@ -81,6 +99,28 @@ public class Movie {
     public void setMinimumAge(int minimumAge) {
         this.minimumAge = minimumAge;
     }
+
+    public BufferedImage getImageBuffered() {
+        return image;
+    }
+
+    public byte[] getImageByte() throws IOException {
+        if(image != null){
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ImageIO.write(this.image, "png", baos);
+        return baos.toByteArray();}
+        else return null;
+    }
+
+    public void setImageByte(byte[] image) throws IOException {
+        if(image != null){
+        InputStream is = new ByteArrayInputStream(image);
+        this.image = ImageIO.read(is);}
+        else this.image = null;
+    }
+
+    public void setImageBuffered (BufferedImage image){this.image = image;}
+
     //_______________________________________________________________________________________________________________
 
     //EQUALS

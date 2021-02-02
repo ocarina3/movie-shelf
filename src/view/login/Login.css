@@ -1,0 +1,47 @@
+@font-face {
+    font-family: Roboto;
+    src: url('../resources/Roboto_Bold.ttf');
+}
+
+#btnBack{
+    -fx-border-radius: 5;
+    -fx-background-image: url("../resources/backArrow.png");
+    -fx-background-position: center;
+    -fx-background-color: #663CFD;
+}
+
+#btnBack:hover {
+    -fx-background-color: #4717F6;
+}
+
+#btnBack:pressed {
+    -fx-background-color: #663CFD;
+}
+
+Text{
+    -fx-font-family: 'Roboto';
+    -fx-font-weight: Bold;
+    -fx-font-size: 50px;
+    -fx-text-fill: #663CFD;
+}
+
+#btnLogin{
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-background-image: url("../resources/playImg.png");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color: #663CFD;
+}
+
+#btnLogin:hover {
+    -fx-background-color: #4717F6;
+}
+
+#btnLogin:pressed {
+    -fx-background-color: #663CFD;
+}
+
+JFXTextField, JFXPasswordField{
+    -fx-prompt-text-fill: gray;
+}

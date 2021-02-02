@@ -22,10 +22,17 @@ public class ModelMovie {
         repositoryMovie = new RepositoryMovie();
     }
 
-    public void createMovie(Movie movie) {
+    public boolean createMovie(Movie movie) {
         if(repositoryMovie.readMoviesByName(movie.getName()) != null) {
             repositoryMovie.createMovie(movie);
+            return true;
+        } else {
+            return false;
         }
+    }
+
+    public ArrayList<Movie> readAllMovies() {
+        return repositoryMovie.readAllMovies();
     }
 
     public Movie readMoviesById(String value) {
@@ -36,15 +43,34 @@ public class ModelMovie {
         return repositoryMovie.readMoviesByName(value);
     }
 
-    public void updateMovie(Movie movie) {
+    public ArrayList<Movie> searchMovies(String value) {
+        return repositoryMovie.searchMovie(value);
+    }
+
+    public boolean updateMovie(Movie movie) {
         if(repositoryMovie.readMoviesById(String.format("%d", movie.getId())) != null) {
             repositoryMovie.updateMovie(movie);
+            return true;
+        } else {
+            return false;
         }
     }
 
-    public void deleteMovieByName(Movie movie) {
+    public boolean deleteMovieById(String value) {
+        if(repositoryMovie.readMoviesById(value) != null) {
+            repositoryMovie.deleteMovieById(value);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean deleteMovieByName(Movie movie) {
         if(repositoryMovie.readMoviesByName(movie.getName()) != null) {
             repositoryMovie.deleteMovieByName(movie.getName());
+            return true;
+        } else {
+            return false;
         }
     }
 

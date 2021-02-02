@@ -1,0 +1,123 @@
+@font-face {
+    font-family: Lobster;
+    src: url('../resources/Lobster_Regular.ttf');
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url('../resources/Roboto_Bold.ttf');
+}
+
+#lbLogo{
+    -fx-font-family: Lobster;
+}
+
+JFXButton{
+    -fx-font-family: Roboto;
+    -fx-font-size: 18px;
+    -fx-background-color: #4717F6;
+}
+
+JFXButton:hover{
+    -fx-background-color: #663CFD;
+}
+
+JFXButton{
+    -fx-border-radius: 0;
+    -fx-font-family: Roboto;
+    -fx-font-size: 18px;
+    -fx-background-color: #4717F6;
+}
+
+JFXButton:focused{
+    -fx-background-color: #0A002C;
+    -fx-background-image: url("../resources/arrowList.png");
+    -fx-background-position: 180 25;
+    -fx-background-repeat: no-repeat;
+}
+
+#txtfSearch{
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #ADADAD;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: white;
+    -fx-background-radius: 5em;
+}
+
+.scroll-pane {
+    -fx-background-color:  #0A002C;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-pane {
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.scroll-pane:focused {
+    -fx-background-insets: 0;
+}
+
+.scroll-pane .corner {
+    -fx-background-insets: 0;
+}
+
+#pnImg{
+    -fx-background-color: black;
+}
+
+#pnRate{
+    -fx-background-color: yellow;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+}
+
+#lbRate{
+    -fx-text-fill: black;
+    -fx-font-family: Roboto;
+    -fx-font-size: 12px;
+}
+
+#lbTitle{
+    -fx-text-fill: white;
+    -fx-font-family: Roboto;
+    -fx-font-size: 24px;
+}
+
+#lbGender{
+    -fx-text-fill: #4d4d4d;
+    -fx-font-family: Roboto;
+    -fx-font-size: 18px;
+}
+
+#btnMovie{
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+    -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 1em; /* 12 */
+    -fx-text-fill: #828282;
+}
+
+#btnMovie:hover{
+    -fx-background-color: white;
+    -fx-opacity: 0.2;
+}
+
+#btnMovie:pressed{
+    -fx-background-color: black;
+    -fx-opacity: 0.2;
+}

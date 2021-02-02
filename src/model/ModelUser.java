@@ -1,5 +1,6 @@
 package model;
 
+import model.entity.Movie;
 import model.entity.User;
 import model.repository.RepositoryUser;
 
@@ -24,21 +25,27 @@ public class ModelUser {
     //_______________________________________________________________________________________________________________
     //CREATE
     
-    public void createClient(User user) {
+    public boolean createClient(User user) {
         if(repositoryUser.readUsersByEmail(user.getEmail()) == null){
             repositoryUser.createClient(user);
-        }else{System.out.println("Email já cadastrado");}
+            return true;
+        }else{return false;}
     }
 
-    public void createAdmin(User user) {
+    public boolean createAdmin(User user) {
         if(repositoryUser.readUsersByEmail(user.getEmail()) == null){
             repositoryUser.createAdmin(user);
+            return true;
+        } else {
+            return false;
         }
     }
-    
+    public void favoriteMovies(User user , Movie movie){
+        if (!(repositoryUser.isFavotited(user, movie))) { repositoryUser.favoriteMovies(user,movie);}
+    }
     //_______________________________________________________________________________________________________________
     //READ
-    
+
     public User readUsersById(int value){
         return repositoryUser.readUsersById(String.format("%d",value));
     }
@@ -51,11 +58,30 @@ public class ModelUser {
         return repositoryUser.readUsersByName(value);
     }
 
+    public ArrayList <Movie> readFavoriteMovies(User user){return repositoryUser.readFavoriteMovies(user);}
+
+    public boolean isFavotited(User user, Movie movie) {
+        if(readUsersById(user.getId()) != null){
+            return repositoryUser.isFavotited(user, movie);
+        }
+        else return false;
+        }
+
+    public boolean isAdmin(User user){
+        if(ModelUser.getInstance().readUsersById(user.getId()) != null){
+            return repositoryUser.isAdmin(user);
+        }
+        else return false;
+    }
     //_______________________________________________________________________________________________________________
     //UPDATE
-    public void updateUser(User user) {
-        if(repositoryUser.readUsersById(String.format("%d",user.getId())) != null){
+    public boolean updateUser(User user) {
+        if(readUsersById(user.getId()) != null &&
+        (readUsersByEmail(user.getEmail()) == null|| readUsersByEmail(user.getEmail()).getEmail().equals(user.getEmail())) ){
             repositoryUser.updateUser(user);
+            return true;
+        } else {
+            return false;
         }
     }
     
@@ -70,6 +96,10 @@ public class ModelUser {
     public void deleteUserById(int value){
         if (repositoryUser.readUsersById(String.format("%d",value)) != null)
         repositoryUser.deleteUserById(String.format("%d",value));
+    }
+
+    public void deleteFavoriteMovies(User user, Movie movie){
+        if (repositoryUser.isFavotited(user,movie)){repositoryUser.deleteFavoriteMovies(user,movie);}
     }
     
 }

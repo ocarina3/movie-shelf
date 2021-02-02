@@ -1,0 +1,63 @@
+@font-face {
+    font-family: Lobster;
+    src: url('../resources/Lobster_Regular.ttf');
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url('../resources/Roboto_Bold.ttf');
+}
+
+.btnLogin{
+    -fx-border-radius: 5;
+    -fx-font-family: 'Roboto';
+    -fx-font-weight: Bold;
+    -fx-font-size: 16px;
+    -fx-background-color: #0E0B16;
+}
+
+.btnRegister{
+    -fx-border-radius: 5;
+    -fx-font-family: 'Roboto';
+    -fx-font-weight: Bold;
+    -fx-font-size: 20px;
+    -fx-background-color: #4717F6;
+}
+
+.btnLogin:hover {
+    -fx-background-color: #1F1C26;
+}
+
+.btnLogin:pressed {
+    -fx-background-color: #0E0B16;
+    -fx-background-size: 100%;
+    -fx-transition: background 1.2s;
+}
+
+.btnRegister:hover {
+    -fx-background-color: #663CFD;
+}
+
+.btnRegister:pressed {
+    -fx-background-color: #4717F6;
+    -fx-background-size: 100%;
+    -fx-transition: background 1.2s;
+}
+
+.lbLogo{
+    -fx-font-family: 'Lobster';
+    -fx-font-size: 36px;
+    -fx-text-fill: white;
+}
+
+.lbWelcome{
+    -fx-font-family: 'Lobster';
+    -fx-font-size: 72px;
+    -fx-text-fill: white;
+}
+
+.lbTextoBoasVindas{
+    -fx-font-family: 'Roboto';
+    -fx-font-size: 36px;
+    -fx-text-fill: white;
+}

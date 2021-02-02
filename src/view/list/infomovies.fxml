@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="738.0" style="-fx-background-color: #4717F6;" stylesheets="@../add/AddMovies.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.list.InfoMoviesController">
+   <children>
+      <ImageView fx:id="imgMovie" fitHeight="260.0" fitWidth="200.0" layoutX="37.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/potter.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="94.0" layoutY="265.0" prefHeight="43.0" prefWidth="74.0" style="-fx-background-color: yellow; -fx-border-radius: 40; -fx-background-radius: 40;">
+         <children>
+            <Label fx:id="lbRate" alignment="CENTER" contentDisplay="CENTER" layoutX="-3.0" layoutY="4.0" prefHeight="35.0" prefWidth="81.0" text="10.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children></Pane>
+      <Label fx:id="lbTitle" layoutX="290.0" layoutY="40.0" text="Title" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="289.0" layoutY="75.0" text="Gênero: " textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbGenre" layoutX="349.0" layoutY="75.0" text="Genre" textFill="#bfbfbf">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Pane layoutX="290.0" layoutY="177.0" prefHeight="251.0" prefWidth="412.0" style="-fx-background-color: #19016E; -fx-background-radius: 20;">
+         <children>
+            <JFXTextArea fx:id="txtaSinopse" editable="false" focusColor="#405aa800" layoutX="19.0" layoutY="10.0" prefHeight="229.0" prefWidth="372.0" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-border-radius: 20;" unFocusColor="#4d4d4d00" />
+         </children>
+      </Pane>
+      <Label fx:id="lbSinopse" layoutX="290.0" layoutY="149.0" text="Sinopse" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnRate" layoutX="74.0" layoutY="380.0" onAction="#makeRate" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: #19016E;" text="Avaliar Filme" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXToggleButton fx:id="favoriteButton" layoutX="511.0" layoutY="27.0" onAction="#addFavorite" text="Meus Favoritos" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font></JFXToggleButton>
+      <Label layoutX="289.0" layoutY="110.0" text="Diretor:" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbDirector" layoutX="349.0" layoutY="110.0" text="Director" textFill="#bfbfbf">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtfRate" alignment="CENTER" focusColor="WHITE" layoutX="70.0" layoutY="330.0" promptText="Sua Nota: " unFocusColor="WHITE" />
+   </children>
+</Pane>

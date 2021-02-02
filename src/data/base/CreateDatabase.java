@@ -37,7 +37,8 @@ public class CreateDatabase {
                 "movieDirector varchar," +
                 "movieGenre varchar," +
                 "synopsis varchar ," +
-                "minimumAge integer" +
+                "minimumAge integer," +
+                "images LONGBLOB" +
                 ");";
 
         boolean connected = false;
@@ -76,4 +77,23 @@ public class CreateDatabase {
         }
     }
 
+    public void createTableFavoriteMovies() {
+        String query = "CREATE TABLE IF NOT EXISTS favoriteMovies (" +
+                "    id       INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "    id_user  INTEGER REFERENCES user (id)," +
+                "    id_movie INTEGER REFERENCES movie (id)" +
+                ");";
+
+        boolean connected = false;
+
+        try {
+            connected = c.connect();
+            Statement statement = c.createStatement();
+            statement.execute(query);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            if (connected) c.disconnect();
+        }
+    }
 }

@@ -1,9 +1,13 @@
 package model.repository;
 
 import data.base.Connect;
+import model.ModelUser;
+import model.entity.Movie;
 import model.entity.Rating;
-import view.Main;
+import model.entity.User;
+import view.principal.Main;
 
+import java.sql.Array;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -41,7 +45,6 @@ public class RepositoryRating {
                 try {
                     p.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,ex);
                     System.out.println(ex.getMessage());
                 }
             }
@@ -93,7 +96,65 @@ public class RepositoryRating {
         return ratings;
     }
 
+    public ArrayList<Rating> readRatingsByMovie(Movie movie) {
+        String sql = "SELECT r.id AS id, r.rating AS rating, r.id_user as id_user, r.id_movie as id_movie FROM rating r" +
+                " INNER JOIN movie m ON m.id = r.id_movie" +
+                " WHERE m.id = ?;";
+
+        ResultSet result = null;
+
+        c.connect();
+        PreparedStatement p = null;
+        ArrayList<Rating> ratings = new ArrayList<>();
+
+        try {
+
+            p = c.createPreparedStatement(sql);
+            p.setInt(1, movie.getId());
+            result = p.executeQuery();
+
+            while (result.next()) {
+                Rating rating = new Rating(
+                        result.getInt("id"),
+                        result.getFloat("rating"),
+                        result.getInt("id_user"),
+                        result.getInt("id_movie")
+                );
+
+                ratings.add(rating);
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        } finally {
+            if (p != null) {
+                try{
+                    p.close();
+                    c.disconnect();
+                }catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+
+        return ratings;
+    }
+
+    public ArrayList<Rating> readUserRatingsByMovie(Movie movie, User user) {
+        ArrayList<Rating> ratings = this.readRatingsByMovie(movie);
+
+        ArrayList<Rating> filteredRatings = new ArrayList<>();
+
+        for ( Rating rating : ratings ) {
+            if(rating.getId() == user.getId()) filteredRatings.add(rating);
+        }
+
+        return filteredRatings;
+    }
+
     public Rating readRatingById(int rating_id){
+        if( readRatings("id", Integer.toString(rating_id)).size() == 0 ) return null;
         return readRatings("id", Integer.toString(rating_id)).get(0);
     }
 
@@ -141,27 +202,27 @@ public class RepositoryRating {
         return userName;
     }
 
-    public String readRatedMovieName(int rating_id) {
+    public float readAvgRatingByMovie(Movie movie) {
 
-        String sql = "SELECT m.name AS name FROM rating r" +
+        String sql = "SELECT avg(r.rating) AS average FROM rating r" +
                 " INNER JOIN movie m ON m.id = r.id_movie" +
-                " WHERE r.id = ?;";
+                " WHERE m.id = ?;";
 
         ResultSet result = null;
 
         c.connect();
         PreparedStatement p = null;
 
-        String movieName = null;
+        float average = 0;
 
         try {
 
             p = c.createPreparedStatement(sql);
-            p.setString(1,Integer.toString(rating_id));
+            p.setInt(1,movie.getId());
             result = p.executeQuery();
 
             while (result.next()) {
-                movieName = result.getString("name");
+                average = result.getFloat("average");
             }
 
         } catch (SQLException e) {
@@ -178,13 +239,14 @@ public class RepositoryRating {
             }
         }
 
-        return movieName;
+        return average;
     }
 
-    public ArrayList<String> readAlreadyRatedEmails(int movie_id) {
+    public ArrayList<String> readAlreadyRatedEmails(Movie movie) {
 
-        String sql = "SELECT m.email AS email FROM rating r" +
-                " INNER JOIN movie m ON m.id = r.id_movie" +
+        String sql = "SELECT u.email AS email FROM user u" +
+                " INNER JOIN rating r ON r.id_user = u.id" +
+                " INNER JOIN movie m ON r.id_movie = m.id" +
                 " WHERE m.id = ?;";
 
         ResultSet result = null;
@@ -197,7 +259,7 @@ public class RepositoryRating {
         try {
 
             p = c.createPreparedStatement(sql);
-            p.setString(1,Integer.toString(movie_id));
+            p.setInt(1, movie.getId());
             result = p.executeQuery();
 
             while (result.next()) {
@@ -221,6 +283,50 @@ public class RepositoryRating {
         }
 
         return ratedEmails;
+    }
+
+    public ArrayList<Rating> readAllRatingByMovie(Movie movie) {
+        String sql = "SELECT r.id_user, r.id_movie, r.rating, r.id FROM rating r" +
+                " INNER JOIN movie m ON r.id_movie = m.id" +
+                " WHERE m.id = ?;";
+
+        ResultSet result = null;
+
+        c.connect();
+        PreparedStatement p = null;
+
+        ArrayList<Rating> ratings = new ArrayList<>();
+
+        try {
+
+            p = c.createPreparedStatement(sql);
+            p.setString(1,Integer.toString(movie.getId()));
+            result = p.executeQuery();
+
+            while (result.next()) {
+                ratings.add(new Rating(
+                        result.getInt("id"),
+                        result.getFloat("rating"),
+                        result.getInt("id_user"),
+                        result.getInt("id_movie")
+                ));
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        } finally {
+            if (p != null) {
+                try{
+                    p.close();
+                    c.disconnect();
+                }catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+
+        return ratings;
     }
 
     private void updateRatingValue(String attribute, String attributeMatch, float newRating) {

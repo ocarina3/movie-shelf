@@ -17,12 +17,17 @@ public class User {
 
     //CONSTRUCTOR
 
+    public User(){}
 
-    public User() {
+    public User(int id,String name, String email, String password, LocalDate birthDate) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.birthDate = birthDate;
     }
 
-    public User(int id, String name, String email, String password, LocalDate birthDate) {
-        this.id = id;
+    public User(String name, String email, String password, LocalDate birthDate) {
         this.name = name;
         this.email = email;
         this.password = password;

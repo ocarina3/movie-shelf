@@ -1,0 +1,23 @@
+JFXTextField {
+    -fx-prompt-text-fill: white;
+    -fx-text-fill: white;
+}
+
+JFXTextArea {
+    -fx-prompt-text-fill: white;
+    -fx-text-fill: white;
+}
+
+JFXComboBox {
+    -fx-prompt-text-fill: white;
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+}
+
+.combo-box .list-cell
+{
+    -fx-background-color:  #2300A0;
+    -fx-text-fill: white;
+    -fx-padding: 3 0 2 7;
+    -fx-cell-size: 1.66667em;
+}

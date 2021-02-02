@@ -3,8 +3,10 @@ package model.repository;
 import data.base.Connect;
 import model.entity.Genre;
 import model.entity.Movie;
-import view.Main;
+import view.principal.Main;
 
+import java.io.IOException;
+import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,8 +23,8 @@ public class RepositoryMovie {
 
         if(movie == null) return;
 
-        String sql = "INSERT INTO movie(id,name,movieDirector,movieGenre,synopsis,minimumAge) " +
-                "VALUES(?,?,?,?,?,?);";
+        String sql = "INSERT INTO movie(id,name,movieDirector,movieGenre,synopsis,minimumAge,images) " +
+                "VALUES(?,?,?,?,?,?,?);";
 
         c.connect();
 
@@ -34,9 +36,10 @@ public class RepositoryMovie {
             p.setString(4,movie.getMovieGenre().toString());
             p.setString(5, movie.getSynopsis());
             p.setInt(6,movie.getMinimumAge());
+            p.setBytes(7, movie.getImageByte());
             int teste = p.executeUpdate();
 
-        }catch (SQLException e) {
+        }catch (SQLException | IOException e) {
             System.out.println("Deu Erro");
         }
         finally {
@@ -50,6 +53,48 @@ public class RepositoryMovie {
             }
             c.disconnect();
         }
+    }
+
+    public ArrayList<Movie> readAllMovies() {
+        String sql = "SELECT * FROM movie;";
+
+        ResultSet result = null;
+
+        c.connect();
+        PreparedStatement p = null;
+        ArrayList<Movie> movies = new ArrayList<>();
+
+        try {
+
+            p = c.createPreparedStatement(sql);
+            result = p.executeQuery();
+
+            while (result.next()) {
+                Movie movie = new Movie();
+                movie.setId(result.getInt("id"));
+                movie.setName(result.getString("name"));
+                movie.setMovieDirector(result.getString("movieDirector"));
+                movie.setMovieGenre(Genre.valueOf(result.getString("movieGenre")));
+                movie.setSynopsis(result.getString("synopsis"));
+                movie.setMinimumAge(result.getInt("minimumAge"));
+                movie.setImageByte(result.getBytes("images"));
+                movies.add(movie);
+            }
+
+        } catch (SQLException | IOException e) {
+
+            e.printStackTrace();
+        } finally {
+            if (p != null) {
+                try{
+                    p.close();
+                    c.disconnect();
+                }catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        return movies;
     }
 
     private ArrayList<Movie> readMovies(String attribute, String value) {
@@ -75,10 +120,11 @@ public class RepositoryMovie {
                 movie.setMovieGenre(Genre.valueOf(result.getString("movieGenre")));
                 movie.setSynopsis(result.getString("synopsis"));
                 movie.setMinimumAge(result.getInt("minimumAge"));
+                movie.setImageByte(result.getBytes("images"));
                 movies.add(movie);
             }
 
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
 
             e.printStackTrace();
         } finally {
@@ -102,8 +148,50 @@ public class RepositoryMovie {
         return readMovies("name", value);
     }
 
+    public ArrayList<Movie> searchMovie(String value) {
+        String sql = "SELECT * FROM movie WHERE name LIKE ?;";
+
+        ResultSet result = null;
+
+        c.connect();
+        PreparedStatement p = null;
+        ArrayList<Movie> movies = new ArrayList<>();
+
+        try {
+
+            p = c.createPreparedStatement(sql);
+            p.setString(1,value+"%");
+            result = p.executeQuery();
+
+            while (result.next()) {
+                Movie movie = new Movie();
+                movie.setId(result.getInt("id"));
+                movie.setName(result.getString("name"));
+                movie.setMovieDirector(result.getString("movieDirector"));
+                movie.setMovieGenre(Genre.valueOf(result.getString("movieGenre")));
+                movie.setSynopsis(result.getString("synopsis"));
+                movie.setMinimumAge(result.getInt("minimumAge"));
+                movie.setImageByte(result.getBytes("images"));
+                movies.add(movie);
+            }
+
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (p != null) {
+                try{
+                    p.close();
+                    c.disconnect();
+                }catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        return movies;
+    }
+
     public void updateMovie(Movie movie) {
-        String sql = "UPDATE movie SET name = ?, movieDirector = ?, movieGenre = ?, synopsis = ?, minimumAge = ?" +
+        String sql = "UPDATE movie SET name = ?, movieDirector = ?, movieGenre = ?, synopsis = ?, minimumAge = ?, images = ?" +
                 "WHERE id = ?";
 
         c.connect();
@@ -117,9 +205,10 @@ public class RepositoryMovie {
             p.setString(3, movie.getMovieGenre().toString());
             p.setString(4, movie.getSynopsis());
             p.setInt(5, movie.getMinimumAge());
-            p.setInt(6, movie.getId());
+            p.setBytes(6, movie.getImageByte());
+            p.setInt(7, movie.getId());
             p.executeUpdate();
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }finally {
@@ -160,6 +249,10 @@ public class RepositoryMovie {
                 }
             }
         }
+    }
+
+    public void deleteMovieById(String value) {
+        deleteMovie("id",value);
     }
 
     public void deleteMovieByName(String value) {

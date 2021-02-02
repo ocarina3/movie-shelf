@@ -50,4 +50,14 @@ public class Rating {
     public void setMovieId(int movieId) {
         this.movieId = movieId;
     }
+
+    @Override
+    public String toString() {
+        return "Rating{" +
+                "id=" + id +
+                ", rating=" + rating +
+                ", userId=" + userId +
+                ", movieId=" + movieId +
+                '}';
+    }
 }
