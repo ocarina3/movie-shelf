@@ -1,5 +1,6 @@
 package view.list.allmovies;
 
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -9,19 +10,27 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.ModelMovie;
 import model.ModelRating;
 import model.ModelUser;
 import model.entity.Movie;
+import view.adm.AdmController;
 import view.list.InfoMoviesController;
 import view.list.ListController;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AllMoviesController implements Initializable {
 
@@ -66,10 +75,13 @@ public class AllMoviesController implements Initializable {
             int userAge = ModelUser.getInstance().readUsersByEmail(currentEmail).getBirthDate().getYear();
             if(movie.getMinimumAge() <= currentYear - userAge) {
                 if (posX <= 788) {
-                    Pane pnImg = new Pane();
+                    ImageView pnImg = new ImageView();
                     pnImg.setLayoutX(posX);
                     pnImg.setLayoutY(posY);
-                    pnImg.setPrefSize(185, 238);
+                    pnImg.setFitHeight(238);
+                    pnImg.setFitWidth(185);
+                    Image image = SwingFXUtils.toFXImage(movie.getImageBuffered(), null);
+                    pnImg.setImage(image);
                     pnImg.setId("pnImg");
                     pnMovies.getChildren().add(pnImg);
                     Button btnMovie = new Button();
