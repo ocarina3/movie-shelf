@@ -29,7 +29,8 @@ public class ModelRating {
 
         if( ModelUser.getInstance().readUsersById(rating.getUserId()) == null ) return;
         String raterUserEmail = ModelUser.getInstance().readUsersById(rating.getUserId()).getEmail();
-        Movie ratedMovie = ModelMovie.getInstance().readMoviesById(Integer.toString(rating.getUserId()));
+
+        Movie ratedMovie = ModelMovie.getInstance().readMoviesById(Integer.toString(rating.getMovieId()));
 
         ArrayList<String> alreadyRatedEmails = repositoryRating.readAlreadyRatedEmails(ratedMovie);
 
