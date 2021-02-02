@@ -69,7 +69,7 @@ nb-configuration.xml
 
 ## Database
 
-data.base/alphadatabase.db
+database/alphadatabase.db
 
 ## File used to keep folder
 .gitkeep!
