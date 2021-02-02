@@ -1,13 +1,16 @@
-package data.base;
+package database;
 
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class CreateDatabase {
 
+    //CRIA UMA CONEXÃO COM O BANCO DE DADOS
     private final Connect c = new Connect();
 
-    // Criação da tabela passando a query, cria a tabela apenas se ela não existe
+    //________________________________________USER____________________________________________________________
+
+    // CRIA A TABELA DE USUARIOS CASO ELA NÃO EXISTA
     public void createTableUser() {
         String query = "CREATE TABLE IF NOT EXISTS user(" +
                 "id integer primary key AUTOINCREMENT," +
@@ -17,6 +20,7 @@ public class CreateDatabase {
                 "birthDate varchar," +
                 "admin bool" +
                 ");";
+
         boolean connected = false;
 
         try {
@@ -30,6 +34,11 @@ public class CreateDatabase {
         }
     }
 
+    //________________________________________________________________________________________________________
+
+    //________________________________________MOVIES____________________________________________________________
+
+    //CRIA A TABELA DE FILMES CASO ELA NÃO EXISTA
     public void createTableMovie() {
         String query = "CREATE TABLE IF NOT EXISTS movie(" +
                 "id integer primary key AUTOINCREMENT," +
@@ -54,6 +63,11 @@ public class CreateDatabase {
         }
     }
 
+    //__________________________________________________________________________________________________________
+
+    //________________________________________RATING____________________________________________________________
+
+    //CRIA A TABELA DE AVALIAÇÕES CASO ELA NÃO EXISTA
     public void createTableRating() {
         String query = "CREATE TABLE IF NOT EXISTS rating(" +
                 "id integer primary key AUTOINCREMENT," +
@@ -77,6 +91,11 @@ public class CreateDatabase {
         }
     }
 
+    //________________________________________________________________________________________________________
+
+    //________________________________________FAVORITE MOVIES____________________________________________________________
+
+    //CRIA A TABELA DE FILMES FAVORITOS CASO ELA NÃO EXISTA
     public void createTableFavoriteMovies() {
         String query = "CREATE TABLE IF NOT EXISTS favoriteMovies (" +
                 "    id       INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -97,3 +116,5 @@ public class CreateDatabase {
         }
     }
 }
+
+//____________________________________________________________________________________________________________

@@ -1,8 +1,7 @@
 package model.repository;
 
-import data.base.Connect;
+import database.Connect;
 import model.ModelMovie;
-import model.entity.Genre;
 import model.entity.Movie;
 import model.entity.User;
 import view.principal.Main;

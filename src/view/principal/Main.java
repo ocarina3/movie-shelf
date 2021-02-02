@@ -1,6 +1,6 @@
 package view.principal;
 
-import data.base.CreateDatabase;
+import database.CreateDatabase;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

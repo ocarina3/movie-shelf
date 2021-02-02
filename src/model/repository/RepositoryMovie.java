@@ -1,12 +1,11 @@
 package model.repository;
 
-import data.base.Connect;
+import database.Connect;
 import model.entity.Genre;
 import model.entity.Movie;
 import view.principal.Main;
 
 import java.io.IOException;
-import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
