@@ -39,6 +39,7 @@ import java.util.logging.Logger;
 public class AddMoviesController implements Initializable {
 
     public BufferedImage bufferedImage;
+
     @FXML
     private JFXButton btnQuick;
 
@@ -96,7 +97,6 @@ public class AddMoviesController implements Initializable {
 
             movie.setImageBuffered(bufferedImage);
 
-            System.out.println(movie.toString());
             boolean cadastro = ModelMovie.getInstance().createMovie(movie);
 
             if(cadastro == false){
@@ -107,6 +107,11 @@ public class AddMoviesController implements Initializable {
                 txtfName.setText("");
                 txtfMinAge.setText("");
                 cbGenre.setValue("Gênero");
+                imgMovie.setFitWidth(75);
+                imgMovie.setFitHeight(75);
+                imgMovie.setLayoutX(110);
+                imgMovie.setLayoutY(231);
+                imgMovie.setImage(new Image (getClass().getResourceAsStream("../resources/plus.png")));
                 Dialog.information("Cadastro Conluído");
                 Main.changeScreen("addMovies", email);
             }
