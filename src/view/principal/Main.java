@@ -7,17 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import model.ModelMovie;
-import model.ModelRating;
-import model.ModelUser;
-import model.entity.Genre;
-import model.entity.Movie;
-import model.entity.Rating;
-import model.entity.User;
-
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 
@@ -78,94 +69,6 @@ public class Main extends Application {
         createDatabase.createTableMovie();
         createDatabase.createTableRating();
         createDatabase.createTableFavoriteMovies();
-
-        Movie movie1 = new Movie(1, "Filme", "Diretor", Genre.DRAMA, "Sinopse", 10);
-        Movie movie2 = new Movie(2, "Filme2", "Diretor2", Genre.COMEDY, "Sinopse2", 10);
-        User user = new User(1, "Usuario", "usuario@email.com", "senha", LocalDate.of(2002, 1, 1));
-        User user2 = new User(2, "Usuario2", "usuario2@email.com", "senha", LocalDate.of(2002, 1, 1));
-        Rating rating = new Rating(1, 4, 1, 1);
-        Rating rating2 = new Rating(2, 3, 2, 1);
-        Rating rating3 = new Rating(3, 4, 1, 2);
-
-        ModelMovie.getInstance().createMovie(movie1);
-        ModelMovie.getInstance().createMovie(movie2);
-        ModelUser.getInstance().createClient(user);
-        ModelUser.getInstance().createClient(user2);
-        ModelRating.getInstance().createRating(rating);
-        ModelRating.getInstance().createRating(rating2);
-        ModelRating.getInstance().createRating(rating3);
-
-        System.out.println(ModelRating.getInstance().readUserRatingsByMovie(movie1, user2));
-
-        // Delete rating instances
-        ArrayList<Rating> ratingsM1 = ModelRating.getInstance().readAllRatingByMovie(movie1);
-        ArrayList<Rating> ratingsM2 = ModelRating.getInstance().readAllRatingByMovie(movie2);
-        for( Rating ratingM1 : ratingsM1 ) {
-            ModelRating.getInstance().deleteRatingById(ratingM1.getId());
-        }
-        for( Rating ratingM2 : ratingsM2 ) {
-            ModelRating.getInstance().deleteRatingById(ratingM2.getId());
-        }
-
-        // Delete movies and user instances
-        ModelMovie.getInstance().deleteMovieByName(movie1);
-        ModelMovie.getInstance().deleteMovieByName(movie2);
-        ModelUser.getInstance().deleteUserByEmail(user.getEmail());
-        ModelUser.getInstance().deleteUserByEmail(user2.getEmail());
-
-
-//_________________________________________USER____________________________________________________________
-
-        User user1 = new User(0,"arthur","arthur.eu@edu.br","senha",LocalDate.of(2001,01,29));
-        User usuario = new User(0,"mario","qq","qq",LocalDate.of(2001,01,29));
-        ModelUser.getInstance().createAdmin(usuario);
-
-        User usuario1 = new User(0,"mario","mariachi","as",LocalDate.of(2001,01,29));
-        ModelUser.getInstance().createAdmin(usuario1);
-
-
-
-        //CRIA UM NOVO USER
-        ModelUser.getInstance().createClient(user1);
-
-        //TENTAR CRIAR UM USER REPETIDO
-        ModelUser.getInstance().createClient(user1);
-
-
-        //LEITURA DO USER
-        user1 = ModelUser.getInstance().readUsersByEmail(user1.getEmail());
-        System.out.println(ModelUser.getInstance().readUsersByEmail(user1.getEmail()));
-
-        //UPLOAD DO USER
-        user1.setPassword("secreta");
-        ModelUser.getInstance().updateUser(user1);
-        System.out.println(ModelUser.getInstance().readUsersById(user1.getId()));
-
-        //DELETANDO USER
-        ModelUser.getInstance().deleteUserByEmail("arthur.eu@edu.br");
-
-//___________________________________________MOVIE_____________________________________________________________
-
-
-        //CRIAR MOVIE
-        Movie movie = new Movie(0,"filme01","exemplo", Genre.COMEDY,"um filme qualquer",12);
-        ModelMovie.getInstance().createMovie(movie);
-
-        //LEITURA DO MOVIE
-        movie = ModelMovie.getInstance().readMoviesByName(movie.getName()).get(0);
-        System.out.println(movie);
-
-        //UPLOAD DO MOVIE
-        movie.setSynopsis("Um exemplo de filme");
-        ModelMovie.getInstance().updateMovie(movie);
-
-        //DELETANDO O MOVIE
-        System.out.println(ModelMovie.getInstance().readMoviesById(String.format("%d",movie.getId())));
-
-//_____________________________________________________________________________________________________________________
-
-
-        ModelMovie.getInstance().deleteMovieByName(movie);
     }
 
     public static void changeScreen (String scr, String currentUser) {
