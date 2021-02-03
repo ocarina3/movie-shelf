@@ -55,6 +55,10 @@ public class ModelRating {
         return repositoryRating.readRatingsByMovie(movie);
     }
 
+    public ArrayList<Rating> readRatingsByUser(User user) {
+        return repositoryRating.readRatingsByUser(user);
+    }
+
     public String readRaterUserName(int rating_id) {
         return repositoryRating.readRaterUserName(rating_id);
     }

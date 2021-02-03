@@ -134,6 +134,18 @@ public class RepositoryRating {
         return ratings;
     }
 
+    public ArrayList<Rating> readRatingsByUser(User user) {
+        ArrayList<Rating> allRatings = this.readAllRatings();
+
+        ArrayList<Rating> filteredRatings = new ArrayList<>();
+
+        for ( Rating rating : allRatings ) {
+            if ( rating.getUserId() == user.getId() ) filteredRatings.add(rating);
+        }
+
+        return filteredRatings;
+    }
+
     public ArrayList<Rating> readRatingsByMovie(Movie movie) {
         String sql = "SELECT r.id AS id, r.rating AS rating, r.id_user as id_user, r.id_movie as id_movie FROM rating r" +
                 " INNER JOIN movie m ON m.id = r.id_movie" +
