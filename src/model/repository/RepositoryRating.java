@@ -325,50 +325,6 @@ public class RepositoryRating {
         return ratedEmails;
     }
 
-    public ArrayList<Rating> readAllRatingByMovie(Movie movie) {
-        String sql = "SELECT r.id_user, r.id_movie, r.rating, r.id FROM rating r" +
-                " INNER JOIN movie m ON r.id_movie = m.id" +
-                " WHERE m.id = ?;";
-
-        ResultSet result = null;
-
-        c.connect();
-        PreparedStatement p = null;
-
-        ArrayList<Rating> ratings = new ArrayList<>();
-
-        try {
-
-            p = c.createPreparedStatement(sql);
-            p.setString(1,Integer.toString(movie.getId()));
-            result = p.executeQuery();
-
-            while (result.next()) {
-                ratings.add(new Rating(
-                        result.getInt("id"),
-                        result.getFloat("rating"),
-                        result.getInt("id_user"),
-                        result.getInt("id_movie")
-                ));
-            }
-
-        } catch (SQLException e) {
-
-            e.printStackTrace();
-        } finally {
-            if (p != null) {
-                try{
-                    p.close();
-                    c.disconnect();
-                }catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
-            }
-        }
-
-        return ratings;
-    }
-
     private void updateRatingValue(String attribute, String attributeMatch, float newRating) {
         String sql = "UPDATE rating SET rating = ? WHERE "+ attribute +" = ?;";
 

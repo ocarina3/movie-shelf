@@ -68,10 +68,6 @@ public class ModelRating {
         return repositoryRating.readAvgRatingByMovie(movie);
     }
 
-    public ArrayList<Rating> readAllRatingByMovie(Movie movie) {
-        return repositoryRating.readAllRatingByMovie(movie);
-    }
-
     public ArrayList<String> readAlreadyRatedEmails(Movie movie) {
         return repositoryRating.readAlreadyRatedEmails(movie);
     }
