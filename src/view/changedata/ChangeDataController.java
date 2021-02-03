@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import model.ModelUser;
 import model.entity.User;
 import utils.Dialog;
+import utils.ValidateEmail;
 import view.principal.Main;
 
 import javax.swing.text.html.ImageView;
@@ -67,26 +68,27 @@ public class ChangeDataController implements Initializable {
     }
 
     public void changeRegister(ActionEvent event) {
-        if (txtfUser.getText().equals("") || txtfEmail.getText().equals("") || pfPass.getText().equals("") || pfConfirmPass.getText().equals("") || dtBirthdate.getValue() == null) {
+        if (txtfUser.getText().equals("") || txtfEmail.getText().equals("") || pfPass.getText().equals("") ||
+                pfConfirmPass.getText().equals("") || dtBirthdate.getValue() == null) {
             Dialog.warning("Favor informar todos campos");
-        }else{
-            if(pfPass.getText().equals(pfConfirmPass.getText())){
-                User user = new User(ModelUser.getInstance().readUsersByEmail(email).getId(), txtfUser.getText(),txtfEmail.getText(), pfPass.getText(), dtBirthdate.getValue());
-                boolean update = ModelUser.getInstance().updateUser(user);
-                if(update == false){
-                    Dialog.error("Erro ao atualizar");
-                } else {
-                    Dialog.information("Atualização Conluída");
-                    Main.changeScreen("login");
-                }
+        } else if (!ValidateEmail.isValidEmail(txtfEmail.getText())) {
+            Dialog.warning("Informe um endereço de E-mail válido");
+        } else if (!pfPass.getText().equals(pfConfirmPass.getText())) {
+            Dialog.error("As senhas não coincidem");
+        } else {
+            User user = new User(ModelUser.getInstance().readUsersByEmail(email).getId(), txtfUser.getText(),txtfEmail.getText(), pfPass.getText(), dtBirthdate.getValue());
+            boolean update = ModelUser.getInstance().updateUser(user);
+            if(!update){
+                Dialog.error("Erro ao atualizar");
             } else {
-                Dialog.error("As senhas não coincidem");
+                Dialog.information("Atualização Conluída");
+                Main.changeScreen("login");
             }
         }
     }
 
     public void backHome(ActionEvent event) {
-        if(ModelUser.getInstance().isAdmin(ModelUser.getInstance().readUsersByEmail(email)) == true){
+        if(ModelUser.getInstance().isAdmin(ModelUser.getInstance().readUsersByEmail(email))){
             Main.changeScreen("adm", email);
         } else {
             Main.changeScreen("home", email);
