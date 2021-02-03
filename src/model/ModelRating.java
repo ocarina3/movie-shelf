@@ -43,6 +43,10 @@ public class ModelRating {
         return repositoryRating.readRatingById(rating_id);
     }
 
+    public ArrayList<Rating> readAllRatings() {
+        return repositoryRating.readAllRatings();
+    }
+
     public ArrayList<Rating> readRatingsByValue(String value) {
         return repositoryRating.readRatingsByValue(value);
     }
@@ -55,8 +59,9 @@ public class ModelRating {
         return repositoryRating.readRaterUserName(rating_id);
     }
 
-    public ArrayList<Rating> readUserRatingsByMovie(Movie movie, User user) {
-        return repositoryRating.readUserRatingsByMovie(movie, user);
+    public Rating readUserRatingByMovie(Movie movie, User user) {
+        if (repositoryRating.readUserRatingsByMovie(movie, user) == null) return null;
+        return repositoryRating.readUserRatingsByMovie(movie, user).get(0);
     }
 
     public float readAvgRatingByMovie(Movie movie)  {
