@@ -91,6 +91,49 @@ public class RepositoryRating {
         return ratings;
     }
 
+    public ArrayList<Rating> readAllRatings() {
+
+        String sql = "SELECT * FROM rating";
+
+        ResultSet result = null;
+
+        c.connect();
+        PreparedStatement p = null;
+        ArrayList<Rating> ratings = new ArrayList<>();
+
+        try {
+
+            p = c.createPreparedStatement(sql);
+            result = p.executeQuery();
+
+            while (result.next()) {
+                Rating rating = new Rating(
+                        result.getInt("id"),
+                        result.getFloat("rating"),
+                        result.getInt("id_user"),
+                        result.getInt("id_movie")
+                );
+
+                ratings.add(rating);
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        } finally {
+            if (p != null) {
+                try{
+                    p.close();
+                    c.disconnect();
+                }catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+
+        return ratings;
+    }
+
     public ArrayList<Rating> readRatingsByMovie(Movie movie) {
         String sql = "SELECT r.id AS id, r.rating AS rating, r.id_user as id_user, r.id_movie as id_movie FROM rating r" +
                 " INNER JOIN movie m ON m.id = r.id_movie" +
@@ -137,6 +180,8 @@ public class RepositoryRating {
     }
 
     public ArrayList<Rating> readUserRatingsByMovie(Movie movie, User user) {
+        if(this.readRatingsByMovie(movie) == null) return null;
+
         ArrayList<Rating> ratings = this.readRatingsByMovie(movie);
 
         ArrayList<Rating> filteredRatings = new ArrayList<>();
