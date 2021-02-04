@@ -16,38 +16,33 @@
    <children>
       <Pane prefHeight="153.0" prefWidth="242.0" style="-fx-background-color: #4717F6;">
          <children>
-            <Label fx:id="lbLogo" layoutX="101.0" layoutY="14.0" text="Ocarina" textFill="WHITE">
+            <Label fx:id="lbLogo" layoutX="63.0" layoutY="20.0" text="Ocarina" textFill="WHITE">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-            <JFXButton fx:id="btnBack" layoutX="27.0" layoutY="11.0" onAction="#back" prefHeight="51.0" prefWidth="52.0" ripplerFill="#af99ff" style="-fx-background-color: #2300A0;" text=" " />
-            <ImageView fx:id="imgBack" disable="true" fitHeight="35.0" fitWidth="38.0" layoutX="35.0" layoutY="19.0">
+            <JFXButton fx:id="btnBack" layoutX="15.0" layoutY="22.0" onAction="#back" prefHeight="41.0" prefWidth="41.0" ripplerFill="#af99ff" style="-fx-background-color: #2300A0;" text=" " />
+            <ImageView fx:id="imgBack" disable="true" fitHeight="31.0" fitWidth="31.0" layoutX="20.0" layoutY="27.0">
                <image>
                   <Image url="@../resources/backArrow.png" />
                </image>
             </ImageView>
          </children>
       </Pane>
-      <Pane layoutX="242.0" prefHeight="86.0" prefWidth="1039.0" style="-fx-background-color: #663CFD;">
+      <Pane layoutX="242.0" prefHeight="86.0" prefWidth="1048.0" style="-fx-background-color: #663CFD;">
          <children>
             <Label fx:id="lbUsername" layoutX="871.0" layoutY="26.0" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="txtfSearch" focusColor="WHITE" layoutX="90.0" layoutY="20.0" prefHeight="51.0" prefWidth="498.0" promptText="Pesquisa" unFocusColor="#663cfd">
+            <JFXTextField fx:id="txtfSearch" focusColor="WHITE" layoutX="80.0" layoutY="19.0" prefHeight="51.0" prefWidth="498.0" promptText="Pesquisa" unFocusColor="#663cfd">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXTextField>
-            <ImageView fx:id="imgSearch" fitHeight="30.0" fitWidth="30.0" layoutX="43.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../resources/search.png" />
-               </image>
-            </ImageView>
-            <JFXButton fx:id="btnSearch" layoutX="31.0" layoutY="21.0" onAction="#searchMovies" prefHeight="51.0" prefWidth="52.0" ripplerFill="#af99ff" style="-fx-background-color: #2300A0;" text=" " />
-            <ImageView disable="true" fitHeight="35.0" fitWidth="38.0" layoutX="39.0" layoutY="29.0">
+            <JFXButton fx:id="btnSearch" layoutX="21.0" layoutY="24.0" onAction="#searchMovies" prefHeight="41.0" prefWidth="41.0" ripplerFill="#af99ff" style="-fx-background-color: #2300A0;" text=" " />
+            <ImageView disable="true" fitHeight="31.0" fitWidth="31.0" layoutX="26.0" layoutY="29.0">
                <image>
                   <Image url="@../resources/search.png" />
                </image>
