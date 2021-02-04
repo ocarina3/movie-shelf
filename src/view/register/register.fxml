@@ -53,13 +53,18 @@
                   <Font size="24.0" />
                </font>
             </JFXPasswordField>
-            <Button fx:id="btnBack" layoutX="41.0" layoutY="14.0" mnemonicParsing="false" onAction="#backHome" prefHeight="40.0" prefWidth="40.0" />
+            <Button fx:id="btnBack" layoutX="48.0" layoutY="27.0" mnemonicParsing="false" onAction="#backHome" prefHeight="40.0" prefWidth="40.0" />
             <JFXDatePicker fx:id="dtBirthDate" defaultColor="#4717f6" layoutX="453.0" layoutY="250.0" prefWidth="318.0" promptText="Data Nascimento" />
          </children>
       </Pane>
-      <ImageView fx:id="imgRegisterMan" fitHeight="390.0" fitWidth="408.0" layoutX="855.0" layoutY="306.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="726.0" fitWidth="545.0" layoutX="737.0" layoutY="-7.0">
          <image>
-            <Image url="@../resources/register.png" />
+            <Image url="@../resources/register_art.png" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="1210.0" layoutY="640.0">
+         <image>
+            <Image url="@../resources/O.png" />
          </image>
       </ImageView>
    </children>
