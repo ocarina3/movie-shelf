@@ -27,12 +27,12 @@
          </children></Pane>
       <Label fx:id="lbTitle" layoutX="290.0" layoutY="40.0" text="Title" textFill="WHITE">
          <font>
-            <Font size="24.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
       <Label layoutX="289.0" layoutY="75.0" text="Gênero: " textFill="WHITE">
          <font>
-            <Font size="15.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
       </Label>
       <Label fx:id="lbGenre" layoutX="349.0" layoutY="75.0" text="Genre" textFill="#bfbfbf">
@@ -45,9 +45,9 @@
             <JFXTextArea fx:id="txtaSinopse" editable="false" focusColor="#405aa800" layoutX="19.0" layoutY="10.0" prefHeight="229.0" prefWidth="372.0" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-border-radius: 20;" unFocusColor="#4d4d4d00" />
          </children>
       </Pane>
-      <Label fx:id="lbSinopse" layoutX="290.0" layoutY="149.0" text="Sinopse" textFill="WHITE">
+      <Label fx:id="lbSinopse" layoutX="289.0" layoutY="149.0" text="Sinopse" textFill="WHITE">
          <font>
-            <Font size="15.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
       </Label>
       <JFXButton fx:id="btnRate" layoutX="74.0" layoutY="380.0" onAction="#makeRate" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: #19016E;" text="Avaliar Filme" textFill="WHITE">
@@ -59,12 +59,12 @@
          <font>
             <Font size="18.0" />
          </font></JFXToggleButton>
-      <Label layoutX="289.0" layoutY="110.0" text="Diretor:" textFill="WHITE">
+      <Label layoutX="288.0" layoutY="113.0" text="Diretor:" textFill="WHITE">
          <font>
-            <Font size="15.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="lbDirector" layoutX="349.0" layoutY="110.0" text="Director" textFill="#bfbfbf">
+      <Label fx:id="lbDirector" layoutX="348.0" layoutY="113.0" text="Director" textFill="#bfbfbf">
          <font>
             <Font size="15.0" />
          </font>
