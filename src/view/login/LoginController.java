@@ -10,6 +10,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import model.ModelUser;
 import utils.Dialog;
+import utils.EncryptPassword;
 import view.principal.Main;
 
 
@@ -57,16 +58,16 @@ public class LoginController {
         if(ModelUser.getInstance().readUsersByEmail(txtfEmail.getText()) == null){
             Dialog.error("Usuário ou senha incorreto(s)");
         } else {
-            if((ModelUser.getInstance().readUsersByEmail(txtfEmail.getText()).getPassword()).equals(pfPass.getText())) {
-                if(ModelUser.getInstance().isAdmin(ModelUser.getInstance().readUsersByEmail(txtfEmail.getText())) == true){
+            if((ModelUser.getInstance().readUsersByEmail(txtfEmail.getText()).getPassword()).equals(
+                    EncryptPassword.encryptPassword(pfPass.getText())
+            )) {
+                if(ModelUser.getInstance().isAdmin(ModelUser.getInstance().readUsersByEmail(txtfEmail.getText()))){
                     Main.changeScreen("adm", txtfEmail.getText());
-                    txtfEmail.setText("");
-                    pfPass.setText("");
                 } else {
                     Main.changeScreen("home", txtfEmail.getText());
-                    txtfEmail.setText("");
-                    pfPass.setText("");
                 }
+                txtfEmail.setText("");
+                pfPass.setText("");
             } else {
                 Dialog.error("Usuário ou senha incorreto(s)");
             }

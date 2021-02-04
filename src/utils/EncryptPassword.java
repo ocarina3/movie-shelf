@@ -1,25 +1,28 @@
 package utils;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class EncryptPassword {
 
-    public static void encryptPassword(String args []) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+    public static String encryptPassword(String basePassword) {
 
-        //-------------- Senha Admin
-        String senhaAdmin = "admin";
+        try {
 
-        MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
-        byte messageDigestSenhaAdmin[] = algorithm.digest(senhaAdmin.getBytes("UTF-8"));
+            MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
+            byte[] messageDigestPassword = algorithm.digest(basePassword.getBytes(StandardCharsets.UTF_8));
 
-        StringBuilder hexStringSenhaAdmin = new StringBuilder();
-        for (byte b : messageDigestSenhaAdmin) {
-            hexStringSenhaAdmin.append(String.format("%02X", 0xFF & b));
+            StringBuilder hexStringPassword = new StringBuilder();
+            for (byte b : messageDigestPassword) {
+                hexStringPassword.append(String.format("%02X", 0xFF & b));
+            }
+
+            return hexStringPassword.toString();
+
+        } catch (NoSuchAlgorithmException e) {
+            return e.getMessage();
         }
-        String senhahexAdmin = hexStringSenhaAdmin.toString();
-
-        System.out.println(senhahexAdmin);
     }
 
 }
