@@ -74,9 +74,6 @@ public class ListController implements Initializable {
     private JFXButton btnBack;
 
     @FXML
-    private JFXToggleButton tgbDirector;
-
-    @FXML
     void back(ActionEvent event){
         if(ModelUser.getInstance().isAdmin(ModelUser.getInstance().readUsersByEmail(email)) == true){
             Main.changeScreen("adm", email);
@@ -85,14 +82,7 @@ public class ListController implements Initializable {
         }
     }
 
-    @FXML
-    void isDirector(ActionEvent event) {
-        if(tgbDirector.isSelected() == true) {
-            tgbDirector.setText("Diretor");
-        } else {
-            tgbDirector.setText("Nome do Filme");
-        }
-    }
+
 
     @FXML
     void bestRatingsMovies(ActionEvent event) throws IOException {
@@ -107,12 +97,7 @@ public class ListController implements Initializable {
     @FXML
     void searchMovies(ActionEvent event) throws IOException {
         SearchMoviesController.search = txtfSearch.getText();
-        DirectorSearchMoviesController.search = txtfSearch.getText();
-        if(tgbDirector.isSelected() == false) {
-            loadPage("searchmovies.fxml");
-        } else {
-            loadPage("directorsearchmovies.fxml");
-        }
+        loadPage("searchmovies.fxml");
     }
 
     @FXML
@@ -174,7 +159,6 @@ public class ListController implements Initializable {
             }
         });
 
-        tgbDirector.setText("Nome do Filme");
 
     }
 }

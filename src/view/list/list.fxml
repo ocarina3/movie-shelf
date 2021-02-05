@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXToggleButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
@@ -12,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@List.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.list.ListController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@List.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.list.ListController">
    <children>
       <Pane prefHeight="153.0" prefWidth="242.0" style="-fx-background-color: #4717F6;">
          <children>
@@ -47,11 +46,6 @@
                   <Image url="@../resources/search.png" />
                </image>
             </ImageView>
-            <JFXToggleButton fx:id="tgbDirector" layoutX="588.0" layoutY="15.0" onAction="#isDirector" text="ToggleButton" textFill="WHITE" toggleColor="#4717f6" toggleLineColor="#4717f6">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </JFXToggleButton>
          </children>
       </Pane>
       <VBox layoutY="86.0" prefHeight="638.0" prefWidth="242.0" style="-fx-background-color: #4717F6;">
