@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import model.ModelUser;
 import model.entity.User;
 import utils.Dialog;
+import utils.EncryptPassword;
 import utils.ValidateEmail;
 import view.principal.Main;
 
@@ -59,8 +60,6 @@ public class ChangeDataController implements Initializable {
                     txtfUser.setText(ModelUser.getInstance().readUsersByEmail(currentUser).getName());
                     txtfEmail.setText(ModelUser.getInstance().readUsersByEmail(currentUser).getEmail());
                     dtBirthdate.setValue(ModelUser.getInstance().readUsersByEmail(currentUser).getBirthDate());
-                    pfPass.setText(ModelUser.getInstance().readUsersByEmail(currentUser).getPassword());
-                    pfConfirmPass.setText(ModelUser.getInstance().readUsersByEmail(currentUser).getPassword());
                     email = currentUser;
                 }
             }
@@ -76,7 +75,9 @@ public class ChangeDataController implements Initializable {
         } else if (!pfPass.getText().equals(pfConfirmPass.getText())) {
             Dialog.error("As senhas não coincidem");
         } else {
-            User user = new User(ModelUser.getInstance().readUsersByEmail(email).getId(), txtfUser.getText(),txtfEmail.getText(), pfPass.getText(), dtBirthdate.getValue());
+            User user = new User(ModelUser.getInstance().readUsersByEmail(email).getId(), txtfUser.getText(),
+                    txtfEmail.getText(), EncryptPassword.encryptPassword(txtfEmail.getText(), pfPass.getText()),
+                    dtBirthdate.getValue());
             boolean update = ModelUser.getInstance().updateUser(user);
             if(!update){
                 Dialog.error("Erro ao atualizar");
