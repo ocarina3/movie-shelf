@@ -65,8 +65,8 @@ public class SearchMoviesController implements Initializable {
             int currentYear = LocalDate.now().getYear();
             int userAge = ModelUser.getInstance().readUsersByEmail(ListController.email).getBirthDate().getYear();
             if(movie.getMinimumAge() <= currentYear - userAge) {
-                if ((movie.getName().toLowerCase(Locale.ROOT).contains(search.toLowerCase(Locale.ROOT))
-                )|| (movie.getMovieDirector().toLowerCase(Locale.ROOT).equals(search.toLowerCase(Locale.ROOT)))) {
+                if ((movie.getName().toLowerCase(Locale.ROOT).contains(search.toLowerCase(Locale.ROOT)))
+                    || (movie.getMovieDirector().toLowerCase(Locale.ROOT).contains(search.toLowerCase(Locale.ROOT)))){
                     if (posX <= 788) {
                         ImageView pnImg = new ImageView();
                         pnImg.setLayoutX(posX);
