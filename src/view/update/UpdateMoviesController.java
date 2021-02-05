@@ -105,7 +105,9 @@ public class UpdateMoviesController implements Initializable {
             }else {
                 movie = new Movie(movieId, txtfName.getText(), txtfDirector.getText(), Genre.SCIENCE_FICTION, txtaSinopse.getText(), Integer.parseInt(txtfMinAge.getText()));
             }
-            movie.setImageBuffered(bufferedImage);
+            if(bufferedImage != null){
+            movie.setImageBuffered(bufferedImage);}
+            else{movie.setImageBuffered(ModelMovie.getInstance().readMoviesById(String.format("%d",movieId)).getImageBuffered());}
             boolean update = ModelMovie.getInstance().updateMovie(movie);
             if(update == false){
                 utils.Dialog.error("Erro ao atualizar");
