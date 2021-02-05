@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@List.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.list.ListController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@List.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.list.ListController">
    <children>
       <Pane prefHeight="153.0" prefWidth="242.0" style="-fx-background-color: #4717F6;">
          <children>
@@ -97,7 +97,7 @@
             </JFXButton>
          </children>
       </VBox>
-      <ScrollPane focusTraversable="false" hbarPolicy="NEVER" hmax="0.0" layoutX="242.0" layoutY="86.0" pannable="true" prefHeight="638.0" prefWidth="1039.0">
+      <ScrollPane focusTraversable="false" hbarPolicy="NEVER" hmax="0.0" layoutX="242.0" layoutY="86.0" pannable="true" prefHeight="638.0" prefWidth="1048.0">
          <content>
             <AnchorPane fx:id="pnScreen" prefHeight="726.0" prefWidth="1037.0" style="-fx-background-color: #0A002C;" />
          </content>
