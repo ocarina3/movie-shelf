@@ -63,7 +63,7 @@ public class RegisterController {
         } else if (!pfPass.getText().equals(pfConfirmPass.getText())) {
             Dialog.error("As senhas não coincidem");
         } else {
-            User user = new User(0, txtfUsername.getText(),txtfEmail.getText(), EncryptPassword.encryptPassword(pfPass.getText()), dtBirthDate.getValue());
+            User user = new User(0, txtfUsername.getText(),txtfEmail.getText(), EncryptPassword.encryptPassword(txtfEmail.getText(), pfPass.getText()), dtBirthDate.getValue());
             boolean register = ModelUser.getInstance().createClient(user);
             if(!register){
                 Dialog.error("E-mail já cadastrado");

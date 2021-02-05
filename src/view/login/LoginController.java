@@ -59,7 +59,7 @@ public class LoginController {
             Dialog.error("Usuário ou senha incorreto(s)");
         } else {
             if((ModelUser.getInstance().readUsersByEmail(txtfEmail.getText()).getPassword()).equals(
-                    EncryptPassword.encryptPassword(pfPass.getText())
+                    EncryptPassword.encryptPassword(txtfEmail.getText(), pfPass.getText())
             )) {
                 if(ModelUser.getInstance().isAdmin(ModelUser.getInstance().readUsersByEmail(txtfEmail.getText()))){
                     Main.changeScreen("adm", txtfEmail.getText());
