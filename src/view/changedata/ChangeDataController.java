@@ -44,6 +44,9 @@ public class ChangeDataController implements Initializable {
     private JFXPasswordField pfConfirmPass;
 
     @FXML
+    private JFXPasswordField pfCurrentpass;
+
+    @FXML
     private JFXButton btnAlterar;
 
     @FXML
