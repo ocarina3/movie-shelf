@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.ModelMovie;
 import model.ModelRating;
@@ -20,6 +21,7 @@ import model.ModelUser;
 import model.entity.Movie;
 import view.list.InfoMoviesController;
 import view.list.ListController;
+import view.principal.Main;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -52,6 +54,10 @@ public class ActionAndAdventureMoviesController implements Initializable {
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../infomovies.fxml"));
                         Parent root1 = (Parent) fxmlLoader.load();
                         Stage stage = new Stage();
+                        // Block the parent window
+                        stage.initOwner(Main.stage);
+                        stage.initModality(Modality.WINDOW_MODAL);
+                        // Properties of info
                         stage.setTitle("Info");
                         stage.setScene(new Scene(root1));
                         stage.setResizable(false);

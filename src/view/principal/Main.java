@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 
 public class Main extends Application {
-    private static Stage stage;
+    public static Stage stage;
     private static Scene mainScene;
     private static Scene registerScene;
     private static Scene loginScene;
