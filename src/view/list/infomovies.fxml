@@ -1,30 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
-<?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.controlsfx.control.Rating?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="738.0" style="-fx-background-color: #4717F6;" stylesheets="@../add/AddMovies.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.list.InfoMoviesController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="738.0" style="-fx-background-color: #4717F6;" stylesheets="@../add/AddMovies.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.list.InfoMoviesController">
    <children>
       <ImageView fx:id="imgMovie" fitHeight="260.0" fitWidth="200.0" layoutX="37.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/potter.png" />
          </image>
       </ImageView>
-      <Pane layoutX="94.0" layoutY="265.0" prefHeight="43.0" prefWidth="74.0" style="-fx-background-color: yellow; -fx-border-radius: 40; -fx-background-radius: 40;">
-         <children>
-            <Label fx:id="lbRate" alignment="CENTER" contentDisplay="CENTER" layoutX="-3.0" layoutY="4.0" prefHeight="35.0" prefWidth="81.0" text="10.0">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-         </children></Pane>
       <Label fx:id="lbTitle" layoutX="290.0" layoutY="40.0" text="Title" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -50,11 +43,6 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnRate" layoutX="74.0" layoutY="380.0" onAction="#makeRate" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: #19016E;" text="Avaliar Filme" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </JFXButton>
       <JFXToggleButton fx:id="favoriteButton" layoutX="511.0" layoutY="27.0" onAction="#addFavorite" text="Meus Favoritos" textFill="WHITE">
          <font>
             <Font size="18.0" />
@@ -69,6 +57,13 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="txtfRate" alignment="CENTER" focusColor="WHITE" layoutX="70.0" layoutY="330.0" promptText="Sua Nota: " unFocusColor="WHITE" />
+      <Text layoutX="107.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sua Avaliação" />
+      <Rating fx:id="Rate" cache="true" cacheHint="QUALITY" layoutX="63.0" layoutY="325.0" onMouseClicked="#getRate" />
+      <Rating fx:id="Rate1" accessibleRole="BUTTON" cache="true" cacheHint="QUALITY" layoutX="63.0" layoutY="404.0" onMouseClicked="#getRate1">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </Rating>
+      <Text layoutX="99.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avaliação Média" />
    </children>
 </Pane>

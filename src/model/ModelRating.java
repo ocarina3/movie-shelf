@@ -38,6 +38,11 @@ public class ModelRating {
             repositoryRating.createRating(rating);
     }
 
+    public void createRating(float rate, int id_user, int id_movie){
+        Rating rating = new Rating(0,rate,id_user,id_movie);
+        createRating(rating);
+    }
+
     // Read
     public Rating readRatingById(int rating_id) {
         return repositoryRating.readRatingById(rating_id);
