@@ -44,7 +44,7 @@ public class ChangeDataController implements Initializable {
     private JFXPasswordField pfConfirmPass;
 
     @FXML
-    private JFXPasswordField pfCurrentpass;
+    private JFXPasswordField pfCurrentPass;
 
     @FXML
     private JFXButton btnAlterar;
@@ -71,12 +71,16 @@ public class ChangeDataController implements Initializable {
 
     public void changeRegister(ActionEvent event) {
         if (txtfUser.getText().equals("") || txtfEmail.getText().equals("") || pfPass.getText().equals("") ||
-                pfConfirmPass.getText().equals("") || dtBirthdate.getValue() == null) {
+                pfConfirmPass.getText().equals("") || dtBirthdate.getValue() == null ||
+                pfCurrentPass.getText().equals("")) {
             Dialog.warning("Favor informar todos campos");
         } else if (!ValidateEmail.isValidEmail(txtfEmail.getText())) {
             Dialog.warning("Informe um endereço de E-mail válido");
         } else if (!pfPass.getText().equals(pfConfirmPass.getText())) {
             Dialog.error("As senhas não coincidem");
+        } else if(!(ModelUser.getInstance().readUsersByEmail(txtfEmail.getText()).getPassword()).equals(
+                EncryptPassword.encryptPassword(txtfEmail.getText(), pfCurrentPass.getText()))){
+            Dialog.error("Informe a senha atual para prosseguir");
         } else {
             User user = new User(ModelUser.getInstance().readUsersByEmail(email).getId(), txtfUser.getText(),
                     txtfEmail.getText(), EncryptPassword.encryptPassword(txtfEmail.getText(), pfPass.getText()),
@@ -86,6 +90,9 @@ public class ChangeDataController implements Initializable {
                 Dialog.error("Erro ao atualizar");
             } else {
                 Dialog.information("Atualização Conluída");
+                pfCurrentPass.setText("");
+                pfConfirmPass.setText("");
+                pfPass.setText("");
                 Main.changeScreen("login");
             }
         }
