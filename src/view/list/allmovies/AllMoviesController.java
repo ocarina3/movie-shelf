@@ -74,7 +74,7 @@ public class AllMoviesController implements Initializable {
                         stage.setResizable(false);
                         stage.show();
                     } catch (Exception exception) {
-                        System.out.println("Erro");
+                        System.out.println(exception.getCause());
                     }
                 }
             };
