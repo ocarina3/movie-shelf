@@ -1,6 +1,7 @@
 package model;
 
 import model.entity.Movie;
+import model.entity.Rating;
 import model.repository.RepositoryMovie;
 
 import java.util.ArrayList;
@@ -58,6 +59,12 @@ public class ModelMovie {
 
     public boolean deleteMovieById(String value) {
         if(repositoryMovie.readMoviesById(value) != null) {
+            if (ModelRating.getInstance().readRatingsByMovie(repositoryMovie.readMoviesById(value)).size() != 0) {
+                ArrayList<Rating> movieRatings = ModelRating.getInstance().readRatingsByMovie(repositoryMovie.readMoviesById(value));
+                for( Rating movieRating : movieRatings ) {
+                    ModelRating.getInstance().deleteRatingById(movieRating.getId());
+                }
+            }
             repositoryMovie.deleteMovieById(value);
             return true;
         } else {
