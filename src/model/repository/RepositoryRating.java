@@ -191,7 +191,7 @@ public class RepositoryRating {
         return ratings;
     }
 
-    public ArrayList<Rating> readUserRatingsByMovie(Movie movie, User user) {
+    public ArrayList<Rating> readRatingByUserAndMovie(Movie movie, User user) {
         if(this.readRatingsByMovie(movie) == null) return null;
 
         ArrayList<Rating> ratings = this.readRatingsByMovie(movie);
@@ -199,7 +199,7 @@ public class RepositoryRating {
         ArrayList<Rating> filteredRatings = new ArrayList<>();
 
         for ( Rating rating : ratings ) {
-            if(rating.getId() == user.getId()) filteredRatings.add(rating);
+            if(rating.getUserId() == user.getId()) filteredRatings.add(rating);
         }
 
         return filteredRatings;
@@ -337,19 +337,15 @@ public class RepositoryRating {
         return ratedEmails;
     }
 
-    private void updateRatingValue(String attribute, String attributeMatch, float newRating) {
-        String sql = "UPDATE rating SET rating = ? WHERE "+ attribute +" = ?;";
+    private void updateRatingValue(float newRating, String attribute, int id) {
+        String sql = "UPDATE rating SET rating = ? WHERE "+attribute+" = ?;";
 
         c.connect();
-        PreparedStatement p = null;
+        PreparedStatement p = c.createPreparedStatement(sql);
         try{
-
-            p = c.createPreparedStatement(sql);
             p.setFloat(1,newRating);
-            p.setString(2,attribute);
-            int didUpdateRating = p.executeUpdate();
-            System.out.println(didUpdateRating);
-
+            p.setInt(2, id);
+            p.executeUpdate();
         }catch (SQLException e){
             System.out.println(e.getMessage());
 
@@ -367,7 +363,9 @@ public class RepositoryRating {
         }
     }
 
-    public void updateRatingValueById(int rating_id, float newRating) { updateRatingValue("id", Integer.toString(rating_id), newRating); }
+    public void updateRatingValueById(float newRating, int id) {
+        updateRatingValue(newRating, "id", id);
+    }
 
     private void deleteRating(String attribute,String value) {
         String sql = "DELETE FROM rating WHERE " + attribute + " = ?;";

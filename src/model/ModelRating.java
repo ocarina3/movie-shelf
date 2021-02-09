@@ -25,22 +25,26 @@ public class ModelRating {
     }
 
     // Create
-    public void createRating(Rating rating) {
+    public boolean createRating(Rating rating) {
 
-        if( ModelUser.getInstance().readUsersById(rating.getUserId()) == null ) return;
+        if( ModelUser.getInstance().readUsersById(rating.getUserId()) == null ) return false;
         String raterUserEmail = ModelUser.getInstance().readUsersById(rating.getUserId()).getEmail();
 
         Movie ratedMovie = ModelMovie.getInstance().readMoviesById(Integer.toString(rating.getMovieId()));
 
         ArrayList<String> alreadyRatedEmails = repositoryRating.readAlreadyRatedEmails(ratedMovie);
 
-        if( !alreadyRatedEmails.contains(raterUserEmail) )
+        if (alreadyRatedEmails.contains(raterUserEmail)) {
+            return false;
+        } else {
             repositoryRating.createRating(rating);
+            return true;
+        }
     }
 
-    public void createRating(float rate, int id_user, int id_movie){
-        Rating rating = new Rating(0,rate,id_user,id_movie);
-        createRating(rating);
+    public boolean createRating(float rate, int id_user, int id_movie){
+        Rating rating = new Rating(rate,id_user,id_movie);
+        return createRating(rating);
     }
 
     // Read
@@ -68,9 +72,9 @@ public class ModelRating {
         return repositoryRating.readRaterUserName(rating_id);
     }
 
-    public Rating readUserRatingByMovie(Movie movie, User user) {
-        if (repositoryRating.readUserRatingsByMovie(movie, user) == null) return null;
-        return repositoryRating.readUserRatingsByMovie(movie, user).get(0);
+    public Rating readRatingByUserAndMovie(Movie movie, User user) {
+        if (repositoryRating.readRatingByUserAndMovie(movie, user) == null) return null;
+        else return repositoryRating.readRatingByUserAndMovie(movie, user).get(0);
     }
 
     public float readAvgRatingByMovie(Movie movie)  {
@@ -82,9 +86,9 @@ public class ModelRating {
     }
 
     // Update
-    public void updateRatingValueById(int rating_id, float newRating) {
-        if(repositoryRating.readRatingById(rating_id) != null || (newRating <= 5 && newRating >= 0))
-            repositoryRating.updateRatingValueById(rating_id, newRating);
+    public void updateRatingValueById(float newRating, int id ) {
+        if(repositoryRating.readRatingById(id) != null)
+            repositoryRating.updateRatingValueById(newRating, id );
     }
 
     // Delete
