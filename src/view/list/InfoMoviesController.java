@@ -74,8 +74,13 @@ public class InfoMoviesController implements Initializable {
             favoriteButton.setSelected(true);
         }
 
+        float initialRating = 0;
+        if(ModelRating.getInstance().readRatingByUserAndMovie(movie, user) != null) {
+            initialRating = ModelRating.getInstance().readRatingByUserAndMovie(movie, user).getRating();
+        }
+
         userRating.setPartialRating(true);
-        userRating.setRating(0);
+        userRating.setRating(initialRating);
 
         avgRating.setPartialRating(true);
         avgRating.setRating(ModelRating.getInstance().readAvgRatingByMovie(ModelMovie.getInstance().readMoviesById(String.format("%d",movieId)))/2);
@@ -94,10 +99,9 @@ public class InfoMoviesController implements Initializable {
 
     public void getUserRating() {
 
-        float rate =(float) userRating.getRating()*2;
+        float rate =(float) userRating.getRating();
         BigDecimal bd = new BigDecimal(rate).setScale(1, RoundingMode.HALF_EVEN);
 
-        System.out.println(rate);
         if(!ModelRating.getInstance().createRating(rate, ModelUser.getInstance().readUsersByEmail(email).getId(), movieId)) {
             ModelRating.getInstance().updateRatingValueById(rate, ModelRating.getInstance().readRatingByUserAndMovie(movie, user).getId());
         }

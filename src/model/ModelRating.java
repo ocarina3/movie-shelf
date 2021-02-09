@@ -73,7 +73,10 @@ public class ModelRating {
     }
 
     public Rating readRatingByUserAndMovie(Movie movie, User user) {
-        if (repositoryRating.readRatingByUserAndMovie(movie, user) == null) return null;
+        if (
+                repositoryRating.readRatingByUserAndMovie(movie, user) == null ||
+                repositoryRating.readRatingByUserAndMovie(movie, user).size() == 0
+        ) return null;
         else return repositoryRating.readRatingByUserAndMovie(movie, user).get(0);
     }
 
