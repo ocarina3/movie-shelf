@@ -76,7 +76,7 @@ public class InfoMoviesController implements Initializable {
 
         float initialRating = 0;
         if(ModelRating.getInstance().readRatingByUserAndMovie(movie, user) != null) {
-            initialRating = ModelRating.getInstance().readRatingByUserAndMovie(movie, user).getRating();
+            initialRating = ModelRating.getInstance().readRatingByUserAndMovie(movie, user).getRating()/2;
         }
 
         userRating.setPartialRating(true);
@@ -99,7 +99,7 @@ public class InfoMoviesController implements Initializable {
 
     public void getUserRating() {
 
-        float rate =(float) userRating.getRating();
+        float rate =(float) userRating.getRating()*2;
         BigDecimal bd = new BigDecimal(rate).setScale(1, RoundingMode.HALF_EVEN);
 
         if(!ModelRating.getInstance().createRating(rate, ModelUser.getInstance().readUsersByEmail(email).getId(), movieId)) {
