@@ -1,6 +1,7 @@
 package model;
 
 import model.entity.Movie;
+import model.entity.Rating;
 import model.entity.User;
 import model.repository.RepositoryUser;
 
@@ -89,13 +90,29 @@ public class ModelUser {
     //DELETE
 
     public void deleteUserByEmail(String value){
-        if(repositoryUser.readUsersByEmail(value) != null)
-        repositoryUser.deleteUserByEmail(value);
+        if(repositoryUser.readUsersByEmail(value) != null) {
+            if (ModelRating.getInstance().readRatingsByUser(repositoryUser.readUsersByEmail(value)).size() != 0) {
+                ArrayList<Rating> userRatings = ModelRating.getInstance().readRatingsByUser(repositoryUser.readUsersByEmail(value));
+                for( Rating userRating : userRatings ) {
+                    ModelRating.getInstance().deleteRatingById(userRating.getId());
+                }
+            }
+
+            repositoryUser.deleteUserByEmail(value);
+        }
     }
 
     public void deleteUserById(int value){
-        if (repositoryUser.readUsersById(String.format("%d",value)) != null)
-        repositoryUser.deleteUserById(String.format("%d",value));
+        if (repositoryUser.readUsersById(String.format("%d",value)) != null) {
+            if (ModelRating.getInstance().readRatingsByUser(repositoryUser.readUsersById(Integer.toString(value))).size() != 0) {
+                ArrayList<Rating> userRatings = ModelRating.getInstance().readRatingsByUser(repositoryUser.readUsersById(Integer.toString(value)));
+                for( Rating userRating : userRatings ) {
+                    ModelRating.getInstance().deleteRatingById(userRating.getId());
+                }
+            }
+
+            repositoryUser.deleteUserById(String.format("%d", value));
+        }
     }
 
     public void deleteFavoriteMovies(User user, Movie movie){
