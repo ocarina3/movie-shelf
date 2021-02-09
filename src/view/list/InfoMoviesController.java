@@ -30,8 +30,10 @@ public class InfoMoviesController implements Initializable {
     public String email;
 
     public static int movieId;
-    public Rating Rate;
-    public Rating Rate1;
+
+    public Rating userRating;
+
+    public Rating avgRating;
 
     @FXML
     private ImageView imgMovie;
@@ -54,11 +56,8 @@ public class InfoMoviesController implements Initializable {
     @FXML
     private Label lbDirector;
 
-
-
-
-
-
+    User user = ModelUser.getInstance().readUsersByEmail(ListController.email);
+    Movie movie = ModelMovie.getInstance().readMoviesById(Integer.toString(movieId));
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -69,15 +68,17 @@ public class InfoMoviesController implements Initializable {
         Image image = SwingFXUtils.toFXImage(ModelMovie.getInstance().readMoviesById(Integer.toString(movieId)).getImageBuffered(), null);
         imgMovie.setImage(image);
         this.email =ListController.email;
-        User user = ModelUser.getInstance().readUsersByEmail(ListController.email);
-        Movie movie = ModelMovie.getInstance().readMoviesById(Integer.toString(movieId));
+
+
         if(ModelUser.getInstance().isFavotited(user, movie)){
             favoriteButton.setSelected(true);
         }
-        Rate1.setPartialRating(true);
-        Rate1.setRating(ModelRating.getInstance().readAvgRatingByMovie(ModelMovie.getInstance().readMoviesById(String.format("%d",movieId)))/2);
-        Rate.setPartialRating(true);
 
+        userRating.setPartialRating(true);
+        userRating.setRating(0);
+
+        avgRating.setPartialRating(true);
+        avgRating.setRating(ModelRating.getInstance().readAvgRatingByMovie(ModelMovie.getInstance().readMoviesById(String.format("%d",movieId)))/2);
     }
 
     public void addFavorite(ActionEvent actionEvent) {
@@ -91,20 +92,17 @@ public class InfoMoviesController implements Initializable {
         else ModelUser.getInstance().deleteFavoriteMovies(user,movie);
     }
 
-    public void getRate(MouseEvent mouseEvent) {
+    public void getUserRating() {
 
-        Rate1.setRating(ModelRating.getInstance().readAvgRatingByMovie(ModelMovie.getInstance().readMoviesById(String.format("%d",movieId)))/2);
-
-        float rate =(float)Rate.getRating()*2;
+        float rate =(float) userRating.getRating()*2;
         BigDecimal bd = new BigDecimal(rate).setScale(1, RoundingMode.HALF_EVEN);
 
-        ModelRating.getInstance().createRating(rate,
-                ModelUser.getInstance().readUsersByEmail(email).getId(), movieId);
-
-        //TODO dar update na avaliaçao
-        System.out.println(bd);
+        System.out.println(rate);
+        if(!ModelRating.getInstance().createRating(rate, ModelUser.getInstance().readUsersByEmail(email).getId(), movieId)) {
+            ModelRating.getInstance().updateRatingValueById(rate, ModelRating.getInstance().readRatingByUserAndMovie(movie, user).getId());
+        }
     }
-    public void getRate1(MouseEvent mouseEvent) {
-        Rate1.setRating(ModelRating.getInstance().readAvgRatingByMovie(ModelMovie.getInstance().readMoviesById(String.format("%d",movieId)))/2);
+    public void getAvgRating(MouseEvent mouseEvent) {
+        avgRating.setRating(ModelRating.getInstance().readAvgRatingByMovie(ModelMovie.getInstance().readMoviesById(String.format("%d",movieId)))/2);
     }
 }
