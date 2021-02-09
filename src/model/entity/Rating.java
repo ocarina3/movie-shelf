@@ -15,6 +15,12 @@ public class Rating {
         userId = id_user;
         movieId = id_movie;
     }
+
+    public Rating(float rating, int id_user, int id_movie) {
+        this.rating = rating;
+        userId = id_user;
+        movieId = id_movie;
+    }
     //_______________________________________________________________________________________________________________
 
     //GETTERS E SETTERS
