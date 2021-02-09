@@ -57,13 +57,13 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Text layoutX="107.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sua Avaliação" />
-      <Rating fx:id="Rate" cache="true" cacheHint="QUALITY" layoutX="63.0" layoutY="325.0" onMouseClicked="#getRate" />
-      <Rating fx:id="Rate1" accessibleRole="BUTTON" cache="true" cacheHint="QUALITY" layoutX="63.0" layoutY="404.0" onMouseClicked="#getRate1">
+      <Text fill="WHITE" layoutX="107.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sua Avaliação" />
+      <Rating fx:id="userRating" cache="true" cacheHint="QUALITY" layoutX="63.0" layoutY="325.0" onMouseClicked="#getUserRating" />
+      <Rating fx:id="avgRating" accessibleRole="BUTTON" cache="true" cacheHint="QUALITY" layoutX="63.0" layoutY="402.0" onMouseClicked="#getAvgRating">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </Rating>
-      <Text layoutX="99.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avaliação Média" />
+      <Text fill="WHITE" layoutX="99.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avaliação Média" />
    </children>
 </Pane>
