@@ -102,8 +102,8 @@ public class InfoMoviesController implements Initializable {
         float rate =(float) userRating.getRating()*2;
         BigDecimal bd = new BigDecimal(rate).setScale(1, RoundingMode.HALF_EVEN);
 
-        if(!ModelRating.getInstance().createRating(rate, ModelUser.getInstance().readUsersByEmail(email).getId(), movieId)) {
-            ModelRating.getInstance().updateRatingValueById(rate, ModelRating.getInstance().readRatingByUserAndMovie(movie, user).getId());
+        if(!ModelRating.getInstance().createRating(bd.floatValue(), ModelUser.getInstance().readUsersByEmail(email).getId(), movieId)) {
+            ModelRating.getInstance().updateRatingValueById(bd.floatValue(), ModelRating.getInstance().readRatingByUserAndMovie(movie, user).getId());
         }
     }
     public void getAvgRating(MouseEvent mouseEvent) {
