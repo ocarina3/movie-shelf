@@ -38,6 +38,10 @@ import java.util.logging.Logger;
 
 public class AddMoviesController implements Initializable {
 
+    /**
+     * controla a tela de adicionar filmes
+     * */
+
     public BufferedImage bufferedImage;
 
     @FXML
@@ -74,10 +78,15 @@ public class AddMoviesController implements Initializable {
 
     int movieId;
 
+
+    /**
+     * Recebe as informações pegas na Tela de Adicionar filme e tenta
+     * criar um filme mandando para o ModelMovie
+     * */
     @FXML
     void createMovie(ActionEvent event) {
 
-
+        //verifica se todos os campos estão preenchidos
         if (txtfName.getText().equals("") || txtfDirector.equals("") || txtaSinopse.getText().equals("")
                 || cbGenre.getValue().equals("") || bufferedImage == null) {
             Dialog.warning("Favor informar todos campos");
@@ -99,8 +108,10 @@ public class AddMoviesController implements Initializable {
 
             movie.setImageBuffered(bufferedImage);
 
+            //Tenta criar o filme
             boolean cadastro = ModelMovie.getInstance().createMovie(movie);
 
+            //Caso de Erro
             if(cadastro == false){
                 Dialog.error("Filme ja cadastrado");
             } else {
@@ -119,6 +130,10 @@ public class AddMoviesController implements Initializable {
             }
         }
     }
+
+    /**
+     * Função criada para carregar imagens do tipo png e jpg
+     * */
 
     @FXML
     void loadImg(ActionEvent event) {
@@ -153,11 +168,13 @@ public class AddMoviesController implements Initializable {
         }
     }
 
+    //Volta para o menu principal
     @FXML
     public void backHomeAdm(javafx.event.ActionEvent event) {
         Main.changeScreen("adm", email);
     }
 
+    //inicializa a tela de Adicionar filmes
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cbGenre.getItems().add(Genre.COMEDY.getDescription());
