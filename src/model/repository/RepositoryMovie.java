@@ -17,7 +17,9 @@ public class RepositoryMovie {
 
     private Connect c = new Connect();
 
-    //Criação de Usuario passando suas informações e o tipo de usuario
+    //__________________________________________CREATE_________________________________________________________________
+
+    //Cria um Filme passando suas informações
     public void createMovie(Movie movie) {
 
         if(movie == null) return;
@@ -54,6 +56,9 @@ public class RepositoryMovie {
         }
     }
 
+    //__________________________________________READ_________________________________________________________________
+
+    //Le todos os filmes
     public ArrayList<Movie> readAllMovies() {
         String sql = "SELECT * FROM movie;";
 
@@ -96,6 +101,7 @@ public class RepositoryMovie {
         return movies;
     }
 
+    //Le os Filmes que tem um attributo com valor igual ao selecionado
     private ArrayList<Movie> readMovies(String attribute, String value) {
         String sql = "SELECT * FROM movie WHERE " + attribute + " = ?;";
 
@@ -139,14 +145,17 @@ public class RepositoryMovie {
         return movies;
     }
 
+    //seleciona o atributo id para o readMovies
     public Movie readMoviesById(String value){
         return readMovies("id", value).get(0);
     }
 
+    //seleciona o atributo nome para o readMovies
     public ArrayList<Movie> readMoviesByName(String value) {
         return readMovies("name", value);
     }
 
+    //busca filmes que tenham um nome Similar ao valor escolhido
     public ArrayList<Movie> searchMovie(String value) {
         String sql = "SELECT * FROM movie WHERE name LIKE ?;";
 
@@ -189,6 +198,9 @@ public class RepositoryMovie {
         return movies;
     }
 
+    //__________________________________________UPDATE_________________________________________________________________
+
+    //Atualiza os dados no banco de dados de um filme
     public void updateMovie(Movie movie) {
         String sql = "UPDATE movie SET name = ?, movieDirector = ?, movieGenre = ?, synopsis = ?, minimumAge = ?, images = ?" +
                 "WHERE id = ?";
@@ -223,6 +235,9 @@ public class RepositoryMovie {
         }
     }
 
+    //__________________________________________DELETE_________________________________________________________________
+
+    //Deleta um filme que tem um attributo com valor igual ao selecionado
     private void deleteMovie(String attribute,String value) {
         String sql = "DELETE FROM movie WHERE " + attribute + " = ?";
 
@@ -250,10 +265,12 @@ public class RepositoryMovie {
         }
     }
 
+    //seleciona o atributo id para o deleteMovie
     public void deleteMovieById(String value) {
         deleteMovie("id",value);
     }
 
+    //seleciona o atributo nome para o deleteMovie
     public void deleteMovieByName(String value) {
         deleteMovie("name",value);
     }
