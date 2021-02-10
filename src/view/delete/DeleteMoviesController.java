@@ -52,6 +52,8 @@ public class DeleteMoviesController implements Initializable {
 
     int movieId;
 
+
+    // Busca o filme e mostra na tela
     @FXML
     void searchMovie(ActionEvent event) {
         for(Movie movie : ModelMovie.getInstance().readAllMovies()){
@@ -73,6 +75,9 @@ public class DeleteMoviesController implements Initializable {
         }
     }
 
+    /**
+     * Recebe as informações pegas na Tela e tenta deleta o filme
+     * */
     @FXML
     public void deleteMovie(ActionEvent event) {
 
@@ -112,9 +117,11 @@ public class DeleteMoviesController implements Initializable {
         }
 
 
+    //Volta para o menu principal
     @FXML
     public void backHomeAdm(ActionEvent event) {  Main.changeScreen("adm", email);}
 
+    //inicializa a tela de deletar filmes
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
