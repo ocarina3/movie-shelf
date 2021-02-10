@@ -77,10 +77,10 @@ public class ChangeDataController implements Initializable {
         } else if (!ValidateEmail.isValidEmail(txtfEmail.getText())) {
             Dialog.warning("Informe um endereço de E-mail válido");
         } else if (!pfPass.getText().equals(pfConfirmPass.getText())) {
-            Dialog.error("As senhas não coincidem");
+            Dialog.warning("As senhas não coincidem");
         } else if(!(ModelUser.getInstance().readUsersByEmail(txtfEmail.getText()).getPassword()).equals(
                 EncryptPassword.encryptPassword(txtfEmail.getText(), pfCurrentPass.getText()))){
-            Dialog.error("Informe a senha atual para prosseguir");
+            Dialog.warning("Informe a senha atual para prosseguir");
         } else {
             User user = new User(ModelUser.getInstance().readUsersByEmail(email).getId(), txtfUser.getText(),
                     txtfEmail.getText(), EncryptPassword.encryptPassword(txtfEmail.getText(), pfPass.getText()),
