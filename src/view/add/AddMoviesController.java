@@ -77,7 +77,9 @@ public class AddMoviesController implements Initializable {
     @FXML
     void createMovie(ActionEvent event) {
 
-        if (txtfName.getText().equals("") || txtfDirector.equals("") || txtaSinopse.getText().equals("")|| cbGenre.getValue().equals("")) {
+
+        if (txtfName.getText().equals("") || txtfDirector.equals("") || txtaSinopse.getText().equals("")
+                || cbGenre.getValue().equals("") || bufferedImage == null) {
             Dialog.warning("Favor informar todos campos");
         }else{
             Movie movie;
@@ -146,7 +148,7 @@ public class AddMoviesController implements Initializable {
             imgMovie.setLayoutX(55);
             imgMovie.setLayoutY(150);
             imgMovie.setImage(image);
-        } catch (IOException ex) {
+        } catch (IOException | IllegalArgumentException ex) {
             Logger.getLogger(AdmController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

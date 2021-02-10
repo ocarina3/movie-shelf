@@ -158,7 +158,7 @@ public class UpdateMoviesController implements Initializable {
             imgMovie.setLayoutX(55);
             imgMovie.setLayoutY(150);
             imgMovie.setImage(image);
-        } catch (IOException ex) {
+        } catch (IOException | IllegalArgumentException ex) {
             Logger.getLogger(AdmController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
