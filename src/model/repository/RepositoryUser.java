@@ -14,8 +14,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class RepositoryUser { //Criação de Usuario passando suas informações e o tipo de usuario
-
+public class RepositoryUser {
     private Connect c = new Connect();
 
     //__________________________________________CREATE_________________________________________________________________
