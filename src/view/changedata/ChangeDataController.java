@@ -69,6 +69,7 @@ public class ChangeDataController implements Initializable {
         });
     }
 
+    //
     public void changeRegister(ActionEvent event) {
         if (txtfUser.getText().equals("") || txtfEmail.getText().equals("") || pfPass.getText().equals("") ||
                 pfConfirmPass.getText().equals("") || dtBirthdate.getValue() == null ||
@@ -98,6 +99,7 @@ public class ChangeDataController implements Initializable {
         }
     }
 
+    //Volta para o menu principal
     public void backHome(ActionEvent event) {
         if(ModelUser.getInstance().isAdmin(ModelUser.getInstance().readUsersByEmail(email))){
             Main.changeScreen("adm", email);
