@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class ModelUser {
 
-    /*
+    /**
      * Aqui chamamos as funções do RepositoryUser e colocamos quais as condições para
      * chamarmos ela.
      *
@@ -97,7 +97,7 @@ public class ModelUser {
     //_______________________________________________________________________________________________________________
     //DELETE
 
-    /*
+    /**
     *Caso o usuario exista, deleta o usuario e todas as suas avaliações
     */
 

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class ModelRating {
 
-    /*
+    /**
      * Aqui chamamos as funções do RepositoryRating e colocamos quais as condições para
      * chamarmos ela.
      *

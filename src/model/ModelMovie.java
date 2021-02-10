@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class ModelMovie {
 
 
-    /*
+    /**
     * Aqui chamamos as funções do RepositoryMovie e colocamos quais as condições para
     * chamarmos ela.
     *

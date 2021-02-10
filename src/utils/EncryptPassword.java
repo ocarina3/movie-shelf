@@ -6,6 +6,9 @@ import java.security.NoSuchAlgorithmException;
 
 public class EncryptPassword {
 
+    /**
+     * Deixa a senha encriptada para que não seja possivel ver a senha do usuario.
+     * */
     public static String encryptPassword(String salt, String basePassword) {
 
         try {
