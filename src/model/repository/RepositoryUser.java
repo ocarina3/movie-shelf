@@ -18,9 +18,9 @@ public class RepositoryUser { //Criação de Usuario passando suas informações
 
     private Connect c = new Connect();
 
-    //_______________________________________________________________________________________________________________
-    //CREATE
+    //__________________________________________CREATE_________________________________________________________________
 
+    //Cria um usuario passando suas informações e se ele é admin ou não
     private void createUser(User user, boolean admin)
     {
 
@@ -56,14 +56,17 @@ public class RepositoryUser { //Criação de Usuario passando suas informações
         }
     }
 
+    //Cria um usuario Cliente
     public void createClient(User user) {
         createUser(user,false);
     }
 
+    //Cria um usuario Admin
     public void createAdmin(User user) {
         createUser(user,true);
     }
 
+    //Coloca um filme nos favoritos de um usuario
     public void favoriteMovies(User user ,Movie movie)
     {
         String sql = "INSERT INTO favoriteMovies(id,id_user,id_movie) VALUES(?,?,?);";
@@ -94,9 +97,9 @@ public class RepositoryUser { //Criação de Usuario passando suas informações
         }
     }
 
-    //_______________________________________________________________________________________________________________
-    //READ
+    //__________________________________________READ_________________________________________________________________
 
+    //Le os Usuarios que tem um attributo com valor igual ao selecionado
     private ArrayList<User> readUsers(String attribute, String value) {
         String sql = "SELECT * FROM user WHERE " + attribute + " = ?;";
 
@@ -109,7 +112,7 @@ public class RepositoryUser { //Criação de Usuario passando suas informações
         try {
 
             p = c.createPreparedStatement(sql);
-            p.setString(1,value);
+            p.setString(1, value);
             result = p.executeQuery();
 
             while (result.next()) {
@@ -128,10 +131,10 @@ public class RepositoryUser { //Criação de Usuario passando suas informações
             e.printStackTrace();
         } finally {
             if (p != null) {
-                try{
+                try {
                     p.close();
                     c.disconnect();
-                }catch (SQLException ex) {
+                } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
             }
@@ -139,6 +142,21 @@ public class RepositoryUser { //Criação de Usuario passando suas informações
         return users;
     }
 
+    //seleciona o atributo id para o readUsers
+    public User readUsersById(String value){
+        if(readUsers("id", value).size() != 0){
+            return readUsers("id", value).get(0);}
+        return null;
+    }
+
+    //seleciona o atributo email para o readUsers
+    public User readUsersByEmail(String value) {
+        if(readUsers("email", value).size() != 0){
+        return readUsers("email", value).get(0);}
+        return null;
+    }
+
+    //Verifica se um usuario é admin
     public boolean isAdmin(User user)
     {
         String sql = "SELECT * FROM user WHERE id = ?;";
@@ -177,24 +195,14 @@ public class RepositoryUser { //Criação de Usuario passando suas informações
         return false;
     }
 
-    public User readUsersById(String value){
-        if(readUsers("id", value).size() != 0){
-            return readUsers("id", value).get(0);}
-        return null;
-    }
-
-    public User readUsersByEmail(String value) {
-        if(readUsers("email", value).size() != 0){
-        return readUsers("email", value).get(0);}
-        return null;
-    }
-
+    //seleciona o atributo Nome para o readUsers
     public ArrayList<User> readUsersByName(String value) {
         if(readUsers("name", value).size() != 0){
             return readUsers("name", value);}
         return null;
     }
 
+    //Lê os filmes favoritos de um usuario
     public ArrayList <Movie> readFavoriteMovies(User user) {
         String sql = "SELECT id_movie FROM favoriteMovies Where id_user = ?;";
         ResultSet result = null;
@@ -231,6 +239,7 @@ public class RepositoryUser { //Criação de Usuario passando suas informações
         return movies;
     }
 
+    //ve se um filme esta na lista de favoritos de um usuario
     public boolean isFavotited(User user, Movie movie) {
         String sql = "SELECT * FROM favoriteMovies WHERE id_user = ? AND id_movie = ?;";
         ResultSet result = null;
@@ -268,14 +277,10 @@ public class RepositoryUser { //Criação de Usuario passando suas informações
         }
         return r;
     }
+    
+    //__________________________________________UPDATE_________________________________________________________________
 
-
-
-
-
-    //_______________________________________________________________________________________________________________
-    //UPDATE
-
+    //Atualiza os dados no banco de dados de um usuario
     public void updateUser(User user) {
 
         String sql = "UPDATE user SET name = ?, email = ?, password = ?, birthDate = ?  WHERE id = ?;";
@@ -306,10 +311,9 @@ public class RepositoryUser { //Criação de Usuario passando suas informações
         }
     }
 
-    //_______________________________________________________________________________________________________________
-    //DELETE
+    //__________________________________________DELETE_________________________________________________________________
 
-    //Deleta Usuario pelo id ou pelo email
+    //Deleta um usuario que tem um attributo com valor igual ao selecionado
     private void deleteUser(String attribute,String value) {
         String sql = "DELETE FROM user WHERE " + attribute + " = ?";
 
@@ -338,14 +342,17 @@ public class RepositoryUser { //Criação de Usuario passando suas informações
 
     }
 
+    //seleciona o atributo email para o deleteUser
     public void deleteUserByEmail(String value){
         deleteUser("email", value);
     }
 
+    //seleciona o atributo id para o deleteUser
     public void deleteUserById(String value){
         deleteUser("id", value);
     }
 
+    //Remove um filme da lista de favoritos do usuario
     public void deleteFavoriteMovies(User user, Movie movie) {
         String sql = "DELETE FROM favoriteMovies WHERE id_user = ? AND id_movie = ?";
 
