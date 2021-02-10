@@ -54,6 +54,7 @@ public class ChangeDataController implements Initializable {
 
     String email;
 
+    //inicializa a tela de Update de usuario
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Main.addOnChangesScreenListener(new Main.OnChangeScreen() {
@@ -69,7 +70,9 @@ public class ChangeDataController implements Initializable {
         });
     }
 
-    //
+    /**
+     * Recebe as informações pegas da Tela de Update e edita o usuario
+     * */
     public void changeRegister(ActionEvent event) {
         if (txtfUser.getText().equals("") || txtfEmail.getText().equals("") || pfPass.getText().equals("") ||
                 pfConfirmPass.getText().equals("") || dtBirthdate.getValue() == null ||
