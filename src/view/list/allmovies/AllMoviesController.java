@@ -48,6 +48,10 @@ public class AllMoviesController implements Initializable {
 
     public static String currentEmail;
 
+    /**
+     * Busca e mostra todos os filmes do catálgo
+     * */
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         int posX = 74;
