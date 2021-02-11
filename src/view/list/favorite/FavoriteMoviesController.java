@@ -68,6 +68,13 @@ public class FavoriteMoviesController implements Initializable {
                     }
                 }
             };
+
+            if (posX > 788) {
+                posY = 155 + (376 * (i / 4));
+                posX = 74;
+                i--;
+            }
+
             User user = ModelUser.getInstance().readUsersByEmail(ListController.email);
             if(ModelUser.getInstance().isFavotited(user, movie) == true){
                 if(posX <= 788){
@@ -117,10 +124,6 @@ public class FavoriteMoviesController implements Initializable {
                     lbGender.setText(movie.getMovieGenre().getDescription());
                     pnMovies.getChildren().add(lbGender);
                     posX += 238;
-                } else {
-                    posY = 155 + (376 * (i / 4));
-                    posX = 74;
-                    i--;
                 }
                 i++;
             }

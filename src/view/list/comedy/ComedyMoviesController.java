@@ -67,6 +67,13 @@ public class ComedyMoviesController implements Initializable {
                     }
                 }
             };
+
+            if (posX > 788) {
+                posY = 155 + (376 * (i / 4));
+                posX = 74;
+                i--;
+            }
+
             int currentYear = LocalDate.now().getYear();
             int userAge = ModelUser.getInstance().readUsersByEmail(ListController.email).getBirthDate().getYear();
             if(movie.getMinimumAge() <= currentYear - userAge) {
@@ -118,10 +125,6 @@ public class ComedyMoviesController implements Initializable {
                         lbGender.setText(movie.getMovieGenre().getDescription());
                         pnMovies.getChildren().add(lbGender);
                         posX += 238;
-                    } else {
-                        posY = 155 + (376 * (i / 4));
-                        posX = 74;
-                        i--;
                     }
                     i++;
                 }
