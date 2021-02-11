@@ -54,6 +54,8 @@ public class ChangeDataController implements Initializable {
 
     String email;
 
+    String oldEmail;
+
     //inicializa a tela de Update de usuario
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -65,6 +67,7 @@ public class ChangeDataController implements Initializable {
                     txtfEmail.setText(ModelUser.getInstance().readUsersByEmail(currentUser).getEmail());
                     dtBirthdate.setValue(ModelUser.getInstance().readUsersByEmail(currentUser).getBirthDate());
                     email = currentUser;
+                    oldEmail = ModelUser.getInstance().readUsersByEmail(currentUser).getEmail();
                 }
             }
         });
@@ -82,11 +85,11 @@ public class ChangeDataController implements Initializable {
             Dialog.warning("Informe um endereço de E-mail válido");
         } else if (!pfPass.getText().equals(pfConfirmPass.getText())) {
             Dialog.warning("As senhas não coincidem");
-        } else if(!(ModelUser.getInstance().readUsersByEmail(txtfEmail.getText()).getPassword()).equals(
-                EncryptPassword.encryptPassword(txtfEmail.getText(), pfCurrentPass.getText()))){
+        } else if(!(ModelUser.getInstance().readUsersByEmail(oldEmail).getPassword().equals(
+                EncryptPassword.encryptPassword(oldEmail, pfCurrentPass.getText())))){
             Dialog.warning("Informe a senha atual para prosseguir");
         } else {
-            User user = new User(ModelUser.getInstance().readUsersByEmail(email).getId(), txtfUser.getText(),
+            User user = new User(ModelUser.getInstance().readUsersByEmail(oldEmail).getId(), txtfUser.getText(),
                     txtfEmail.getText(), EncryptPassword.encryptPassword(txtfEmail.getText(), pfPass.getText()),
                     dtBirthdate.getValue());
             boolean update = ModelUser.getInstance().updateUser(user);
