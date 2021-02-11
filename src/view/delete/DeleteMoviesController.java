@@ -56,6 +56,11 @@ public class DeleteMoviesController implements Initializable {
     // Busca o filme e mostra na tela
     @FXML
     void searchMovie(ActionEvent event) {
+        if(txtfSearch.getText() == ""){
+            Dialog.warning("Campo de Pesquisa em Branco");
+            return;
+        }
+
         for(Movie movie : ModelMovie.getInstance().readAllMovies()){
             if((movie.getName().equalsIgnoreCase(txtfSearch.getText()))){
                 txtfName.setText(movie.getName());
