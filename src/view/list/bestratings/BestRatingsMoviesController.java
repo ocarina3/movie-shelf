@@ -38,6 +38,11 @@ public class BestRatingsMoviesController implements Initializable {
     @FXML
     private Label lbGender;
 
+    /**
+     * Busca quais filmes do banco de dados os filmes
+     * mais bem avaliados e mostra na tela.
+     * */
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         int posX = 74;
