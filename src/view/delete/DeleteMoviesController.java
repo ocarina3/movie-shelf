@@ -78,6 +78,7 @@ public class DeleteMoviesController implements Initializable {
     /**
      * Recebe as informações pegas na Tela e tenta deleta o filme
      * */
+
     @FXML
     public void deleteMovie(ActionEvent event) {
 

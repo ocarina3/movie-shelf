@@ -88,7 +88,7 @@ public class AdmController implements Initializable {
     /**
      * Controla as telas que trocam
      * */
-    
+
     @FXML
     void listMovies(ActionEvent event) {
         Main.changeScreen("list", email);
