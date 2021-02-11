@@ -40,6 +40,11 @@ public class FavoriteMoviesController implements Initializable {
 
     public static String currentUserEmail;
 
+    /**
+     * Busca quais filmes estão na lista de favoritos
+     * do usuario e mostra na tela.
+     * */
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
