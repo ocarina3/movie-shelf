@@ -38,6 +38,11 @@ public class FictionMoviesController implements Initializable {
     @FXML
     private Label lbGender;
 
+    /**
+     * Busca quais filmes do banco de dados que tem gênero
+     * de ficção e mostra na tela
+     * */
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         int posX = 74;
