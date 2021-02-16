@@ -42,6 +42,8 @@ public class RegisterController {
     @FXML
     private Label lbLogo;
 
+
+    //Volta para o menu principal
     @FXML
     void backHome(ActionEvent event) {
         Main.changeScreen("main");
@@ -52,6 +54,10 @@ public class RegisterController {
         dtBirthDate.setValue(null);
     }
 
+    /**
+     * Pega as informações da tela principal e, caso esteja com todas as informações
+     * dentro dos criterios, cria um novo perfil.
+     * */
     @FXML
     void makeRegister(ActionEvent event) {
 
