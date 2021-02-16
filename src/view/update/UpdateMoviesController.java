@@ -65,6 +65,10 @@ public class UpdateMoviesController implements Initializable {
 
     public BufferedImage bufferedImage;
 
+    /**
+     * Procura pelo nome exato do filme para deletar ele
+     * */
+
     @FXML
     void searchMovie(ActionEvent event) {
         for(Movie movie : ModelMovie.getInstance().readAllMovies()){
@@ -86,6 +90,9 @@ public class UpdateMoviesController implements Initializable {
         }
     }
 
+    /**
+     * Pega as informações da tela para atualizar o filme
+     * */
     @FXML
     public void changeMovie(javafx.event.ActionEvent event) {
         if (txtfName.getText().equals("") || cbGenre.getValue().equals("") || txtfDirector.getText().equals("") || txtaSinopse.getText().equals("")) {
@@ -130,6 +137,9 @@ public class UpdateMoviesController implements Initializable {
         }
     }
 
+    /**
+     * Carrega a imagem que o filme tem no momento
+     * */
     @FXML
     void loadImg(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -163,9 +173,11 @@ public class UpdateMoviesController implements Initializable {
         }
     }
 
+    //volta para a tela principal do adm
     @FXML
     public void backHomeAdm(javafx.event.ActionEvent event) {  Main.changeScreen("adm", email);}
 
+    //inicia a tela com as informações iniciais dela
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cbGenre.getItems().add(Genre.COMEDY.getDescription());
