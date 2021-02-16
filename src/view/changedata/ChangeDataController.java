@@ -77,30 +77,39 @@ public class ChangeDataController implements Initializable {
      * Recebe as informações pegas da Tela de Update e edita o usuario
      * */
     public void changeRegister(ActionEvent event) {
-        if (txtfUser.getText().equals("") || txtfEmail.getText().equals("") || pfPass.getText().equals("") ||
-                pfConfirmPass.getText().equals("") || dtBirthdate.getValue() == null ||
-                pfCurrentPass.getText().equals("")) {
-            Dialog.warning("Favor informar todos campos");
-        } else if (!ValidateEmail.isValidEmail(txtfEmail.getText())) {
-            Dialog.warning("Informe um endereço de E-mail válido");
-        } else if (!pfPass.getText().equals(pfConfirmPass.getText())) {
-            Dialog.warning("As senhas não coincidem");
-        } else if(!(ModelUser.getInstance().readUsersByEmail(oldEmail).getPassword().equals(
-                EncryptPassword.encryptPassword(oldEmail, pfCurrentPass.getText())))){
-            Dialog.warning("Informe a senha atual para prosseguir");
-        } else {
-            User user = new User(ModelUser.getInstance().readUsersByEmail(oldEmail).getId(), txtfUser.getText(),
-                    txtfEmail.getText(), EncryptPassword.encryptPassword(txtfEmail.getText(), pfPass.getText()),
-                    dtBirthdate.getValue());
-            boolean update = ModelUser.getInstance().updateUser(user);
-            if(!update){
-                Dialog.error("Erro ao atualizar");
+        if((pfConfirmPass.getText().equals("") && pfPass.getText().equals("")) ||
+            (!pfConfirmPass.getText().equals("") && !pfPass.getText().equals("") )){
+
+            if (txtfUser.getText().equals("") || txtfEmail.getText().equals("")  || dtBirthdate.getValue() == null
+                    ||pfCurrentPass.getText().equals("") ) {
+                Dialog.warning("Favor informar todos campos");
+            } else if (!ValidateEmail.isValidEmail(txtfEmail.getText())) {
+                Dialog.warning("Informe um endereço de E-mail válido");
+            } else if (!pfPass.getText().equals(pfConfirmPass.getText())) {
+                Dialog.warning("As senhas não coincidem");
+            } else if(!(ModelUser.getInstance().readUsersByEmail(oldEmail).getPassword().equals(
+                    EncryptPassword.encryptPassword(oldEmail, pfCurrentPass.getText())))){
+                Dialog.warning("Informe a senha atual corretamente para prosseguir");
             } else {
-                Dialog.information("Atualização Conluída");
-                pfCurrentPass.setText("");
-                pfConfirmPass.setText("");
-                pfPass.setText("");
-                Main.changeScreen("login");
+                User user;
+                if(!pfPass.getText().equals("")){
+                    user = new User(ModelUser.getInstance().readUsersByEmail(oldEmail).getId(), txtfUser.getText(),
+                            txtfEmail.getText(), EncryptPassword.encryptPassword(txtfEmail.getText(), pfPass.getText()),
+                            dtBirthdate.getValue());}
+                else{
+                    user = new User(ModelUser.getInstance().readUsersByEmail(oldEmail).getId(), txtfUser.getText(),
+                        txtfEmail.getText(), ModelUser.getInstance().readUsersByEmail(oldEmail).getPassword(),
+                        dtBirthdate.getValue());}
+                boolean update = ModelUser.getInstance().updateUser(user);
+                if (!update) {
+                    Dialog.error("Erro ao atualizar");
+                } else {
+                    Dialog.information("Atualização Conluída");
+                    pfCurrentPass.setText("");
+                    pfConfirmPass.setText("");
+                    pfPass.setText("");
+                    Main.changeScreen("login");
+                }
             }
         }
     }
