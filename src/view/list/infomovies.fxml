@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Text?>
 <?import org.controlsfx.control.Rating?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="738.0" style="-fx-background-color: #4717F6;" stylesheets="@../add/AddMovies.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.list.InfoMoviesController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="738.0" style="-fx-background-color: #4717F6;" stylesheets="@../add/AddMovies.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.list.InfoMoviesController">
    <children>
       <ImageView fx:id="imgMovie" fitHeight="260.0" fitWidth="200.0" layoutX="37.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -65,5 +65,15 @@
          </cursor>
       </Rating>
       <Text fill="WHITE" layoutX="99.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avaliação Média" />
+      <Label layoutX="511.0" layoutY="113.0" text="Idade Minima:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbIdade" layoutX="628.0" layoutY="113.0" text="Idade" textFill="#bfbfbf">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

@@ -35,6 +35,8 @@ public class InfoMoviesController implements Initializable {
 
     public Rating avgRating;
 
+    public Label lbIdade;
+
     @FXML
     private ImageView imgMovie;
 
@@ -73,6 +75,8 @@ public class InfoMoviesController implements Initializable {
         lbDirector.setText(ModelMovie.getInstance().readMoviesById(Integer.toString(movieId)).getMovieDirector());
         Image image = SwingFXUtils.toFXImage(ModelMovie.getInstance().readMoviesById(Integer.toString(movieId)).getImageBuffered(), null);
         imgMovie.setImage(image);
+        lbIdade.setText(Integer.toString(movie.getMinimumAge()));
+        if (movie.getMinimumAge() == 0) lbIdade.setText("L");
         this.email =ListController.email;
 
 
