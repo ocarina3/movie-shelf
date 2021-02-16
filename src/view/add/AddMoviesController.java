@@ -59,6 +59,8 @@ public class AddMoviesController implements Initializable {
     @FXML
     private JFXComboBox<String> cbGenre;
 
+    public JFXComboBox<String> cbAge;
+
     @FXML
     private JFXButton btnCreate;
 
@@ -88,22 +90,29 @@ public class AddMoviesController implements Initializable {
 
         //verifica se todos os campos estão preenchidos
         if (txtfName.getText().equals("") || txtfDirector.equals("") || txtaSinopse.getText().equals("")
-                || cbGenre.getValue().equals("") || bufferedImage == null) {
+                || cbGenre.getValue().equals("") || bufferedImage == null || cbAge.getValue().equals("")) {
             Dialog.warning("Favor informar todos campos");
         }else{
             Movie movie;
+
+            int minAge = 0;
+            if(!cbAge.getValue().equals("L"))
+            {
+                minAge = Integer.parseInt(cbAge.getValue());
+            }
+
             if(cbGenre.getValue().equals(Genre.COMEDY.getDescription())) {
-                 movie = new Movie(txtfName.getText(), txtfDirector.getText(), Genre.COMEDY, txtaSinopse.getText(), Integer.parseInt(txtfMinAge.getText()));
+                 movie = new Movie(txtfName.getText(), txtfDirector.getText(), Genre.COMEDY, txtaSinopse.getText(), minAge);
             } else if (cbGenre.getValue().equals(Genre.HORROR.getDescription())) {
-                 movie = new Movie(txtfName.getText(), txtfDirector.getText(), Genre.HORROR, txtaSinopse.getText(), Integer.parseInt(txtfMinAge.getText()));
+                 movie = new Movie(txtfName.getText(), txtfDirector.getText(), Genre.HORROR, txtaSinopse.getText(), minAge);
             } else if (cbGenre.getValue().equals(Genre.ACTION_ADVENTURE.getDescription())) {
-                 movie = new Movie(txtfName.getText(), txtfDirector.getText(), Genre.ACTION_ADVENTURE, txtaSinopse.getText(), Integer.parseInt(txtfMinAge.getText()));
+                 movie = new Movie(txtfName.getText(), txtfDirector.getText(), Genre.ACTION_ADVENTURE, txtaSinopse.getText(),minAge );
             } else if (cbGenre.getValue().equals(Genre.FANTASY.getDescription())) {
-                 movie = new Movie(txtfName.getText(), txtfDirector.getText(), Genre.FANTASY, txtaSinopse.getText(), Integer.parseInt(txtfMinAge.getText()));
+                 movie = new Movie(txtfName.getText(), txtfDirector.getText(), Genre.FANTASY, txtaSinopse.getText(), minAge);
             } else if (cbGenre.getValue().equals(Genre.DRAMA.getDescription())) {
-                 movie = new Movie(txtfName.getText(), txtfDirector.getText(), Genre.DRAMA, txtaSinopse.getText(), Integer.parseInt(txtfMinAge.getText()));
+                 movie = new Movie(txtfName.getText(), txtfDirector.getText(), Genre.DRAMA, txtaSinopse.getText(), minAge);
             }else {
-                 movie = new Movie(txtfName.getText(), txtfDirector.getText(), Genre.SCIENCE_FICTION, txtaSinopse.getText(), Integer.parseInt(txtfMinAge.getText()));
+                 movie = new Movie(txtfName.getText(), txtfDirector.getText(), Genre.SCIENCE_FICTION, txtaSinopse.getText(), minAge);
             }
 
             movie.setImageBuffered(bufferedImage);
@@ -118,8 +127,8 @@ public class AddMoviesController implements Initializable {
                 txtaSinopse.setText("");
                 txtfDirector.setText("");
                 txtfName.setText("");
-                txtfMinAge.setText("");
                 cbGenre.setValue("Gênero");
+                cbAge.setValue("");
                 imgMovie.setFitWidth(75);
                 imgMovie.setFitHeight(75);
                 imgMovie.setLayoutX(110);
@@ -183,6 +192,13 @@ public class AddMoviesController implements Initializable {
         cbGenre.getItems().add(Genre.SCIENCE_FICTION.getDescription());
         cbGenre.getItems().add(Genre.FANTASY.getDescription());
         cbGenre.getItems().add(Genre.HORROR.getDescription());
+
+        cbAge.getItems().add("L");
+        cbAge.getItems().add("10");
+        cbAge.getItems().add("12");
+        cbAge.getItems().add("14");
+        cbAge.getItems().add("16");
+        cbAge.getItems().add("18");
 
         Main.addOnChangesScreenListener(new Main.OnChangeScreen() {
             @Override
