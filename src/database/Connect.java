@@ -1,4 +1,4 @@
-package data.base;
+package database;
 
 import java.sql.*;
 
@@ -14,7 +14,7 @@ public class Connect {
     // MÉTODO PARA CONEXÃO DO BANCO
     public boolean connect(){
         try {
-            String url = "jdbc:sqlite:data.base/alphadatabase.db";
+            String url = "jdbc:sqlite:database/alphadatabase.db";
 
             this.connection = DriverManager.getConnection(url);
         } catch(SQLException e) {
@@ -49,6 +49,7 @@ public class Connect {
         }
     }
 
+    //MÉTODO PARA CRIAÇÃO DE UM STATEMENT PRÉ PRONTO
     public PreparedStatement createPreparedStatement(String sql)
     {
         try {

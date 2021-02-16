@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.ModelMovie;
 import model.ModelRating;
@@ -39,6 +40,11 @@ public class FavoriteMoviesController implements Initializable {
 
     public static String currentUserEmail;
 
+    /**
+     * Busca quais filmes estão na lista de favoritos
+     * do usuario e mostra na tela.
+     * */
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -54,6 +60,10 @@ public class FavoriteMoviesController implements Initializable {
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../infomovies.fxml"));
                         Parent root1 = (Parent) fxmlLoader.load();
                         Stage stage = new Stage();
+                        // Block the parent window
+                        stage.initOwner(Main.stage);
+                        stage.initModality(Modality.WINDOW_MODAL);
+                        // Properties of info
                         stage.setTitle("Info");
                         stage.setScene(new Scene(root1));
                         stage.setResizable(false);
@@ -63,6 +73,13 @@ public class FavoriteMoviesController implements Initializable {
                     }
                 }
             };
+
+            if (posX > 788) {
+                posY = 155 + (376 * (i / 4));
+                posX = 74;
+                i--;
+            }
+
             User user = ModelUser.getInstance().readUsersByEmail(ListController.email);
             if(ModelUser.getInstance().isFavotited(user, movie) == true){
                 if(posX <= 788){
@@ -112,10 +129,6 @@ public class FavoriteMoviesController implements Initializable {
                     lbGender.setText(movie.getMovieGenre().getDescription());
                     pnMovies.getChildren().add(lbGender);
                     posX += 238;
-                } else {
-                    posY = 155 + (376 * (i / 4));
-                    posX = 74;
-                    i--;
                 }
                 i++;
             }

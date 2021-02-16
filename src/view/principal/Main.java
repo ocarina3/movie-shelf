@@ -1,6 +1,6 @@
 package view.principal;
 
-import data.base.CreateDatabase;
+import database.CreateDatabase;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 
 public class Main extends Application {
-    private static Stage stage;
+    public static Stage stage;
     private static Scene mainScene;
     private static Scene registerScene;
     private static Scene loginScene;
@@ -27,6 +27,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+
+        /**
+         * Inicializa as Telas e guarda as informações pra quando forem iniciadas
+         * */
         stage = primaryStage;
 
         Parent fxmlMain = FXMLLoader.load(getClass().getResource("main.fxml"));
@@ -56,6 +60,10 @@ public class Main extends Application {
         Parent fxmlDeleteMovies = FXMLLoader.load(getClass().getResource("../delete/delete.fxml"));
         deleteMovies = new Scene(fxmlDeleteMovies);
 
+        /**
+         * Inicia a tela inicial
+         * */
+
         primaryStage.setTitle("Ocarina");
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../resources/icone.png")));
@@ -70,6 +78,10 @@ public class Main extends Application {
         createDatabase.createTableRating();
         createDatabase.createTableFavoriteMovies();
     }
+
+    /**
+     * Muda a tela de acordo com a tela que foi selecionada
+     */
 
     public static void changeScreen (String scr, String currentUser) {
         switch(scr){

@@ -52,14 +52,22 @@ public class DeleteMoviesController implements Initializable {
 
     int movieId;
 
+
+    // Busca o filme e mostra na tela
     @FXML
     void searchMovie(ActionEvent event) {
+        if(txtfSearch.getText() == ""){
+            Dialog.warning("Campo de Pesquisa em Branco");
+            return;
+        }
+
         for(Movie movie : ModelMovie.getInstance().readAllMovies()){
             if((movie.getName().equalsIgnoreCase(txtfSearch.getText()))){
                 txtfName.setText(movie.getName());
                 txtfDirector.setText(movie.getMovieDirector());
                 txtaSinopse.setText(movie.getSynopsis());
                 txtfMinAge.setText(Integer.toString(movie.getMinimumAge()));
+                if (txtfMinAge.getText().equals("0"))txtfMinAge.setText("L");
                 txtfGenre.setText(movie.getMovieGenre().getDescription());
                 movieId = movie.getId();
                 Image image = SwingFXUtils.toFXImage(movie.getImageBuffered(), null);
@@ -73,8 +81,14 @@ public class DeleteMoviesController implements Initializable {
         }
     }
 
+    /**
+     * Recebe as informações pegas na Tela e tenta deleta o filme
+     * */
+
     @FXML
     public void deleteMovie(ActionEvent event) {
+
+
 
             Movie movie;
             if(txtfGenre.getText().equals(Genre.COMEDY.getDescription())) {
@@ -112,9 +126,11 @@ public class DeleteMoviesController implements Initializable {
         }
 
 
+    //Volta para o menu principal
     @FXML
     public void backHomeAdm(ActionEvent event) {  Main.changeScreen("adm", email);}
 
+    //inicializa a tela de deletar filmes
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

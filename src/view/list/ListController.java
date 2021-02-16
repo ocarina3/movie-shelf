@@ -73,9 +73,13 @@ public class ListController implements Initializable {
     @FXML
     private JFXButton btnBack;
 
-    @FXML
-    private JFXToggleButton tgbDirector;
 
+    /**
+     * Controla as trocas de listas do programa, mostrando
+     * a lista de filmes que o usuario desejar
+     * */
+
+    //retorna ao menu principal do tipo de usuario
     @FXML
     void back(ActionEvent event){
         if(ModelUser.getInstance().isAdmin(ModelUser.getInstance().readUsersByEmail(email)) == true){
@@ -85,76 +89,75 @@ public class ListController implements Initializable {
         }
     }
 
-    @FXML
-    void isDirector(ActionEvent event) {
-        if(tgbDirector.isSelected() == true) {
-            tgbDirector.setText("Diretor");
-        } else {
-            tgbDirector.setText("Nome do Filme");
-        }
-    }
 
+    //muda para a lista de filmes mais bem avaliados
     @FXML
     void bestRatingsMovies(ActionEvent event) throws IOException {
         loadPage("bestratings/bestratings.fxml");
     }
 
+    //muda para a lista de todos os filmes
     @FXML
     void allMovies(ActionEvent event) throws IOException {
         loadPage("allmovies/allmovies.fxml");
     }
 
+    //muda para a tela de pesquisa de filmes
     @FXML
     void searchMovies(ActionEvent event) throws IOException {
         SearchMoviesController.search = txtfSearch.getText();
-        DirectorSearchMoviesController.search = txtfSearch.getText();
-        if(tgbDirector.isSelected() == false) {
-            loadPage("searchmovies.fxml");
-        } else {
-            loadPage("directorsearchmovies.fxml");
-        }
+        loadPage("searchmovies.fxml");
     }
 
+    //muda para a tela de filmes com o genero de drama
     @FXML
     void dramaMovies(ActionEvent event) throws IOException {
         loadPage("drama/dramamovies.fxml");
     }
 
+    //muda para a tela de filmes com o genero de comedia
     @FXML
     void comedyMovies(ActionEvent event) throws IOException {
         loadPage("comedy/comedymovies.fxml");
     }
 
+    //muda para a tela de filmes com o genero de terror
     @FXML
     void terrorMovies(ActionEvent event) throws IOException {
         loadPage("terror/terrormovies.fxml");
     }
 
+    //muda para a tela de filmes com o genero de ação e aventura
     @FXML
     void actionandadventureMovies(ActionEvent event) throws IOException {
         loadPage("action/actionandadventuremovies.fxml");
     }
 
+    //muda para a tela de filmes com o genero de fantasia
     @FXML
     void fantasyMovies(ActionEvent event) throws IOException {
         loadPage("fantasy/fantasymovies.fxml");
     }
 
+    //muda para a tela de filmes com o genero de ficção
     @FXML
     void fictionMovies(ActionEvent event) throws IOException {
         loadPage("fiction/fictionmovies.fxml");
     }
 
+    //muda para a tela de filmes favoritados pelo usuario
     @FXML
     void favoriteMovies(ActionEvent event) throws IOException {
         loadPage("favorite/favoritemovies.fxml");
     }
 
+    //carrega a tela para selecionar
     private void loadPage(String page) throws IOException {
         AnchorPane root = FXMLLoader.load(getClass().getResource(page));
         pnScreen.getChildren().setAll(root);
     }
 
+    //incicializa a tela de escolher a lista
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Main.addOnChangesScreenListener(new Main.OnChangeScreen() {
@@ -174,7 +177,6 @@ public class ListController implements Initializable {
             }
         });
 
-        tgbDirector.setText("Nome do Filme");
 
     }
 }

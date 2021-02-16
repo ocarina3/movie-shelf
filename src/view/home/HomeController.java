@@ -41,6 +41,10 @@ public class HomeController implements Initializable {
 
     String email;
 
+    /**
+     * Controla as telas que trocam
+     * */
+
     @FXML
     void backLogin(ActionEvent event) {
         Main.changeScreen("login");
@@ -56,6 +60,7 @@ public class HomeController implements Initializable {
         Main.changeScreen("changeData", email);
     }
 
+    //inicializa a tela do Home
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Main.addOnChangesScreenListener(new Main.OnChangeScreen() {

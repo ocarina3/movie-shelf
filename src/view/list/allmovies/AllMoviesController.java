@@ -13,7 +13,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import model.ModelMovie;
 import model.ModelRating;
 import model.ModelUser;
@@ -21,6 +23,7 @@ import model.entity.Movie;
 import view.adm.AdmController;
 import view.list.InfoMoviesController;
 import view.list.ListController;
+import view.principal.Main;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -45,6 +48,10 @@ public class AllMoviesController implements Initializable {
 
     public static String currentEmail;
 
+    /**
+     * Busca e mostra todos os filmes do catálgo
+     * */
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         int posX = 74;
@@ -62,15 +69,26 @@ public class AllMoviesController implements Initializable {
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../infomovies.fxml"));
                         Parent root1 = (Parent) fxmlLoader.load();
                         Stage stage = new Stage();
+                        // Block the parent window
+                        stage.initOwner(Main.stage);
+                        stage.initModality(Modality.WINDOW_MODAL);
+                        // Properties of info
                         stage.setTitle("Info");
                         stage.setScene(new Scene(root1));
                         stage.setResizable(false);
                         stage.show();
                     } catch (Exception exception) {
-                        System.out.println("Erro");
+                        System.out.println(exception.getCause());
                     }
                 }
             };
+
+             if (posX > 788) {
+                posY = 155 + (376 * (i / 4));
+                posX = 74;
+                i--;
+            }
+
             int currentYear = LocalDate.now().getYear();
             int userAge = ModelUser.getInstance().readUsersByEmail(currentEmail).getBirthDate().getYear();
             if(movie.getMinimumAge() <= currentYear - userAge) {
@@ -120,11 +138,8 @@ public class AllMoviesController implements Initializable {
                     lbGender.setText(movie.getMovieGenre().getDescription());
                     pnMovies.getChildren().add(lbGender);
                     posX += 238;
-                } else {
-                    posY = 155 + (376 * (i / 4));
-                    posX = 74;
-                    i--;
                 }
+
                 i++;
             }
         }

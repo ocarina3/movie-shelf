@@ -1,6 +1,5 @@
 package view.list;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
 import javafx.embed.swing.SwingFXUtils;
@@ -11,15 +10,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import model.ModelMovie;
 import model.ModelRating;
 import model.ModelUser;
 import model.entity.Movie;
-import model.entity.Rating;
 import model.entity.User;
-import utils.Dialog;
-import view.principal.Main;
+import org.controlsfx.control.Rating;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -30,6 +30,12 @@ public class InfoMoviesController implements Initializable {
     public String email;
 
     public static int movieId;
+
+    public Rating userRating;
+
+    public Rating avgRating;
+
+    public Label lbIdade;
 
     @FXML
     private ImageView imgMovie;
@@ -52,54 +58,46 @@ public class InfoMoviesController implements Initializable {
     @FXML
     private Label lbDirector;
 
-    @FXML
-    private Label lbRate;
+    User user = ModelUser.getInstance().readUsersByEmail(ListController.email);
+    Movie movie = ModelMovie.getInstance().readMoviesById(Integer.toString(movieId));
 
-    @FXML
-    void makeRate(ActionEvent event) {
-        float Rate;
-        if(txtfRate.getText().equals("") || campoNumerico(txtfRate.getText()) == false){
-            Dialog.error("Favor informar corretamente");
-        } else {
-            if(Float.parseFloat(txtfRate.getText()) > 10){
-                Rate = 10;
-                Rating rt = new Rating(0, Rate, ModelUser.getInstance().readUsersByEmail(ListController.email).getId(), movieId);
-                ModelRating.getInstance().createRating(rt);
-            } else if(Float.parseFloat(txtfRate.getText()) < 0){
-                Rate = 0;
-                Rating rt = new Rating(0, Rate, ModelUser.getInstance().readUsersByEmail(ListController.email).getId(), movieId);
-                ModelRating.getInstance().createRating(rt);
-            } else {
-                Rate = Float.parseFloat(txtfRate.getText());
-                Rating rt = new Rating(0, Rate, ModelUser.getInstance().readUsersByEmail(ListController.email).getId(), movieId);
-                ModelRating.getInstance().createRating(rt);
-            }
-            Dialog.information("Avaliação Recolhida");
-        }
-    }
+    /**
+     * Inicializa a Tela De informações do filme clicado em uma das telas de listagem
+     * Permitindo Avaliar e Favoritar o filme
+     * */
 
-    private boolean campoNumerico(String campo){
-        return campo.matches("[+-]?([0-9]*[.])?[0-9]+");
-    }
-
+    //inicializa a tela e todos os dados ja cadastrados do filme
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         lbTitle.setText(ModelMovie.getInstance().readMoviesById(Integer.toString(movieId)).getName());
         lbGenre.setText(ModelMovie.getInstance().readMoviesById(Integer.toString(movieId)).getMovieGenre().getDescription());
         txtaSinopse.setText(ModelMovie.getInstance().readMoviesById(Integer.toString(movieId)).getSynopsis());
         lbDirector.setText(ModelMovie.getInstance().readMoviesById(Integer.toString(movieId)).getMovieDirector());
-        lbRate.setText(Float.toString(ModelRating.getInstance().readAvgRatingByMovie(ModelMovie.getInstance().readMoviesById(Integer.toString(movieId)))));
         Image image = SwingFXUtils.toFXImage(ModelMovie.getInstance().readMoviesById(Integer.toString(movieId)).getImageBuffered(), null);
         imgMovie.setImage(image);
+        lbIdade.setText(Integer.toString(movie.getMinimumAge()));
+        if (movie.getMinimumAge() == 0) lbIdade.setText("L");
+        this.email =ListController.email;
 
-        User user = ModelUser.getInstance().readUsersByEmail(ListController.email);
-        Movie movie = ModelMovie.getInstance().readMoviesById(Integer.toString(movieId));
+
         if(ModelUser.getInstance().isFavotited(user, movie)){
             favoriteButton.setSelected(true);
         }
 
+        float initialRating = 0;
+        if(ModelRating.getInstance().readRatingByUserAndMovie(movie, user) != null) {
+            initialRating = ModelRating.getInstance().readRatingByUserAndMovie(movie, user).getRating()/2;
+        }
+
+        userRating.setPartialRating(true);
+        userRating.setRating(initialRating);
+
+        avgRating.setPartialRating(true);
+        avgRating.setRating(ModelRating.getInstance().readAvgRatingByMovie(ModelMovie.getInstance().readMoviesById(String.format("%d",movieId)))/2);
     }
 
+
+    //Implementa a função de adicionar aos favoritos
     public void addFavorite(ActionEvent actionEvent) {
         User user = ModelUser.getInstance().readUsersByEmail(ListController.email);
         Movie movie = ModelMovie.getInstance().readMoviesById(Integer.toString(movieId));
@@ -109,5 +107,21 @@ public class InfoMoviesController implements Initializable {
             ModelUser.getInstance().favoriteMovies(user,movie);
         }
         else ModelUser.getInstance().deleteFavoriteMovies(user,movie);
+    }
+
+    //implementa a avaliação do usuario no programa
+    public void getUserRating() {
+
+        float rate =(float) userRating.getRating()*2;
+        BigDecimal bd = new BigDecimal(rate).setScale(1, RoundingMode.HALF_EVEN);
+
+        if(!ModelRating.getInstance().createRating(bd.floatValue(), ModelUser.getInstance().readUsersByEmail(email).getId(), movieId)) {
+            ModelRating.getInstance().updateRatingValueById(bd.floatValue(), ModelRating.getInstance().readRatingByUserAndMovie(movie, user).getId());
+        }
+    }
+
+    //mostra a media de notas do programa
+    public void getAvgRating(MouseEvent mouseEvent) {
+        avgRating.setRating(ModelRating.getInstance().readAvgRatingByMovie(ModelMovie.getInstance().readMoviesById(String.format("%d",movieId)))/2);
     }
 }

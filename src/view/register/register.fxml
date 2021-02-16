@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0A002C;" stylesheets="@Register.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.register.RegisterController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: white;" stylesheets="@Register.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.register.RegisterController">
    <children>
       <Pane layoutX="-22.0" prefHeight="720.0" prefWidth="838.0" style="-fx-background-color: white;">
          <children>
@@ -53,13 +53,13 @@
                   <Font size="24.0" />
                </font>
             </JFXPasswordField>
-            <Button fx:id="btnBack" layoutX="41.0" layoutY="14.0" mnemonicParsing="false" onAction="#backHome" prefHeight="40.0" prefWidth="40.0" />
+            <Button fx:id="btnBack" layoutX="48.0" layoutY="27.0" mnemonicParsing="false" onAction="#backHome" prefHeight="40.0" prefWidth="40.0" />
             <JFXDatePicker fx:id="dtBirthDate" defaultColor="#4717f6" layoutX="453.0" layoutY="250.0" prefWidth="318.0" promptText="Data Nascimento" />
          </children>
       </Pane>
-      <ImageView fx:id="imgRegisterMan" fitHeight="390.0" fitWidth="408.0" layoutX="855.0" layoutY="306.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="690.0" fitWidth="510.0" layoutX="776.0">
          <image>
-            <Image url="@../resources/register.png" />
+            <Image url="@../resources/Group%204.png" />
          </image>
       </ImageView>
    </children>

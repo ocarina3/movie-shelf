@@ -85,6 +85,10 @@ public class AdmController implements Initializable {
 
     String email;
 
+    /**
+     * Controla as telas que trocam
+     * */
+
     @FXML
     void listMovies(ActionEvent event) {
         Main.changeScreen("list", email);
@@ -113,6 +117,7 @@ public class AdmController implements Initializable {
         Main.changeScreen("deleteMovies", email);
     }
 
+    //inicializa a tela de Adicionar filmes
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Main.addOnChangesScreenListener(new Main.OnChangeScreen() {

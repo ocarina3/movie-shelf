@@ -29,6 +29,10 @@ public class MainController {
     @FXML
     private Button btnRegister;
 
+    /**
+     * Direciona para a tela desejada.
+     * */
+
     @FXML
     void onClick(ActionEvent event) {
         Main.changeScreen("register");

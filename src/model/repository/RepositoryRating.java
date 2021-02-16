@@ -1,24 +1,22 @@
 package model.repository;
 
-import data.base.Connect;
-import model.ModelUser;
+import database.Connect;
 import model.entity.Movie;
 import model.entity.Rating;
 import model.entity.User;
-import view.principal.Main;
 
-import java.sql.Array;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class RepositoryRating {
 
     private Connect c = new Connect();
 
+    //__________________________________________CREATE_________________________________________________________________
+
+    //Cria uma avaliação passando suas informações
     public void createRating(Rating rating) {
 
         if(rating == null) return;
@@ -52,6 +50,9 @@ public class RepositoryRating {
         }
     }
 
+    //__________________________________________READ_________________________________________________________________
+
+    //Le as avaliações que tem um attributo com valor igual ao selecionado
     private ArrayList<Rating> readRatings(String attribute, String value) {
 
         String sql = "SELECT * FROM rating WHERE " + attribute + " = ?;";
@@ -96,6 +97,75 @@ public class RepositoryRating {
         return ratings;
     }
 
+    //seleciona o atributo id para o readRatings
+    public Rating readRatingById(int rating_id){
+        if( readRatings("id", Integer.toString(rating_id)).size() == 0 ) return null;
+        return readRatings("id", Integer.toString(rating_id)).get(0);
+    }
+
+    //seleciona o atributo nota para o readRatings
+    public ArrayList<Rating> readRatingsByValue(String value) {
+        return readRatings("rating", value);
+    }
+
+    //Le todas as avaliações
+    public ArrayList<Rating> readAllRatings() {
+
+        String sql = "SELECT * FROM rating";
+
+        ResultSet result = null;
+
+        c.connect();
+        PreparedStatement p = null;
+        ArrayList<Rating> ratings = new ArrayList<>();
+
+        try {
+
+            p = c.createPreparedStatement(sql);
+            result = p.executeQuery();
+
+            while (result.next()) {
+                Rating rating = new Rating(
+                        result.getInt("id"),
+                        result.getFloat("rating"),
+                        result.getInt("id_user"),
+                        result.getInt("id_movie")
+                );
+
+                ratings.add(rating);
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        } finally {
+            if (p != null) {
+                try{
+                    p.close();
+                    c.disconnect();
+                }catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+
+        return ratings;
+    }
+
+    //Le todas as avaliações que um usuario fez
+    public ArrayList<Rating> readRatingsByUser(User user) {
+        ArrayList<Rating> allRatings = this.readAllRatings();
+
+        ArrayList<Rating> filteredRatings = new ArrayList<>();
+
+        for ( Rating rating : allRatings ) {
+            if ( rating.getUserId() == user.getId() ) filteredRatings.add(rating);
+        }
+
+        return filteredRatings;
+    }
+
+    //Le todas as avaliações que um filme recebeu
     public ArrayList<Rating> readRatingsByMovie(Movie movie) {
         String sql = "SELECT r.id AS id, r.rating AS rating, r.id_user as id_user, r.id_movie as id_movie FROM rating r" +
                 " INNER JOIN movie m ON m.id = r.id_movie" +
@@ -141,27 +211,22 @@ public class RepositoryRating {
         return ratings;
     }
 
-    public ArrayList<Rating> readUserRatingsByMovie(Movie movie, User user) {
+    //Le uma avaliaçao que o usuario fez para um filme
+    public ArrayList<Rating> readRatingByUserAndMovie(Movie movie, User user) {
+        if(this.readRatingsByMovie(movie) == null) return null;
+
         ArrayList<Rating> ratings = this.readRatingsByMovie(movie);
 
         ArrayList<Rating> filteredRatings = new ArrayList<>();
 
         for ( Rating rating : ratings ) {
-            if(rating.getId() == user.getId()) filteredRatings.add(rating);
+            if(rating.getUserId() == user.getId()) filteredRatings.add(rating);
         }
 
         return filteredRatings;
     }
 
-    public Rating readRatingById(int rating_id){
-        if( readRatings("id", Integer.toString(rating_id)).size() == 0 ) return null;
-        return readRatings("id", Integer.toString(rating_id)).get(0);
-    }
-
-    public ArrayList<Rating> readRatingsByValue(String value) {
-        return readRatings("rating", value);
-    }
-
+    //Le o nome do usuario que fez a avaliação
     public String readRaterUserName(int rating_id) {
 
         String sql = "SELECT u.name AS name FROM rating r" +
@@ -202,6 +267,7 @@ public class RepositoryRating {
         return userName;
     }
 
+    //Le a nota media de um filme
     public float readAvgRatingByMovie(Movie movie) {
 
         String sql = "SELECT avg(r.rating) AS average FROM rating r" +
@@ -242,6 +308,7 @@ public class RepositoryRating {
         return average;
     }
 
+    //Le todos os emails que avaliarão um filme
     public ArrayList<String> readAlreadyRatedEmails(Movie movie) {
 
         String sql = "SELECT u.email AS email FROM user u" +
@@ -285,63 +352,18 @@ public class RepositoryRating {
         return ratedEmails;
     }
 
-    public ArrayList<Rating> readAllRatingByMovie(Movie movie) {
-        String sql = "SELECT r.id_user, r.id_movie, r.rating, r.id FROM rating r" +
-                " INNER JOIN movie m ON r.id_movie = m.id" +
-                " WHERE m.id = ?;";
+    //__________________________________________UPDATE_________________________________________________________________
 
-        ResultSet result = null;
-
-        c.connect();
-        PreparedStatement p = null;
-
-        ArrayList<Rating> ratings = new ArrayList<>();
-
-        try {
-
-            p = c.createPreparedStatement(sql);
-            p.setString(1,Integer.toString(movie.getId()));
-            result = p.executeQuery();
-
-            while (result.next()) {
-                ratings.add(new Rating(
-                        result.getInt("id"),
-                        result.getFloat("rating"),
-                        result.getInt("id_user"),
-                        result.getInt("id_movie")
-                ));
-            }
-
-        } catch (SQLException e) {
-
-            e.printStackTrace();
-        } finally {
-            if (p != null) {
-                try{
-                    p.close();
-                    c.disconnect();
-                }catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
-            }
-        }
-
-        return ratings;
-    }
-
-    private void updateRatingValue(String attribute, String attributeMatch, float newRating) {
-        String sql = "UPDATE rating SET rating = ? WHERE "+ attribute +" = ?;";
+    //Atualiza os dados no banco de dados de uma avaliação
+    private void updateRatingValue(float newRating, String attribute, int id) {
+        String sql = "UPDATE rating SET rating = ? WHERE "+attribute+" = ?;";
 
         c.connect();
-        PreparedStatement p = null;
+        PreparedStatement p = c.createPreparedStatement(sql);
         try{
-
-            p = c.createPreparedStatement(sql);
             p.setFloat(1,newRating);
-            p.setString(2,attribute);
-            int didUpdateRating = p.executeUpdate();
-            System.out.println(didUpdateRating);
-
+            p.setInt(2, id);
+            p.executeUpdate();
         }catch (SQLException e){
             System.out.println(e.getMessage());
 
@@ -359,8 +381,14 @@ public class RepositoryRating {
         }
     }
 
-    public void updateRatingValueById(int rating_id, float newRating) { updateRatingValue("id", Integer.toString(rating_id), newRating); }
+    //Atualiza os dados no banco de dados de uma avaliação
+    public void updateRatingValueById(float newRating, int id) {
+        updateRatingValue(newRating, "id", id);
+    }
 
+    //__________________________________________DELETE_________________________________________________________________
+
+    //Deleta uma Avaliação que tem um attributo com valor igual ao selecionado
     private void deleteRating(String attribute,String value) {
         String sql = "DELETE FROM rating WHERE " + attribute + " = ?;";
 
@@ -390,6 +418,7 @@ public class RepositoryRating {
         }
     }
 
+    //seleciona o atributo id para deleteRating
     public void deleteRatingById(int rating_id) {
         deleteRating("id", Integer.toString(rating_id));
     }

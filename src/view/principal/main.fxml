@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -10,35 +10,33 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0E0B16;" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.principal.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0E0B16;" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.principal.MainController">
     <children>
-        <Pane prefHeight="72.0" prefWidth="188.0" style="-fx-background-color: #4717F6;">
+        <Pane prefHeight="72.0" prefWidth="72.0" style="-fx-background-color: #4717F6;">
          <children>
-                <Label fx:id="lbLogo" layoutX="30.0" layoutY="14.0" prefHeight="34.0" prefWidth="128.0" styleClass="lbLogo" stylesheets="@Main.css" text="Ocarina" />
+            <ImageView fitHeight="44.0" fitWidth="36.0" layoutX="16.0" layoutY="14.0">
+               <image>
+                  <Image url="@../resources/O.png" />
+               </image>
+            </ImageView>
          </children>
         </Pane>
-        <Pane layoutX="187.0" prefHeight="72.0" prefWidth="1093.0" style="-fx-background-color: #663CFD;">
+        <Pane layoutX="71.0" prefHeight="72.0" prefWidth="1210.0" style="-fx-background-color: #663CFD;">
             <children>
-                <Button fx:id="btnLogin" layoutX="896.0" layoutY="19.0" mnemonicParsing="false" onAction="#clickLogin" prefHeight="34.0" prefWidth="120.0" styleClass="btnLogin" stylesheets="@Main.css" text="Login" textFill="WHITE">
-                    <font>
-                        <Font name="Nirmala UI" size="12.0" />
-                    </font>
-                </Button>
+            <JFXButton fx:id="btnLogin" focusTraversable="false" layoutX="1058.0" layoutY="19.0" onAction="#clickLogin" prefHeight="30.0" prefWidth="120.0" styleClass="btnLogin" text="Login" textFill="WHITE" />
             </children>
         </Pane>
-        <Label fx:id="lbWelcome" layoutX="46.0" layoutY="238.0" styleClass="lbWelcome" stylesheets="@Main.css" text="Welcome Back" />
+        <Label fx:id="lbWelcome" layoutX="46.0" layoutY="238.0" styleClass="lbWelcome" stylesheets="@Main.css" text="Ocarina">
+         <font>
+            <Font name="Bauhaus 93" size="12.0" />
+         </font></Label>
         <Label fx:id="lbApresentacao" layoutX="57.0" layoutY="347.0" styleClass="lbTextoBoasVindas" text="TUDO SOBRE SEUS FILMES PREFERIDOS" />
         <Label fx:id="lbServicos" layoutX="57.0" layoutY="391.0" styleClass="lbTextoBoasVindas" text="AVALIAÇÕES, SINOPSES E MUITO MAIS" />
-        <Line fx:id="lineWelcome" endX="4.0" layoutX="205.0" layoutY="328.0" startX="-148.0" stroke="#4717f6" strokeWidth="3.0" />
-        <Button fx:id="btnRegister" layoutX="57.0" layoutY="453.0" mnemonicParsing="false" onAction="#onClick" prefHeight="54.0" prefWidth="202.0" styleClass="btnRegister" text="Registrar-se" textFill="WHITE" />
-        <Line endX="-100.0" endY="181.0" layoutX="1301.0" layoutY="309.0" startX="-100.0" startY="-80.0" stroke="#4717f6" strokeWidth="3.0" />
-        <Circle fill="#4717f6" layoutX="1201.0" layoutY="283.0" radius="7.0" stroke="#4717f6" strokeType="INSIDE" />
-        <Circle fill="#4717f6" layoutX="1201.0" layoutY="359.0" radius="7.0" stroke="#4717f6" strokeType="INSIDE" />
-        <Circle fill="#4717f6" layoutX="1201.0" layoutY="435.0" radius="7.0" stroke="#4717f6" strokeType="INSIDE" />
-        <ImageView fitHeight="72.0" fitWidth="72.0" layoutX="514.0" layoutY="247.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@logo.png" />
-            </image>
-        </ImageView>
+        <Line fx:id="lineWelcome" endX="83.0" layoutX="205.0" layoutY="328.0" startX="-151.0" stroke="#4717f6" strokeWidth="3.0" />
+        <Line endX="-100.0" endY="181.0" layoutX="1329.0" layoutY="309.0" startX="-100.0" startY="-80.0" stroke="#4717f6" strokeWidth="3.0" />
+        <Circle fill="#4717f6" layoutX="1229.0" layoutY="283.0" radius="7.0" stroke="#4717f6" strokeType="INSIDE" />
+        <Circle fill="#4717f6" layoutX="1229.0" layoutY="359.0" radius="7.0" stroke="#4717f6" strokeType="INSIDE" />
+        <Circle fill="#4717f6" layoutX="1229.0" layoutY="435.0" radius="7.0" stroke="#4717f6" strokeType="INSIDE" />
+      <JFXButton fx:id="btnRegister" focusTraversable="false" layoutX="57.0" layoutY="453.0" onAction="#onClick" prefHeight="54.0" prefWidth="202.0" styleClass="btnRegister" text="Registrar-se" textFill="WHITE" />
     </children>
 </AnchorPane>

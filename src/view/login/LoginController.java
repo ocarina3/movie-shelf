@@ -10,6 +10,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import model.ModelUser;
 import utils.Dialog;
+import utils.EncryptPassword;
 import view.principal.Main;
 
 
@@ -45,6 +46,7 @@ public class LoginController {
     @FXML
     private ImageView imgPass;
 
+    //Volta para o menu principal
     @FXML
     void backHome(ActionEvent event) {
         Main.changeScreen("main");
@@ -52,21 +54,27 @@ public class LoginController {
         pfPass.setText("");
     }
 
+
+    /**
+     * Recebe as informações pegas da Tela de Login, verifica se existe o usuario
+     * e se a senha confere, caso sim, faz login.
+     * */
+
     @FXML
     void makeLogin(ActionEvent event) {
         if(ModelUser.getInstance().readUsersByEmail(txtfEmail.getText()) == null){
             Dialog.error("Usuário ou senha incorreto(s)");
         } else {
-            if((ModelUser.getInstance().readUsersByEmail(txtfEmail.getText()).getPassword()).equals(pfPass.getText())) {
-                if(ModelUser.getInstance().isAdmin(ModelUser.getInstance().readUsersByEmail(txtfEmail.getText())) == true){
+            if((ModelUser.getInstance().readUsersByEmail(txtfEmail.getText()).getPassword()).equals(
+                    EncryptPassword.encryptPassword(txtfEmail.getText(), pfPass.getText())
+            )) {
+                if(ModelUser.getInstance().isAdmin(ModelUser.getInstance().readUsersByEmail(txtfEmail.getText()))){
                     Main.changeScreen("adm", txtfEmail.getText());
-                    txtfEmail.setText("");
-                    pfPass.setText("");
                 } else {
                     Main.changeScreen("home", txtfEmail.getText());
-                    txtfEmail.setText("");
-                    pfPass.setText("");
                 }
+                txtfEmail.setText("");
+                pfPass.setText("");
             } else {
                 Dialog.error("Usuário ou senha incorreto(s)");
             }

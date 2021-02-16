@@ -59,11 +59,17 @@ public class UpdateMoviesController implements Initializable {
     @FXML
     private JFXComboBox<String> cbGenre;
 
+    public JFXComboBox<String> cbAge;
+
     String email;
 
     int movieId;
 
     public BufferedImage bufferedImage;
+
+    /**
+     * Procura pelo nome exato do filme para deletar ele
+     * */
 
     @FXML
     void searchMovie(ActionEvent event) {
@@ -72,7 +78,9 @@ public class UpdateMoviesController implements Initializable {
                 txtfName.setText(movie.getName());
                 txtfDirector.setText(movie.getMovieDirector());
                 txtaSinopse.setText(movie.getSynopsis());
-                txtfMinAge.setText(Integer.toString(movie.getMinimumAge()));
+                cbAge.setValue(Integer.toString(movie.getMinimumAge()));
+                if(Integer.toString(movie.getMinimumAge()).equals("0")){
+                cbAge.setValue("L");}
                 cbGenre.setValue(movie.getMovieGenre().getDescription());
                 movieId = movie.getId();
                 Image image = SwingFXUtils.toFXImage(movie.getImageBuffered(), null);
@@ -86,26 +94,38 @@ public class UpdateMoviesController implements Initializable {
         }
     }
 
+    /**
+     * Pega as informações da tela para atualizar o filme
+     * */
     @FXML
     public void changeMovie(javafx.event.ActionEvent event) {
         if (txtfName.getText().equals("") || cbGenre.getValue().equals("") || txtfDirector.getText().equals("") || txtaSinopse.getText().equals("")) {
             utils.Dialog.warning("Favor informar todos campos");
         }else{
+
+            int minAge = 0;
+            if(!cbAge.getValue().equals("L"))
+            {
+                minAge = Integer.parseInt(cbAge.getValue());
+            }
+
             Movie movie;
             if(cbGenre.getValue().equals(Genre.COMEDY.getDescription())) {
-                movie = new Movie(movieId, txtfName.getText(), txtfDirector.getText(), Genre.COMEDY, txtaSinopse.getText(), Integer.parseInt(txtfMinAge.getText()));
+                movie = new Movie(movieId, txtfName.getText(), txtfDirector.getText(), Genre.COMEDY, txtaSinopse.getText(), minAge);
             } else if (cbGenre.getValue().equals(Genre.HORROR.getDescription())) {
-                movie = new Movie(movieId, txtfName.getText(), txtfDirector.getText(), Genre.HORROR, txtaSinopse.getText(), Integer.parseInt(txtfMinAge.getText()));
+                movie = new Movie(movieId, txtfName.getText(), txtfDirector.getText(), Genre.HORROR, txtaSinopse.getText(), minAge);
             } else if (cbGenre.getValue().equals(Genre.ACTION_ADVENTURE.getDescription())) {
-                movie = new Movie(movieId, txtfName.getText(), txtfDirector.getText(), Genre.ACTION_ADVENTURE, txtaSinopse.getText(), Integer.parseInt(txtfMinAge.getText()));
+                movie = new Movie(movieId, txtfName.getText(), txtfDirector.getText(), Genre.ACTION_ADVENTURE, txtaSinopse.getText(), minAge);
             } else if (cbGenre.getValue().equals(Genre.FANTASY.getDescription())) {
-                movie = new Movie(movieId, txtfName.getText(), txtfDirector.getText(), Genre.FANTASY, txtaSinopse.getText(), Integer.parseInt(txtfMinAge.getText()));
+                movie = new Movie(movieId, txtfName.getText(), txtfDirector.getText(), Genre.FANTASY, txtaSinopse.getText(), minAge);
             } else if (cbGenre.getValue().equals(Genre.DRAMA.getDescription())) {
-                movie = new Movie(movieId, txtfName.getText(), txtfDirector.getText(), Genre.DRAMA, txtaSinopse.getText(), Integer.parseInt(txtfMinAge.getText()));
+                movie = new Movie(movieId, txtfName.getText(), txtfDirector.getText(), Genre.DRAMA, txtaSinopse.getText(), minAge);
             }else {
                 movie = new Movie(movieId, txtfName.getText(), txtfDirector.getText(), Genre.SCIENCE_FICTION, txtaSinopse.getText(), Integer.parseInt(txtfMinAge.getText()));
             }
-            movie.setImageBuffered(bufferedImage);
+            if(bufferedImage != null){
+            movie.setImageBuffered(bufferedImage);}
+            else{movie.setImageBuffered(ModelMovie.getInstance().readMoviesById(String.format("%d",movieId)).getImageBuffered());}
             boolean update = ModelMovie.getInstance().updateMovie(movie);
             if(update == false){
                 utils.Dialog.error("Erro ao atualizar");
@@ -128,6 +148,9 @@ public class UpdateMoviesController implements Initializable {
         }
     }
 
+    /**
+     * Carrega a imagem que o filme tem no momento
+     * */
     @FXML
     void loadImg(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -156,14 +179,16 @@ public class UpdateMoviesController implements Initializable {
             imgMovie.setLayoutX(55);
             imgMovie.setLayoutY(150);
             imgMovie.setImage(image);
-        } catch (IOException ex) {
+        } catch (IOException | IllegalArgumentException ex) {
             Logger.getLogger(AdmController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
+    //volta para a tela principal do adm
     @FXML
     public void backHomeAdm(javafx.event.ActionEvent event) {  Main.changeScreen("adm", email);}
 
+    //inicia a tela com as informações iniciais dela
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cbGenre.getItems().add(Genre.COMEDY.getDescription());
@@ -172,6 +197,14 @@ public class UpdateMoviesController implements Initializable {
         cbGenre.getItems().add(Genre.SCIENCE_FICTION.getDescription());
         cbGenre.getItems().add(Genre.FANTASY.getDescription());
         cbGenre.getItems().add(Genre.HORROR.getDescription());
+
+        cbAge.getItems().add("L");
+        cbAge.getItems().add("10");
+        cbAge.getItems().add("12");
+        cbAge.getItems().add("14");
+        cbAge.getItems().add("16");
+        cbAge.getItems().add("18");
+
         Main.addOnChangesScreenListener(new Main.OnChangeScreen() {
             @Override
             public void onScreenChanged(String newScreen, String currentUser) {

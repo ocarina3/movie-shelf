@@ -56,11 +56,7 @@
             <Image url="@../resources/x_icon.png" />
          </image>
       </ImageView>
-      <JFXTextField fx:id="txtfMinAge" focusColor="WHITE" labelFloat="true" layoutX="815.0" layoutY="318.0" prefWidth="331.0" promptText="Idade Minima:" unFocusColor="#4717f6">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </JFXTextField>
       <JFXComboBox fx:id="cbGenre" focusColor="#405aa800" layoutX="330.0" layoutY="312.0" prefHeight="51.0" prefWidth="213.0" promptText="Gênero" style="-fx-background-color: #2300A0;" unFocusColor="#4d4d4d00" />
+      <JFXComboBox fx:id="cbAge" focusColor="#405aa800" layoutX="803.0" layoutY="312.0" prefHeight="51.0" prefWidth="213.0" promptText="Idade Minima" style="-fx-background-color: #2300A0;" unFocusColor="#4d4d4d00" />
    </children>
 </AnchorPane>
