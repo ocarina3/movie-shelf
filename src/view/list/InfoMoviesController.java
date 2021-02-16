@@ -59,6 +59,12 @@ public class InfoMoviesController implements Initializable {
     User user = ModelUser.getInstance().readUsersByEmail(ListController.email);
     Movie movie = ModelMovie.getInstance().readMoviesById(Integer.toString(movieId));
 
+    /**
+     * Inicializa a Tela De informações do filme clicado em uma das telas de listagem
+     * Permitindo Avaliar e Favoritar o filme
+     * */
+
+    //inicializa a tela e todos os dados ja cadastrados do filme
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         lbTitle.setText(ModelMovie.getInstance().readMoviesById(Integer.toString(movieId)).getName());
@@ -86,6 +92,8 @@ public class InfoMoviesController implements Initializable {
         avgRating.setRating(ModelRating.getInstance().readAvgRatingByMovie(ModelMovie.getInstance().readMoviesById(String.format("%d",movieId)))/2);
     }
 
+
+    //Implementa a função de adicionar aos favoritos
     public void addFavorite(ActionEvent actionEvent) {
         User user = ModelUser.getInstance().readUsersByEmail(ListController.email);
         Movie movie = ModelMovie.getInstance().readMoviesById(Integer.toString(movieId));
@@ -97,6 +105,7 @@ public class InfoMoviesController implements Initializable {
         else ModelUser.getInstance().deleteFavoriteMovies(user,movie);
     }
 
+    //implementa a avaliação do usuario no programa
     public void getUserRating() {
 
         float rate =(float) userRating.getRating()*2;
@@ -106,6 +115,8 @@ public class InfoMoviesController implements Initializable {
             ModelRating.getInstance().updateRatingValueById(bd.floatValue(), ModelRating.getInstance().readRatingByUserAndMovie(movie, user).getId());
         }
     }
+
+    //mostra a media de notas do programa
     public void getAvgRating(MouseEvent mouseEvent) {
         avgRating.setRating(ModelRating.getInstance().readAvgRatingByMovie(ModelMovie.getInstance().readMoviesById(String.format("%d",movieId)))/2);
     }
