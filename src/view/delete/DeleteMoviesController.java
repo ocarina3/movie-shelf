@@ -67,6 +67,7 @@ public class DeleteMoviesController implements Initializable {
                 txtfDirector.setText(movie.getMovieDirector());
                 txtaSinopse.setText(movie.getSynopsis());
                 txtfMinAge.setText(Integer.toString(movie.getMinimumAge()));
+                if (txtfMinAge.getText().equals("0"))txtfMinAge.setText("L");
                 txtfGenre.setText(movie.getMovieGenre().getDescription());
                 movieId = movie.getId();
                 Image image = SwingFXUtils.toFXImage(movie.getImageBuffered(), null);
@@ -86,6 +87,8 @@ public class DeleteMoviesController implements Initializable {
 
     @FXML
     public void deleteMovie(ActionEvent event) {
+
+
 
             Movie movie;
             if(txtfGenre.getText().equals(Genre.COMEDY.getDescription())) {
