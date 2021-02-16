@@ -46,12 +46,19 @@ public class LoginController {
     @FXML
     private ImageView imgPass;
 
+    //Volta para o menu principal
     @FXML
     void backHome(ActionEvent event) {
         Main.changeScreen("main");
         txtfEmail.setText("");
         pfPass.setText("");
     }
+
+
+    /**
+     * Recebe as informações pegas da Tela de Login, verifica se existe o usuario
+     * e se a senha confere, caso sim, faz login.
+     * */
 
     @FXML
     void makeLogin(ActionEvent event) {
