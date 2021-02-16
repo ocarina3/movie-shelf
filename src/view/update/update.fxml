@@ -41,11 +41,6 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtfMinAge" focusColor="WHITE" labelFloat="true" layoutX="815.0" layoutY="318.0" prefWidth="331.0" promptText="Idade Minima:" unFocusColor="#4717f6">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </JFXTextField>
       <JFXButton fx:id="btnChange" layoutX="55.0" layoutY="617.0" onAction="#changeMovie" prefHeight="44.0" prefWidth="185.0" style="-fx-background-color: #FFFFFF;" text="Alterar" textFill="#663cfd">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -73,5 +68,6 @@
             <Image url="@../resources/search.png" />
          </image>
       </ImageView>
+      <JFXComboBox fx:id="cbAge" focusColor="#405aa800" layoutX="815.0" layoutY="306.0" prefHeight="51.0" prefWidth="213.0" promptText="Idade Minima" style="-fx-background-color: #2300A0;" unFocusColor="#4d4d4d00" />
    </children>
 </AnchorPane>
