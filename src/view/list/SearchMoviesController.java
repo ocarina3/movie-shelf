@@ -37,6 +37,11 @@ public class SearchMoviesController implements Initializable {
 
     public static String search;
 
+    /**
+     * Busca os filmes que tenham ou o nome ou o nome do diretor similares ao que tenha na
+     * aba de pesquisa
+     * */
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         int posX = 74;
