@@ -31,8 +31,7 @@ It's a system utilized to see a list of movies available so you can get to know 
 
 ## ⏩ Result
 
-![GIF Showing the Project](docs/ocarina.gif)
-
+...
 ## 🤔 How to use
 
 🚧 In development...
