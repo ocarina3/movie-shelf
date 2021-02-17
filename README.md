@@ -15,22 +15,23 @@ It's a system utilized to see a list of movies available so you can get to know 
 
 ## ✅ Features
 
-- [ ] Register, login and update user account
-- [ ] The administrador of the system can create, read, update and delete movies
-- [ ] List of movies
-  - [ ] Filter by Genre
-  - [ ] Filter by Ratings
-  - [ ] Search movie by name / movie director
-  - [ ] Create a list of favorite movies
+- [x] Register, login and update user account
+- [x] The administrador of the system can create, read, update and delete movies
+- [x] List of movies
+  - [x] Filter by Genre
+  - [x] Filter by Ratings
+  - [x] Search movie by name / movie director
+  - [x] Create a list of favorite movies
+- [x] Movies can be opened and rated by every user
 
 ## ☑ Non-functional Requirements
 
-- [ ] E-mail validation
-- [ ] Password encryption
+- [x] E-mail validation
+- [x] Password encryption
 
 ## ⏩ Result
 
-🚧 In development...
+![GIF Showing the Project](docs/ocarina.gif)
 
 ## 🤔 How to use
 
